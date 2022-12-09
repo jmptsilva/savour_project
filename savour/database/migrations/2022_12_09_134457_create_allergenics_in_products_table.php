@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('allergenics_in_products', function (Blueprint $table) {
+            $table->unsignedBigInteger('allergenic_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
+
+            $table->foreign('allergenic_id')->references('id')->on('allergenics');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('allergenics_in_products');
     }
 };
