@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('name');
             $table->string('image');
+            $table->bigInteger('quantity');
             $table->double('price');
             $table->boolean('is_active');
             $table->timestamps();
