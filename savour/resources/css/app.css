@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --main: #000000;
+    --button: #000000;
+    --heightLight: #000000;
+    --text: #000000;
+    --subOne: #000000;
+    --subTwo: #000000;
+}
+/* #00391D
+#1D2816 
+#876340
+#D49A3D
+#DFDFDF
+#161616 */
+
+@layer components {
+    /* ---------partner session ----------*/
+    ._partnerCard {
+      @apply  px-8 flex-shrink-0 relative sm:w-auto h-52 rounded-2xl bg-white flex items-center justify-center overflow-hidden scale-95 transition-all hover:scale-100;
+    
+    }
+  }
