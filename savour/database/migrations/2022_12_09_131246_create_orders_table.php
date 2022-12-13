@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('allergenics_in_products', function (Blueprint $table) {
-            $table->unsignedBigInteger('allergenic_id');
-            $table->unsignedBigInteger('product_id');
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('customer_id');
+            $table->boolean('is_closed');
             $table->timestamps();
 
-            $table->foreign('allergenic_id')->references('id')->on('allergenics');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('allergenics_in_products');
+        Schema::dropIfExists('orders');
     }
 };

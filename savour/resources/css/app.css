@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root{
     --lightgreen: #00391D;
     --darkgreen: #1D2816;
     --brown: #876340;
     --yellow: #D49A3D;
     --light: #DFDFDF;
-    --black: #161616;
-}
+
 /* #00391D
 #1D2816 
 #876340
@@ -18,9 +18,22 @@
 #161616 */
 
 @layer components {
-    /* ---------partner session ----------*/
+
+    /*---------partner session --------*/
     ._partnerCard {
-      @apply  px-8 flex-shrink-0 relative sm:w-auto h-52 rounded-2xl bg-white flex items-center justify-center overflow-hidden scale-95 transition-all hover:scale-100;
-    
+        @apply px-8 flex-shrink-0 relative sm:w-auto h-52 rounded-2xl bg-white flex items-center justify-center overflow-hidden scale-95 transition-all hover:scale-100;
     }
-  }
+    ._loginButton {
+        @apply py-2 px-4 text-sm font-medium text-white bg-[#B3A08E] border-white hover:bg-[#826343] hover:text-white focus:bg-[#826343] focus:ring-2 focus:ring-white  focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-white dark:focus:bg-[#826343];
+    }
+
+    ._formControl {
+        @apply block w-full px-3 py-1.5 text-base font-normal
+        text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
+        rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#826343] focus:ring-2 focus:ring-[#826343];
+    }
+    ._socialButtons {
+        @apply py-2 px-2 mr-1 mb-1 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700;
+    }
+}
+
