@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root{
-    --main: #000000;
-    --button: #000000;
-    --heightLight: #000000;
-    --text: #000000;
-    --subOne: #000000;
-    --subTwo: #000000;
+    --lightgreen: #00391D;
+    --darkgreen: #1D2816;
+    --brown: #876340;
+    --yellow: #D49A3D;
+    --light: #DFDFDF;
+    --black: #161616;
 }
 /* #00391D
 #1D2816 

@@ -1,5 +1,5 @@
 <!-- Navbar goes here -->
-<nav class="bg-[#DFDFDF] shadow-lg fixed top-0 w-screen">
+<nav class="bg-[#DFDFDF] shadow-lg sticky top-0 w-screen">
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
             <div class="flex space-x-7">
@@ -30,16 +30,21 @@
                 <a href="#"
                     class="py-2 px-2 font-medium text-black hover:text-green-400 transition duration-300">Login |
                     Register</a>
-                <div ><svg xmlns="http://www.w3.org/2000/svg" height="42"
-                    width="42">
+                <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" height="42" width="42">
                         <path
                             d="M9 44q-1.2 0-2.1-.9Q6 42.2 6 41V14.5q0-1.2.9-2.1.9-.9 2.1-.9h5.5q0-3.95 2.65-6.725Q19.8 2 23.75 2q3.95 0 6.85 2.775 2.9 2.775 2.9 6.725H39q1.2 0 2.1.9.9.9.9 2.1V41q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V14.5H9V41Zm15-14.5q3.95 0 6.85-2.9 2.9-2.9 2.9-6.85h-3q0 2.75-2 4.75t-4.75 2q-2.75 0-4.75-2t-2-4.75h-3q0 3.95 2.9 6.85 2.9 2.9 6.85 2.9Zm-6.5-15h13q0-2.75-1.875-4.625T24 5q-2.75 0-4.625 1.875T17.5 11.5ZM9 41V14.5 41Z" />
                     </svg></div>
             </div>
             <!-- Mobile menu button -->
             <div class="md:hidden flex items-center">
+                <div class="cart">
+                    <svg class="fill-gray-600"xmlns="http://www.w3.org/2000/svg" height="30" width="30">
+                        <path
+                            d="M9 44q-1.2 0-2.1-.9Q6 42.2 6 41V14.5q0-1.2.9-2.1.9-.9 2.1-.9h5.5q0-3.95 2.65-6.725Q19.8 2 23.75 2q3.95 0 6.85 2.775 2.9 2.775 2.9 6.725H39q1.2 0 2.1.9.9.9.9 2.1V41q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V14.5H9V41Zm15-14.5q3.95 0 6.85-2.9 2.9-2.9 2.9-6.85h-3q0 2.75-2 4.75t-4.75 2q-2.75 0-4.75-2t-2-4.75h-3q0 3.95 2.9 6.85 2.9 2.9 6.85 2.9Zm-6.5-15h13q0-2.75-1.875-4.625T24 5q-2.75 0-4.625 1.875T17.5 11.5ZM9 41V14.5 41Z" />
+                    </svg>
+                </div>
                 <button class="outline-none mobile-menu-button">
-                    <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 " x-show="!showMenu" fill="none"
+                    <svg class="w-6 h-6 text-gray-500 hover:text-green-500 " x-show="!showMenu" fill="none"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path d="M4 6h16M4 12h16M4 18h16"></path>
