@@ -19,9 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('/restaurant/dashboard', function () {
+    return view('restaurant.dashboard');
+})->middleware(['auth:restaurant', 'verified'])->name('restaurant.dashboard');
+
+require __DIR__.'/restaurantauth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,7 +38,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('customer')->group(function() { // ROUTES GROUP FOR CUSTOMERS
+Route::middleware('auth:restaurant')->prefix('restaurant')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+
+
+
+
+
+
+
+
+/* Route::prefix('customer')->group(function() { // ROUTES GROUP FOR CUSTOMERS
     // LOGIN ROUTE FOR CUSTOMERS
     Route::get('/login', [CustomerContoller::class, 'login_form']);
     Route::post('/login', [CustomerContoller::class, 'login']);
@@ -46,5 +70,4 @@ Route::prefix('restaurant')->group(function() { // ROUTES GROUP FOR RESTAURANTS
     // REGISTER ROUTES FOR RESTAURANTS
     Route::get('/register', [RestaurantContoller::class, 'register_form']);
     Route::post('/register', [RestaurantContoller::class, 'register']);
-});
-require __DIR__.'/auth.php';
+}); */
