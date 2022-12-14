@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Restaurantauth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Restaurant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('restaurant.auth.register');
     }
 
     /**
@@ -34,21 +34,30 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:restaurants'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone_number' => ['required', 'string', 'max:15'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:20'],
+            'postal_code' => ['required', 'string', 'max:10'],
         ]);
-
-        $user = User::create([
-            'username' => $request->username,
+       
+        
+        $user = Restaurant::create([
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        Auth::guard('restaurant')->login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::RESTAURANT_HOME);
     }
 }
