@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="savour_db" id="Project-20ce" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="savour_db" >
+		<table name="admins" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="username" type="VARCHAR" length="255" jt="12" />
+			<column name="password" type="VARCHAR" length="255" jt="12" />
+			<column name="email" type="VARCHAR" length="255" jt="12" />
+			<column name="email_verified_at" type="DATE" length="255" jt="91" />
+			<column name="remember_token" type="VARCHAR" length="255" jt="12" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_admins" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="allergenics" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="name" type="VARCHAR" length="255" jt="12" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_allergenics" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="allergenics_in_offers" prior="allergenics_in_" >
+			<column name="allergenic_id" type="INT" jt="4" />
+			<column name="offer_id" type="INT" jt="4" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<fk name="fk_allergenics_in_offers" virtual="y" to_schema="savour_db.INSTANCE" to_table="allergenics" type="Identifying" >
+				<fk_column name="allergenic_id" pk="id" />
+			</fk>
+			<fk name="fk2_allergenics_in_offers" virtual="y" to_schema="savour_db.INSTANCE" to_table="offers" type="Identifying" >
+				<fk_column name="offer_id" pk="id" />
+			</fk>
+		</table>
+		<table name="offers" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="restaurant_id" type="INT" jt="4" />
+			<column name="description" type="VARCHAR" length="255" jt="12" />
+			<column name="name" type="VARCHAR" length="255" jt="12" />
+			<column name="image" type="VARCHAR" length="255" jt="12" />
+			<column name="quantity" type="INT" jt="4" />
+			<column name="price" type="DOUBLE" jt="8" />
+			<column name="is_active" type="BOOLEAN" jt="-7" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_offers" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_offers_restaurants" virtual="y" to_schema="savour_db.INSTANCE" to_table="restaurants" type="Identifying" >
+				<fk_column name="restaurant_id" pk="id" />
+			</fk>
+		</table>
+		<table name="ordered_offers" prior="entity" >
+			<column name="order_id" type="INT" jt="4" />
+			<column name="offer_id" type="INT" jt="4" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<fk name="fk_ordered_offers_orders" virtual="y" to_schema="savour_db.INSTANCE" to_table="orders" type="Identifying" >
+				<fk_column name="order_id" pk="id" />
+			</fk>
+			<fk name="fk2_ordered_offers" virtual="y" to_schema="savour_db.INSTANCE" to_table="offers" type="Identifying" >
+				<fk_column name="offer_id" pk="id" />
+			</fk>
+		</table>
+		<table name="orders" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="user_id" type="INT" jt="4" />
+			<column name="is_closed" type="BOOLEAN" jt="-7" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_orders" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="orders_users" virtual="y" to_schema="savour_db.INSTANCE" to_table="users" type="Identifying" >
+				<fk_column name="user_id" pk="id" />
+			</fk>
+		</table>
+		<table name="restaurants" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="name" type="VARCHAR" length="255" jt="12" />
+			<column name="email" type="VARCHAR" length="255" jt="12" />
+			<column name="phone_number" type="VARCHAR" length="255" jt="12" />
+			<column name="address" type="VARCHAR" length="255" jt="12" />
+			<column name="city" type="VARCHAR" length="255" jt="12" />
+			<column name="postal_code" type="VARCHAR" length="100" jt="12" />
+			<column name="remember_token" type="VARCHAR" length="255" jt="12" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_restaurants" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="users" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="first_name" type="VARCHAR" length="255" jt="12" />
+			<column name="last_name" type="VARCHAR" length="255" jt="12" />
+			<column name="email" type="VARCHAR" length="255" jt="12" />
+			<column name="email_verified_at" type="VARCHAR" length="255" jt="12" />
+			<column name="password" type="VARCHAR" length="255" jt="12" />
+			<column name="remember_token" type="VARCHAR" length="255" jt="12" />
+			<column name="created_at" type="DATE" jt="91" />
+			<column name="updated_at" type="DATE" jt="91" />
+			<index name="pk_users" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-2fd" show_relation="columns" >
+		<entity schema="savour_db.INSTANCE" name="admins" color="C1D8EE" x="48" y="48" />
+		<entity schema="savour_db.INSTANCE" name="allergenics" color="C1D8EE" x="112" y="256" />
+		<entity schema="savour_db.INSTANCE" name="allergenics_in_offers" color="C1D8EE" x="160" y="464" />
+		<entity schema="savour_db.INSTANCE" name="offers" color="C1D8EE" x="608" y="368" />
+		<entity schema="savour_db.INSTANCE" name="ordered_offers" color="C1D8EE" x="544" y="80" />
+		<entity schema="savour_db.INSTANCE" name="orders" color="C1D8EE" x="288" y="48" />
+		<entity schema="savour_db.INSTANCE" name="restaurants" color="C1D8EE" x="736" y="128" />
+		<entity schema="savour_db.INSTANCE" name="users" color="C1D8EE" x="336" y="240" />
+	</layout>
+</project>
