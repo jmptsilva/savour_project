@@ -41,11 +41,6 @@ return [
             'provider' => 'users',
         ],
 
-        'customer' => [
-            'driver' => 'session',
-            'provider' => 'customers',
-        ],
-
         'restaurant' => [
             'driver' => 'session',
             'provider' => 'restaurants',
@@ -73,10 +68,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
         ],
         'restaurants' => [
             'driver' => 'eloquent',
