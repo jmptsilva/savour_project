@@ -50,9 +50,7 @@
                     <th scope="col" class="py-3 px-6">
                         Items
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        Category
-                    </th>
+
                     <th scope="col" class="py-3 px-6">
                         Price
                     </th>
@@ -61,6 +59,9 @@
                     </th>
                     <th scope="col" class="py-3 px-6">
                         Status
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Updated At
                     </th>
                     <th scope="col" class="py-3 px-6">
                         Customise
@@ -85,9 +86,7 @@
                             <div class="font-normal text-gray-500 w-3">with tomato sauce ...</div>
                         </div>
                     </th>
-                    <td class="py-4 px-6">
-                        Starter
-                    </td>
+
                     <td class="py-4 px-6">
                         15
                     </td>
@@ -102,7 +101,10 @@
                         </label>
                     </td>
                     <td class="py-4 px-6">
-                        <a href="d-CustomMenu{id}.blade.php" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        22 Dec 2022 13:40
+                    </td>
+                    <td class="py-4 px-6">
+                        <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
             </tbody>
         </table>
