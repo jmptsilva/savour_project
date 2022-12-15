@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('ordered_offers', function (Blueprint $table) {
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('offer_id');
+            $table->bigInteger('quantity');
+            $table->double('price');
 
             $table->timestamps();
 
