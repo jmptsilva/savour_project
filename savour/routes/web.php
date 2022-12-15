@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use Termwind\Components\Raw;
 
@@ -56,7 +57,12 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// API routes
 
+Route::get('/api/restaurants/all', [RestaurantController::class, 'all_restaurants']);
+Route::get('/api/restaurants/id={id}', [RestaurantController::class, 'find_by_id']);
+Route::get('/api/restaurants/name={name}', [RestaurantController::class, 'find_by_name']);
+Route::get('/api/restaurants/restaurant_location={location}', [RestaurantController::class, 'find_by_location']);
 
 
 
