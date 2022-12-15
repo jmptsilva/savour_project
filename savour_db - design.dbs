@@ -56,6 +56,8 @@
 		<table name="ordered_offers" prior="entity" >
 			<column name="order_id" type="INT" jt="4" />
 			<column name="offer_id" type="INT" jt="4" />
+			<column name="quantity" type="INT" jt="4" />
+			<column name="price" type="DOUBLE" jt="8" />
 			<column name="created_at" type="DATE" jt="91" />
 			<column name="updated_at" type="DATE" jt="91" />
 			<fk name="fk_ordered_offers_orders" virtual="y" to_schema="savour_db.INSTANCE" to_table="orders" type="Identifying" >
@@ -113,7 +115,7 @@
 		<entity schema="savour_db.INSTANCE" name="allergenics" color="C1D8EE" x="112" y="256" />
 		<entity schema="savour_db.INSTANCE" name="allergenics_in_offers" color="C1D8EE" x="160" y="464" />
 		<entity schema="savour_db.INSTANCE" name="offers" color="C1D8EE" x="608" y="368" />
-		<entity schema="savour_db.INSTANCE" name="ordered_offers" color="C1D8EE" x="544" y="80" />
+		<entity schema="savour_db.INSTANCE" name="ordered_offers" color="C1D8EE" x="544" y="48" />
 		<entity schema="savour_db.INSTANCE" name="orders" color="C1D8EE" x="288" y="48" />
 		<entity schema="savour_db.INSTANCE" name="restaurants" color="C1D8EE" x="736" y="128" />
 		<entity schema="savour_db.INSTANCE" name="users" color="C1D8EE" x="336" y="240" />
