@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Route;
 use Termwind\Components\Raw;
 
@@ -51,6 +52,8 @@ Route::middleware('auth:restaurant')->prefix('restaurant')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// API ROUTES FOR OFFERS
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -64,28 +67,13 @@ Route::get('/api/restaurants/id={id}', [RestaurantController::class, 'find_by_id
 Route::get('/api/restaurants/name={name}', [RestaurantController::class, 'find_by_name']);
 Route::get('/api/restaurants/restaurant_location={location}', [RestaurantController::class, 'find_by_location']);
 
+Route::get('/api/offers/name={name}', [OfferController::class, 'offer_name']);
+Route::get('/api/offers/restaurant_id={id}', [OfferController::class, 'all_from_restaurant']);
+Route::get('/api/offers/active', [OfferController::class, 'all_active']);
+Route::get('/api/offers/active/restaurant_id={id}', [OfferController::class, 'all_active_from_restaurant']);
+Route::get('/api/offers/inactive/restaurant_id={id}', [OfferController::class, 'all_inactive_from_restaurant']);
+Route::get('/api/offers/last', [OfferController::class, 'last_added_offers']);
 
 
 
 
-
-
-
-/* Route::prefix('customer')->group(function() { // ROUTES GROUP FOR CUSTOMERS
-    // LOGIN ROUTE FOR CUSTOMERS
-    Route::get('/login', [CustomerContoller::class, 'login_form']);
-    Route::post('/login', [CustomerContoller::class, 'login']);
-    // REGISTER ROUTES FOR CUSTOMERS
-    Route::get('/register', [CustomerContoller::class, 'register_form']);
-    Route::post('/register', [CustomerContoller::class, 'register']);
-
-});
-
-Route::prefix('restaurant')->group(function() { // ROUTES GROUP FOR RESTAURANTS
-    // LOGIN ROUTE FOR RESTAURANTS
-    Route::get('/login', [RestaurantContoller::class, 'login_form']);
-    Route::post('/login', [RestaurantContoller::class, 'login']);
-    // REGISTER ROUTES FOR RESTAURANTS
-    Route::get('/register', [RestaurantContoller::class, 'register_form']);
-    Route::post('/register', [RestaurantContoller::class, 'register']);
-}); */
