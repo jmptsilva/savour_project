@@ -1,58 +1,118 @@
-<div class="ml-[350px]">
+<div class="ml-[220px]">
     <section class="max-w-4xl p-6 mx-auto bg-slate-500 rounded-md shadow-md dark:bg-gray-800 mt-20">
         <h1 class="text-xl font-bold text-white capitalize dark:text-white">Pizza Hawaii</h1>
         <form>
             <div class="flex flex-row">
                 <div class="flex flex-col">
+
+                    <!--Edit Name-->
                     <div>
-                        <label class="text-white dark:text-gray-200" for="name">name</label>
+                        <label class="text-white dark:text-gray-200" for="name">Name</label>
                         <input id=" name" type="text" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                     </div>
+                    <!--Edit Description-->
                     <div>
                         <label class="text-white dark:text-gray-200" for="passwordConfirmation">Description</label>
                         <textarea id="textarea" type="textarea" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
                     </div>
+
+                    <!--Edit Quantity-->
                     <div>
                         <label class="text-white dark:text-gray-200" for="quantity">Quantity</label>
-
-
-                        <input type="number" id="Quantity" x-model="productQuantity" class="w-24 h-10 border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm" />
-
-
+                        <input type="number" id="Quantity" x-model="productQuantity" class="mt-2 w-24 h-10 border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm" />
                     </div>
 
+                    <!--Edit Price-->
                     <div>
-                        <label class=" text-white dark:text-gray-200" for="password">Password</label>
-                        <input id="password" type="password" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <label class=" text-white dark:text-gray-200" for="price">Price</label>
+                        <input id="price" type="price" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                     </div>
 
-                    <div>
-                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Password Confirmation</label>
-                        <input id="passwordConfirmation" type="password" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                    </div>
-                    <div>
-                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Color</label>
-                        <input id="color" type="color" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                    </div>
-                    <div>
-                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Select</label>
-                        <select class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                            <option>Surabaya</option>
-                            <option>Jakarta</option>
-                            <option>Tangerang</option>
-                            <option>Bandung</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Range</label>
-                        <input id="range" type="range" class="block w-[300px] py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                    </div>
-                    <div>
-                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date</label>
-                        <input id="date" type="date" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                    <!--Edit Allergen-->
+                    <div class=" text-white dark:text-gray-200 mt-3">Allergenic</div>
+                    <div class="flex flex-col ">
+                        <div class="grid grid-cols-4 gap-4">
+                            <div>
+                                <input id="moluscs" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="moluscs" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300" data-bs-toggle="tooltip" title="Hi! I'm tooltip">Moluscs</label>
+                            </div>
+
+                            <div>
+                                <input id="eggs" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="eggs" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Eggs</label>
+                            </div>
+
+                            <div>
+                                <input id="fish" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="fish" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Fish</label>
+                            </div>
+
+                            <div>
+                                <input id="lupin" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="lupin" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Lupin</label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4">
+
+                            <div>
+                                <input id="soya" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="soya" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Soya</label>
+                            </div>
+
+                            <div>
+                                <input id="milk" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="milk" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Milk</label>
+                            </div>
+
+                            <div>
+                                <input id="peanuts" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="peanuts" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Peanuts</label>
+                            </div>
+
+                            <div>
+                                <input id="gluten" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="gluten" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Gluten</label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4">
+
+                            <div>
+                                <input id="crustacean" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="crustacean" class="text-sm font-medium text-white  mr-2 dark:text-gray-300">Crustacean</label>
+                            </div>
+
+                            <div>
+                                <input id="mustard" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="mustard" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Mustard</label>
+                            </div>
+
+                            <div>
+                                <input id="nuts" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="nuts" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Nuts</label>
+                            </div>
+
+                            <div>
+                                <input id="sesame" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="sesame" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Sesame</label>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4">
+
+                            <div>
+                                <input id="celery" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="celery" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Celery</label>
+                            </div>
+
+                            <div>
+                                <input id="sulphites" type="checkbox" value="" class="_allergenCheckbox">
+                                <label for="sulphites" class="ml-2 text-sm font-medium text-white  mr-2 dark:text-gray-300">Sulphites</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <!--Edit Image-->
                 <div>
                     <label class="block text-sm font-medium text-white">
                         Image
@@ -74,10 +134,24 @@
                             </p>
                         </div>
                     </div>
+                    <!--Edit Status-->
+                    <div>
+                        <div class=" text-white dark:text-gray-200">Status</div>
+                        <label class="inline-flex relative items-center mr-5 cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        </label>
+                    </div>
                 </div>
+
             </div>
-            <div class="flex justify-end mt-6">
-                <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            <div class="flex flex-row justify-end">
+                <div class="flex justify-end mt-6">
+                    <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-[#00391d] rounded-md hover:bg-[#00391e95] focus:outline-none focus:bg-gray-600">Save</button>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-slate-600 rounded-md hover:bg-slate-500 focus:outline-none focus:bg-gray-600">Cancel</button>
+                </div>
             </div>
         </form>
     </section>
