@@ -145,7 +145,7 @@
                                 <span>19:00 12/12</span>
                             </p>
                             <div class="flex justify-between items-end">
-                                <a class="mr-3 text-sm" href="#">View Detail</a>
+                                <a class="_detail mr-3 text-sm" href="#">View Detail</a>
                                 
                                 <button type="button"
                                     class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
@@ -173,32 +173,6 @@
                             </div>
                         </div>
                     </dialog>
-                </div>
-                <div class="_productCard flex scale-100 transition-all hover:scale-105">
-                    <div class="flex flex-col items-center rounded-lg shadow-lg bg-white max-w-[320px] m-4">
-                        <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img class="rounded-t-lg w-40 lg:w-48"
-                                src="https://i.ibb.co/C2nC113/Screenshot-2022-12-09-at-22-34-18.png" alt="" />
-                            {{-- should add heart for save? --}}
-                        </a>
-                        <div class="p-6">
-                            <div class="flex justify-between items-baseline">
-                                <h5 class="_foodName text-gray-900 text-2xl font-medium mb-2">Big Burger</h5>
-                                <p class="_price text-red-500 text-3xl">$50</p>
-                            </div>
-                            <p class="_restaurant text-gray-700 text-base mb-1">
-                                Restaurant Name :
-                            </p>
-                            <p class="_pickup text-gray-700 text-base mb-4">
-                                <span>19:00 12/12</span>
-                            </p>
-                            <div class="flex justify-between items-end">
-                                <a class="mr-3 text-sm" href="#">View Detail</a>
-                                <button type="button"
-                                    class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
                 
@@ -238,16 +212,24 @@
 <script>
     // dialog part
     const modals = document.querySelectorAll('.modal');
-    const openModal = document.querySelector('._detail');
-    const closeModal = document.querySelector('._close');
+    const openModals = document.querySelectorAll('._detail');
+    const closeModals = document.querySelectorAll('._close');
 
+    console.log(modals)
     modals.forEach(modal => {
+
+        openModals.forEach(open =>{
+            open.addEventListener('click',()=>{
+            modal.showModal();
+        }
+        )
         
-        openModal.addEventListener('click',()=>{
-        modal.showModal();
     })
-    closeModal.addEventListener('click',()=>{
-        modal.close();
+        closeModals.forEach(close => {
+
+            close.addEventListener('click',()=>{
+            modal.close();
+        })
     })
 
         
