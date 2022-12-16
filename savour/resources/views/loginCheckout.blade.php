@@ -1,9 +1,16 @@
 <div class="h-screen flex ">
     <div class=" w-1/2 bg-black  hover:bg-black/90 ">
-        <!--PROCEED AS A GUEST-->
+        <!--PAYMENT -->
         <div class="flex flex-col items-center mt-20">
-            <h1 class="text-white font-bold text-4xl font-sans ">Proceed as a guest</h1>
-            <p class="text-white mt-1">You can create an accout by clicking <a href="" class="underline ">here</a></p>
+            <h1 class="text-white font-bold text-4xl font-sans ">Payment Details</h1>
+            <div class="flex flex-row items-baseline">
+                <p class="text-white mt-1">Welcome back to
+
+                <p class="ml-2 text-white first-letter:text-4xl first-letter:font-bold first-letter:text-[#d49a3d]">
+                    Savour
+                </p>
+                </p>
+            </div>
         </div>
         <div class=" flex justify-around items-center mt-10 ml-2">
 
@@ -71,46 +78,42 @@
                     </div>
 
                     <p class="text-lg text-center mt-4 text-white font-semibold">Payment amount: €50.98</p>
-                    <div class="flex justify-center mt-4"> <button class="outline-none pay h-12 bg-[#d49a3d] text-white mb-3 hover:bg-[#d49a3d] rounded-lg w-1/2 cursor-pointer transition-all">Pay</button> </div>
+                    <div class="flex justify-center mt-4"> <button class="outline-none pay h-12 bg-[#d49a3d] text-white mb-3 hover:bg-[#ecae4a] rounded-lg w-1/2 cursor-pointer transition-all">Pay</button> </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--SUMMARY-->
 
-    <!-----SIGN IN SECTION----->
 
-    <div class="w-1/2 bg-white">
+    <div class=" w-1/2 bg-white  hover:bg-white/20 ">
+        <div class="flex flex-col items-center mt-20">
+            <h1 class="text-black font-bold text-4xl font-sans mb-3">Order Summary</h1>
+            <table class="_cartItemsList w-[550px] bg-black">
+                <thead class="text-white border-[#d49a3d] border-4">
+                    <tr>
 
-        <!--PROCEED WITH SIGN IN-->
-        <div class="flex  flex-col items-center mt-20">
-            <h1 class="text-black font-bold text-4xl font-sans ">Log In</h1>
-            <div class="flex flex-row items-baseline">
-                <p class="text-black mt-1">Welcome back to
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">
+                            ITEM
+                        </th>
+                        <th scope="col" class="hidden md:inline-block text-sm font-medium  px-6 py-4 text-left">
+                            RESTAURANT
+                        </th>
+                        <th scope="col" class="hidden md:inline-block text-sm font-medium  px-6 py-4 text-left">
+                            PICKUP TIME
+                        </th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">
+                            QUANTITY
+                        </th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">
+                            PRICE
+                        </th>
 
-                <p class="ml-2 first-letter:text-4xl first-letter:font-bold first-letter:text-[#d49a3d]">
-                    Savour
-                </p>
-                </p>
-            </div>
-        </div>
+                    </tr>
+                </thead>
+                <tbody class="_itemWrap">
 
-        <div class="justify-around items-center mt-20 ml-[210px]">
-            <form action="" class="w-[300px]">
-                <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                    </svg>
-                    <input class="pl-2 outline-none border-none" type="text" name="" id="" placeholder="Email Address" />
-                </div>
-                <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                    </svg>
-                    <input class="pl-2 outline-none border-none" type="text" name="" id="" placeholder="Password" />
-                </div>
-                <button type="submit" class="block w-full bg-[#d49a3d] mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
-                <span class="text-sm ml-2 hover:text-[#d49a3d] cursor-pointer">Forgot Password ?</span>
-            </form>
+                </tbody>
+            </table>
         </div>
     </div>
-</div>

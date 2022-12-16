@@ -43,26 +43,33 @@
                 <div>
                     <div class="lg:flex w-full justify-between">
                         <h3 class="text-gray-600 dark:text-gray-400 leading-5 text-base md:text-xl font-bold">Selling Overview</h3>
+
                         <div class="flex items-center justify-between lg:justify-start mt-2 md:mt-4 lg:mt-0">
                             <div class="flex items-center">
                                 <button name="daily" class="dailyBtn py-2 px-4 bg-gray-500 dark:bg-gray-800 rounded ease-in duration-150 text-xs text-white dark:text-white hover:bg-gray-200">Daily</button>
                                 <button name="weekly" class="weeklyBtn py-2 px-4 bg-gray-500 dark:bg-gray-800 rounded ease-in duration-150 text-xs text-white dark:text-white hover:bg-gray-200">Weekly</button>
                                 <button name="monthly" class="monthlyBtn py-2 px-4 bg-gray-500 dark:bg-gray-800 rounded ease-in duration-150 text-xs text-white dark:text-white hover:bg-gray-200">Monthly</button>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="flex items-end mt-6">
-                        <h3 class="text-black leading-5 text-lg md:text-2xl ">€9234</h3>
                     </div>
                 </div>
 
                 <div class="shadow-lg rounded-lg overflow-hidden">
-                    <div class="py-3 px-5 bg-gray-50">Line chart</div>
-
-                    <canvas class="p-10 chartLineDaily" id="chartLineDaily"></canvas>
-                    <canvas class="p-10 chartLineWeekly" id="chartLineWeekly"></canvas>
-                    <canvas class="p-10 chartLineMonthly" id="chartLineMonthly"></canvas>
+                    <div class="flex row">
+                        <div class="py-3 px-5 bg-gray-50">FoodSave Total</div>
+                        <div class="py-3 px-5 bg-gray-50 sumFoodSave">84</div>
+                        <div class="py-3 px-5 bg-gray-50">Plates</div>
+                    </div>
+                    <canvas class="p-10 chartLineFood" id="chartLineFood"></canvas>
+                </div>
+                <br>
+                <div class="shadow-lg rounded-lg overflow-hidden">
+                    <div class="flex row">
+                        <div class="py-3 px-5 bg-gray-50">Revenue Total</div>
+                        <div class="py-3 px-5 bg-gray-50 sumRevenue">500</div>
+                        <div class="py-3 px-5 bg-gray-50">€</div>
+                    </div>
+                    <canvas class="p-10 chartLine" id="chartLine"></canvas>
                 </div>
             </div>
             <!-- Required chart.js -->
@@ -71,116 +78,122 @@
                 const dailyBtn = document.querySelector(".dailyBtn")
                 const weeklyBtn = document.querySelector(".weeklyBtn")
                 const monthlyBtn = document.querySelector(".monthlyBtn")
-                const chartLineDaily = document.querySelector(".chartLineDaily")
-                const chartLineWeekly = document.querySelector(".chartLineWeekly")
-                const chartLineMonthly = document.querySelector(".chartLineMonthly")
+                /** ------ Do after call ajax ------  */
+                const sumRevenue = document.querySelector(".sumRevenue")
+                const sumFoodSave = document.querySelector(".sumFoodSave")
+
+                /** ------ Revenue Chart Default ------  */
+
+                const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: "Revenue",
+                        backgroundColor: "#1d2816",
+                        borderColor: "#3e5631",
+                        data: [0, 10, 5, 2, 20, 30, 45],
+                    }, ],
+                };
+                const configLineChart = {
+                    type: "line",
+                    data,
+                    options: {},
+                };
+                var revenueChart = new Chart(
+                    document.getElementById("chartLine"),
+                    configLineChart
+                );
+
+                /** ------ Food Chart Default------  */
+
+                const myChart2 = document.getElementById('chartLineFood');
+                const foodChart = new Chart(myChart2, {
+                    type: 'line',
+                    data: {
+                        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                        datasets: [{
+                            label: 'Plates',
+                            data: [12, 19, 3, 5, 2, 3, 6],
+                            backgroundColor: "#1d2816",
+                            borderColor: "#3e5631",
+                            borderWidth: 1,
+                        }]
+                    },
+                });
+
+                /** ------ Function Add Data  ------  */
+
+                function addData(chart, labels, data) {
+                    labels.forEach((label) => {
+                        chart.data.labels.push(label);
+                    })
+                    data.forEach((d) => {
+                        chart.data.datasets[0].data.push(d)
+                    })
+                    chart.update();
+                }
+
+                /** ------ Function Add ColorButton  ------  */
+                function addColor(btn) {
+                    btn.classList.add("bg-red-500")
+                }
+                /** ------ Function Remove ColorButton  ------  */
+                function removeColor(btn) {
+                    btn.classList.remove("bg-red-500")
+                }
+
+                /** ------ Function Remove Data  ------  */
+
+                function removeData(chart) {
+                    while (chart.data.labels.length > 0) {
+                        chart.data.labels.pop();
+                    }
+                    chart.data.datasets.forEach((dataset) => {
+                        while (dataset.data.length > 0) {
+                            dataset.data.pop();
+                        }
+                    });
+                    chart.update();
+                }
 
 
                 dailyBtn.addEventListener("click", () => {
-                    document.getElementById("chartLineDaily").style.display = "block";
-                    document.getElementById("chartLineWeekly").style.display = "none";
-                    document.getElementById("chartLineMonthly").style.display = "none";
+                    addColor(dailyBtn);
+                    removeColor(weeklyBtn);
+                    removeColor(monthlyBtn);
 
-                    dailyBtn.classList.add("bg-[#1d2816]");
-                    weeklyBtn.classList.remove("bg-[#1d2816]");
-                    monthlyBtn.classList.remove("bg-[#1d2816]");
 
-                    const labels = ["Morning Service", "Lunch Service", "Evening Service"];
-                    const data = {
-                        labels: labels,
-                        datasets: [{
-                            label: "Revenue",
-                            backgroundColor: "#1d2816",
-                            borderColor: "#3e5631",
-                            data: [0, 10, 5],
-                        }, ],
-                    };
-
-                    const configLineChart = {
-                        type: "line",
-                        data,
-                        options: {},
-                    };
-
-                    var chartLineDaily = new Chart(
-                        document.getElementById("chartLineDaily"),
-                        configLineChart
-                    );
+                    removeData(revenueChart)
+                    removeData(foodChart)
+                    addData(revenueChart, ["Morning Service", "Afternoon Service", "Evening Service"], [10, 20, 60])
+                    addData(foodChart, ["Morning Service", "Afternoon Service", "Evening Service"], [20, 20, 60])
 
                 })
 
+
                 weeklyBtn.addEventListener("click", () => {
-                    document.getElementById("chartLineWeekly").style.display = "block";
-                    document.getElementById("chartLineDaily").style.display = "none";
-                    document.getElementById("chartLineMonthly").style.display = "none";
+                    addColor(weeklyBtn);
+                    removeColor(dailyBtn);
+                    removeColor(monthlyBtn);
 
-                    weeklyBtn.classList.add("bg-[#1d2816]");
-                    dailyBtn.classList.remove("bg-[#1d2816]");
-                    monthlyBtn.classList.remove("bg-[#1d2816]");
-
-
-                    const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-                    const data = {
-                        labels: labels,
-                        datasets: [{
-                            label: "Revenue",
-                            backgroundColor: "#1d2816",
-                            borderColor: "#3e5631",
-                            data: [0, 10, 5, 2, 20, 30, 45],
-                        }, ],
-                    };
-
-                    const configLineChart = {
-                        type: "line",
-                        data,
-                        options: {},
-                    };
-
-                    var chartLineWeekly = new Chart(
-                        document.getElementById("chartLineWeekly"),
-                        configLineChart
-                    );
-
-
+                    removeData(revenueChart)
+                    removeData(foodChart)
+                    addData(revenueChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], [10, 50, 60, 100, 400, 20, 200])
+                    addData(foodChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], [10, 50, 60, 100, 500, 20, 200])
                 });
-
 
                 monthlyBtn.addEventListener("click", () => {
-                    document.getElementById("chartLineMonthly").style.display = "block";
-                    document.getElementById("chartLineWeekly").style.display = "none";
-                    document.getElementById("chartLineDaily").style.display = "none";
-
-                    monthlyBtn.classList.add("bg-[#1d2816]");
-                    dailyBtn.classList.remove("bg-[#1d2816]");
-                    weeklyBtn.classList.remove("bg-[#1d2816]");
+                    addColor(monthlyBtn);
+                    removeColor(dailyBtn);
+                    removeColor(weeklyBtn);
 
 
-                    const labels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                    const data = {
-                        labels: labels,
-                        datasets: [{
-                            label: "Revenue",
-                            backgroundColor: "#1d2816",
-                            borderColor: "#3e5631",
-                            data: [0, 10, 5, 2, 20, 30, 45],
-                        }, ],
-                    };
-
-                    const configLineChart = {
-                        type: "line",
-                        data,
-                        options: {},
-                    };
-
-                    var chartLineMonthly = new Chart(
-                        document.getElementById("chartLineMonthly"),
-                        configLineChart
-                    );
+                    removeData(revenueChart)
+                    removeData(foodChart)
+                    addData(revenueChart, ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], [10, 20, 200, 100, 400, 20, 150, 80, 20, 40, 32, 12])
+                    addData(foodChart, ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], [10, 20, 200, 100, 400, 20, 150, 80, 20, 40, 32, 12])
                 });
-
-                function Cleanchart() {
-                    document.getElementById("chartLineDaily").style.display = "none";
-                    document.getElementById("chartLineWeekly").innerHTML = "";
-                    document.getElementById("chartLineMonthly").innerHTML = "";
-                }
             </script>
+        </div>
+    </div>
+</div>
