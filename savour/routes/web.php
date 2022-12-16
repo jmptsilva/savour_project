@@ -17,7 +17,7 @@ use Termwind\Components\Raw;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
