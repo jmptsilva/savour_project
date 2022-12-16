@@ -12,7 +12,7 @@ use App\Http\Controllers\Restaurantauth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('guest')->prefix('restaurant')->as('restaurant.')->group(function () {
+Route::middleware('guest:restaurant')->prefix('restaurant')->as('restaurant.')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 

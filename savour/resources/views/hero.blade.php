@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <!--HERO BG-->
     <div class="bg-[url('/Users/ningshin/Desktop/savour_project/savour/public/assets/img/hero.jpg')] w-screen h-[844px] lg:m-w-screen lg:h-[790px] bg-cover bg-no-repeat opacity-80">
 
@@ -28,11 +29,12 @@
                 <!--Button & More info -->
 
                 <div class="flex items-center">
-                    <button class="bg-[#13361C] hover:bg-[#20582e] text-white font-bold py-2 px-8 rounded-full mt-10 lg:mt-20 ">
+
+                    <a href="{{route('menu')}}" class="bg-[#13361C] hover:bg-[#20582e] text-white font-bold py-2 px-8 rounded-full mt-10 lg:mt-20 ">
                         Order Now
-                    </button>
+                    </a>
                     <!--Add link at more info -->
-                    <a href="" class="mt-10 ml-10 lg:mt-20 underline underline-offset-8 lg:ml-20">More Info</a>
+                    <a href="{{route('about')}}" class="mt-10 ml-10 lg:mt-20 underline underline-offset-8 lg:ml-20">More Info</a>
                 </div>
             </div>
 
