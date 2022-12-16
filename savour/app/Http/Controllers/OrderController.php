@@ -18,10 +18,13 @@ class OrderController extends Controller
         /* dd($orders); */
         return  $orders->tojson(JSON_PRETTY_PRINT);
     }
-    public function order_history_day()
+
+    public function order_history_day($id, $day)
     {
         $orders = Order::select(DB::raw('SUM(price * quantity) as Total'))
-            ->whereDate('created_at', '=', Date('2022-12-15'))
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->whereDay('created_at', "$day")
+            ->where('offers.restaurant_id', '=', $id)
             ->get();
 
         /* dd($orders); */
