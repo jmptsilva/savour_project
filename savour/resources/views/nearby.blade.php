@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <div class="_wrap  bg-[#dfdfdf]">
+    <div class="_wrap bg-[#dfdfdf]">
 
-        <h2 class="text-5xl font-bold py-5">Nearby Me</h2>
+        <h2 class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
 
-        <div class="grid md:grid-cols-2 justify-center">
+        <div class="grid md:grid-cols-2 justify-center justify-items-center">
             <div id="map"
                 class="_googleMap w-[300px] md:w-[400px] lg:w-[600px] grid-cols-2 h-[300px] md:h-[400px] lg:h-screen rounded-xl">
             </div>
@@ -45,6 +45,8 @@
     </div>
 
     <script>
+       
+
         let map;
         let currentPosition;
         let selectedRestaurant; // our restaurants name
@@ -109,8 +111,8 @@
 
                 autocomplete.addListener('place_changed', function() {
                     const place = autocomplete.getPlace();
-                    
-                    
+
+
 
                     selectedRestaurant = {
                         // the details you wand from the restaurant
@@ -164,11 +166,11 @@
                                 <h3>${selectedRestaurant.name}</h3>
                                 <div>How long takes to go :${response.routes[0].legs[0].duration.text}</div>
                                 `
-                                
+
                             );
                             infoWindow.open(map, marker);
                         }
-                        
+
                     })
                 })
             })
