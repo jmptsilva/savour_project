@@ -1,3 +1,4 @@
+
 <!-- Navbar goes here -->
 <nav class="bg-[#161616] shadow-lg sticky top-0 w-screen z-10">
     <div class="max-w-6xl mx-auto px-4">
@@ -22,9 +23,19 @@
             <!-- Secondary Navbar items -->
 
             <div class="hidden md:flex items-center space-x-3 ">
-
-                <a href="#" class="py-2 px-2 font-medium text-white hover:text-[#d49a3d] transition duration-300">Login |
+                @if(Auth::check())
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                <input type="submit" value="Logout" class="py-2 px-2 font-medium text-white hover:text-[#d49a3d] transition duration-300">
+                </input>
+                </form>
+                @else
+                <a href="{{route('login')}}" class="py-2 px-2 font-medium text-white hover:text-[#d49a3d] transition duration-300">
+                    Login |
                     Register</a>
+                
+                @endif
+            
                 <div class="_cartBtn relative cursor-pointer fill-white"><svg xmlns="http://www.w3.org/2000/svg" height="42" width="42">
                         <path d="M9 44q-1.2 0-2.1-.9Q6 42.2 6 41V14.5q0-1.2.9-2.1.9-.9 2.1-.9h5.5q0-3.95 2.65-6.725Q19.8 2 23.75 2q3.95 0 6.85 2.775 2.9 2.775 2.9 6.725H39q1.2 0 2.1.9.9.9.9 2.1V41q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V14.5H9V41Zm15-14.5q3.95 0 6.85-2.9 2.9-2.9 2.9-6.85h-3q0 2.75-2 4.75t-4.75 2q-2.75 0-4.75-2t-2-4.75h-3q0 3.95 2.9 6.85 2.9 2.9 6.85 2.9Zm-6.5-15h13q0-2.75-1.875-4.625T24 5q-2.75 0-4.625 1.875T17.5 11.5ZM9 41V14.5 41Z" />
                     </svg>

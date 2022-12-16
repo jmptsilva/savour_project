@@ -12,11 +12,12 @@
 </head>
 
 <body>
-  <!-- @inclde('navbar')
-  @inclde('hero')
-  @inclde('mission')
-  @inclde('partner') -->
-  @include('d-welcome')
+  @include('navbar')
+  @include('hero')
+  @include('mission')
+  @include('partner')
+  
+ 
 </body>
 
 </html>
