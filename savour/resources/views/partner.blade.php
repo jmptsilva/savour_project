@@ -38,8 +38,8 @@
          </button>
      </div>
      <div class="_contactUs flex items-center gap-4 py-6">
-         <a class="text-white underline text-base hover:text-[#d49a3d]" href="#">Restaurant Owner?</a>
-         <a class="_joinUs text-white px-8 py-2 bg-gray-600 rounded-3xl hover:bg-white hover:text-orange-400" href="#">JOIN US</a>
+         <a class="text-white underline text-base hover:text-[#d49a3d]" href="{{route('restaurant.login')}}">Restaurant Owner?</a>
+         <a class="_joinUs text-white px-8 py-2 bg-gray-600 rounded-3xl hover:bg-white hover:text-orange-400" href="{{route('contact')}}">JOIN US</a>
      </div>
  </section>
 

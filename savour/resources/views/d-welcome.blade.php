@@ -7,9 +7,9 @@
 
 <body>
     <main>
-        <!-- @inclde('d-dashboard') -->
+        @include('d-dashboard')
         <!-- @inclde('d-customise-menu') -->
-        @include('d-customMenu')
+        <!-- @inclde('d-customMenu') -->
         <!-- @inclde('d-order') -->
     </main>
     <aside class="flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">

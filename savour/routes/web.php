@@ -19,7 +19,19 @@ use Termwind\Components\Raw;
 
 Route::get('/welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 
 Route::get('/dashboard', function () {
@@ -73,7 +85,3 @@ Route::get('/api/offers/active', [OfferController::class, 'all_active']);
 Route::get('/api/offers/active/restaurant_id={id}', [OfferController::class, 'all_active_from_restaurant']);
 Route::get('/api/offers/inactive/restaurant_id={id}', [OfferController::class, 'all_inactive_from_restaurant']);
 Route::get('/api/offers/last', [OfferController::class, 'last_added_offers']);
-
-
-
-

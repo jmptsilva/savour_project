@@ -76,7 +76,7 @@
                 <!--FORM PASSWORD-->
                 <input type="password" name="password" class="form-control focus:z-4 _formControl" id="exampleInputPassword1" placeholder="Password" required>
 
-                <a href="#!" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
+                <a href="{{route('password.request')}}" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
                     Forgot password?</a>
                 <div class="flex items-center mr-4 mb-4">
                     <input checked type="checkbox" value="" class="w-4 h-4 text-[#826343] bg-gray-100 rounded border-gray-300 focus:ring-[#826343] dark:focus:ring-[#826343] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
