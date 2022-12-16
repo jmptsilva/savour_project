@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Termwind\Components\Raw;
 
@@ -85,3 +86,6 @@ Route::get('/api/offers/active', [OfferController::class, 'all_active']);
 Route::get('/api/offers/active/restaurant_id={id}', [OfferController::class, 'all_active_from_restaurant']);
 Route::get('/api/offers/inactive/restaurant_id={id}', [OfferController::class, 'all_inactive_from_restaurant']);
 Route::get('/api/offers/last', [OfferController::class, 'last_added_offers']);
+
+
+Route::get('/api/restaurant/orders/restaurant_id={id}', [OrderController::class, 'order_history_by_restaurant']);
