@@ -66,15 +66,15 @@
                 <div class="flex-grow h-px bg-gray-400"></div>
             </div>
             <!--FORM LOGIN AND REGISTER-->
-            <form action="" class="block loginForm login">
-
+            <form action="{{ route('login')}}" method="POST" class="block loginForm login">
+                @csrf
                 <div class="form-group mb-6">
                     <!--FORM Email -->
-                    <input type="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email">
+                    <input type="email" name="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email" required>
                 </div>
 
                 <!--FORM PASSWORD-->
-                <input type="password" class="form-control focus:z-4 _formControl" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" name="password" class="form-control focus:z-4 _formControl" id="exampleInputPassword1" placeholder="Password" required>
 
                 <a href="#!" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
                     Forgot password?</a>
@@ -101,21 +101,21 @@
             </form>
 
             <!--Register Form -->
-            <form action="" class="hidden registerForm register">
-
+            <form action="{{route('register')}}" method="POST" class="hidden registerForm register">
+                @csrf
                 <div class="form-group flex flex-row mb-6">
-                    <input type="text" class="mr-2 form-control focus:z-4 _formControl" placeholder="Firstname" name="first_name">
-                    <input type="text" class="form-control focus:z-4 _formControl" placeholder="Lastname" name="last_name">
+                    <input type="text" class="mr-2 form-control focus:z-4 _formControl" placeholder="Firstname" name="first_name" required>
+                    <input type="text" class="form-control focus:z-4 _formControl" placeholder="Lastname" name="last_name" required>
                 </div>
 
                 <div class="mb-6">
-                    <input type="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email">
+                    <input type="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email" name="email" required>
                 </div>
 
                 <div class="mb-6">
-                    <input type="password" class="form-control focus:z-4 _formControl" placeholder="Password" name="password">
+                    <input type="password" class="form-control focus:z-4 _formControl" placeholder="Password" name="password" required>
                 </div>
-                <input type="password" class="form-control focus:z-4 _formControl" placeholder="Confirm Password" name="confirm_password">
+                <input type="password" class="form-control focus:z-4 _formControl" placeholder="Confirm Password" name="password_confirmation" required>
                 <div class="mt-3 form-group form-check mb-6">
                     <div class="flex items-center mr-4 mb-4">
                         <input checked type="checkbox" value="" class="w-4 h-4 text-[#826343] bg-gray-100 rounded border-gray-300 focus:ring-[#826343] dark:focus:ring-[#826343] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
