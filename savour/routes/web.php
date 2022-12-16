@@ -89,3 +89,9 @@ Route::get('/api/offers/last', [OfferController::class, 'last_added_offers']);
 
 
 Route::get('/api/restaurant/orders/restaurant_id={id}', [OrderController::class, 'order_history_by_restaurant']);
+Route::get('/api/restaurant/orders_today/day={day}&restaurant_id={id}', [OrderController::class, 'order_history_day']);
+Route::get('/api/restaurant/orders_today/restaurant_id={id}', [OrderController::class, 'order_history_today']);
+Route::get('/api/restaurant/week-orders/restaurant_id={id}', [OrderController::class, 'order_history_weekdays']);
+Route::get('/api/restaurant/orders_breakfast/restaurant_id={id}', [OrderController::class, 'order_history_breakfast']);
+Route::get('/api/restaurant/orders_lunch/restaurant_id={id}', [OrderController::class, 'order_history_lunch']);
+Route::get('/api/restaurant/orders_dinner/restaurant_id={id}', [OrderController::class, 'order_history_dinner']);
