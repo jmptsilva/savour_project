@@ -34,26 +34,6 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/restaurant/chart', function () {
-    return view('restaurant.chart');
-})->name('restaurant.chart');
-
-Route::get('/restaurant/order', function () {
-    return view('restaurant.order');
-})->name('restaurant.order');
-
-Route::get('/restaurant/custom', function () {
-    return view('restaurant.custom');
-})->name('restaurant.custom');
-
-Route::get('/restaurant/profile', function () {
-    return view('profile/edit');
-})->name('restaurant.profile');
-
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -65,8 +45,6 @@ Route::get('/restaurant/dashboard', function () {
 })->middleware(['auth:restaurant', 'verified'])->name('restaurant.dashboard');
 
 require __DIR__ . '/restaurantauth.php';
-
-
 
 
 Route::get('/admin/dashboard', function () {
@@ -87,8 +65,6 @@ Route::middleware('auth:restaurant')->prefix('restaurant')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-// API ROUTES FOR OFFERS
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -102,6 +78,8 @@ Route::get('/api/restaurants/id={id}', [RestaurantController::class, 'find_by_id
 Route::get('/api/restaurants/name={name}', [RestaurantController::class, 'find_by_name']);
 Route::get('/api/restaurants/restaurant_location={location}', [RestaurantController::class, 'find_by_location']);
 
+
+// API ROUTES FOR OFFERS
 Route::get('/api/offers/name={name}', [OfferController::class, 'offer_name']);
 Route::get('/api/offers/restaurant_id={id}', [OfferController::class, 'all_from_restaurant']);
 Route::get('/api/offers/active', [OfferController::class, 'all_active']);

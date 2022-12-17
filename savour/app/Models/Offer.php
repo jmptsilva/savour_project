@@ -38,6 +38,16 @@ class Offer extends Model
     //     );
     // }
 
+    protected $fillable = [
+        'restaurant_id',
+        'description',
+        'name',
+        'image',
+        'quantity',
+        'price',
+        'is-active',
+    ];
+
     public function getPriceWithEuroAttribute()
     {
         return $this->attributes['price'] . ' €';
