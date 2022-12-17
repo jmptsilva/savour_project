@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,51 +8,57 @@
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
+
 <body>
     @include('navbar')
-    
+
     <div class="flex flex-row">
         <div class="flex flex-col items-center mt-10">
             <!----Profile Picture---->
-    
+
             <img src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg" class="w-40 border-4 border-white rounded-full">
-    
+
             <!----Profile Name---->
-    
-            <p class="text-2xl">Shakira Blabla</p>
+
+            <p class="text-2xl">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</p>
             <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                 <div class="w-full flex flex-col 2xl:w-1/3">
                     <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
-    
+
                         <!----Personal Information---->
-    
+
                         <div class="flex flex-row justify-between">
                             <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                             </svg>
                         </div>
-    
+
                         <ul class="mt-2 text-gray-700">
                             <li class="flex border-y py-2">
                                 <span class="font-bold w-24">Full name:</span>
-                                <span class="text-gray-700">Shakira Blabla</span>
-    
+                                <span class="text-gray-700">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</span>
+
                             </li>
                             <li class="flex border-b py-2">
                                 <span class="font-bold w-24">Email</span>
-                                <span class="text-gray-700">shakira@gmail.com</span>
+                                <span class="text-gray-700">{{Auth::user()->email}}</span>
                             </li>
                             <li class="flex border-b py-2">
                                 <span class="font-bold w-24">Joined:</span>
-                                <span class="text-gray-700">10 Jan 2022 (25 days ago)</span>
+                                @if(Auth::user()->create_at !== NULL)
+                                <span class="text-gray-700">{{Auth::user()->created_at->format('d-M-Y')}}</span>
+                                <span class="text-gray-700 sumDay"> </span>
+                                @else
+                                <span>N/A</span>
+                                @endif
                             </li>
                         </ul>
                     </div>
                 </div>
-    
+
                 <!----Record Section ---->
-    
+
                 <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                     <h4 class="text-xl text-gray-900 font-bold">Record</h4>
                     <div class="px-6 py-6 gap-8 mt-4 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
@@ -61,7 +68,7 @@
                         <div class="flex items-center justify-between mt-6">
                             <div>
                                 <svg class="w-20 h-20 p-2.5 bg-[#00391d]/20 bg-opacity-20 rounded-full text-[#00391d] border border-[#00391d]" fill="none" stroke="currentColor" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-    
+
                                     <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#00391d" stroke="none">
                                         <path d="M2423 4115 c-29 -8 -72 -24 -95 -36 -53 -27 -140 -113 -166 -165 -19
     -38 -25 -41 -82 -52 -150 -28 -257 -127 -295 -272 l-11 -45 -82 -3 c-75 -3
@@ -99,7 +106,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!----Order History---->
         <div>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-10">
@@ -108,15 +115,15 @@
                         <th scope="col" class="py-3 px-6">
                             Order Number
                         </th>
-    
+
                         <th scope="col" class="py-3 px-6">
                             Restaurant Name
                         </th>
-    
+
                         <th scope="col" class="py-3 px-6">
                             ADDRESS
                         </th>
-    
+
                         <th scope="col" class="py-3 px-6">
                             Order Date
                         </th>
@@ -128,13 +135,13 @@
                         </th>
                     </tr>
                 </thead>
-    
+
                 <tbody>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="py-3 px-6">
                             ABC 123
                         </td>
-    
+
                         <td class="py-3 px-6">
                             <div ">BomBay</div>
                     </td>
@@ -142,7 +149,7 @@
                     <td class=" py-3 px-6">
                                 <div> 123 Rue de Strassbourg Centre Ville</div>
                         </td>
-    
+
                         <td class="py-3 px-6">
                             <div>12 Dec 2030</div>
                         </td>
@@ -158,4 +165,19 @@
         </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    const numberDay = document.querySelector(".numberDay")
+    var date_1 = new Date();
+    var date_2 = new Date("{{ date('Y-m-d', strtotime(Auth::user()->created_at)) }}");
+
+    console.log(date_1)
+    console.log(date_2)
+    let difference = date_1.getTime() - date_2.getTime();
+
+    let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+    numberDay.innerHTML = "( " + TotalDays + " Days" + " " + "ago" + ")"
+    console.log(TotalDays);
+</script>
