@@ -82,7 +82,7 @@ Route::get('/api/restaurants/restaurant_location={location}', [RestaurantControl
 // API ROUTES FOR OFFERS
 Route::get('/api/offers/name={name}', [OfferController::class, 'offer_name']);
 Route::get('/api/offers/restaurant_id={id}', [OfferController::class, 'all_from_restaurant']);
-Route::get('/api/offers/active', [OfferController::class, 'all_active']);
+Route::get('/api/offers/active', [OfferController::class, 'all_active'])->name('active_offers');
 Route::get('/api/offers/active/restaurant_id={id}', [OfferController::class, 'all_active_from_restaurant']);
 Route::get('/api/offers/inactive/restaurant_id={id}', [OfferController::class, 'all_inactive_from_restaurant']);
 Route::get('/api/offers/last', [OfferController::class, 'last_added_offers']);
