@@ -22,7 +22,8 @@ class RestaurantSeeder extends Seeder
                 'email' => 'bonito@mail.com',
                 'password' => Hash::make('Qw12345678'),
                 'phone_number' => '67326365',
-                'address' => 'Rue de Belval, 72',
+                'city' => 'Luxembourg',
+                'address' => 'Rue de Belval72',
                 'postal_code' => '1234',
             ],
             [
@@ -30,7 +31,8 @@ class RestaurantSeeder extends Seeder
                 'email' => 'jthaikitchen@mail.com',
                 'password' => Hash::make('Qw12345678'),
                 'phone_number' => '635352',
-                'address' => 'Rua dos Lavajões, 14',
+                'city' => 'Luxembourg',
+                'address' => 'Rua dos Lavajões 14',
                 'postal_code' => '3838',
             ],
             [
@@ -38,7 +40,8 @@ class RestaurantSeeder extends Seeder
                 'email' => 'formosa@mail.com',
                 'password' => Hash::make('Qw12345678'),
                 'phone_number' => '63253424',
-                'address' => 'Rue de Taiwan, 7',
+                'city' => 'Luxembourg',
+                'address' => 'Rue de Taiwan 7',
                 'postal_code' => '6754',
             ],
             [
@@ -46,7 +49,8 @@ class RestaurantSeeder extends Seeder
                 'email' => 'whicherdinner@mail.com',
                 'password' => Hash::make('Qw12345678'),
                 'phone_number' => '6352422',
-                'address' => 'Rue de Manchester, 88',
+                'city' => 'Luxembourg',
+                'address' => 'Rue de Manchester 88',
                 'postal_code' => '1373',
             ],
             [
@@ -54,7 +58,8 @@ class RestaurantSeeder extends Seeder
                 'email' => 'joaobeans@mail.com',
                 'password' => Hash::make('Qw12345678'),
                 'phone_number' => '63532422',
-                'address' => 'Rue de Pereiras, 56',
+                'city' => 'Luxembourg',
+                'address' => 'Rue de Pereiras 56',
                 'postal_code' => '4637',
             ],
         ]);

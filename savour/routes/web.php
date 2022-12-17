@@ -34,6 +34,25 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/restaurant/chart', function () {
+    return view('restaurant.chart');
+})->name('restaurant.chart');
+
+Route::get('/restaurant/order', function () {
+    return view('restaurant.order');
+})->name('restaurant.order');
+
+Route::get('/restaurant/custom', function () {
+    return view('restaurant.custom');
+})->name('restaurant.custom');
+
+Route::get('/restaurant/profile', function () {
+    return view('profile/edit');
+})->name('restaurant.profile');
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -46,6 +65,9 @@ Route::get('/restaurant/dashboard', function () {
 })->middleware(['auth:restaurant', 'verified'])->name('restaurant.dashboard');
 
 require __DIR__ . '/restaurantauth.php';
+
+
+
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -75,7 +97,7 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
 // API routes
 
-Route::get('/api/restaurants/all', [RestaurantController::class, 'all_restaurants']);
+Route::get('/api/restaurants/all', [RestaurantController::class, 'all_restaurants'])->name('all_restaurant');
 Route::get('/api/restaurants/id={id}', [RestaurantController::class, 'find_by_id']);
 Route::get('/api/restaurants/name={name}', [RestaurantController::class, 'find_by_name']);
 Route::get('/api/restaurants/restaurant_location={location}', [RestaurantController::class, 'find_by_location']);
