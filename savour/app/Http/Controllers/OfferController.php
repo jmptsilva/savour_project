@@ -80,12 +80,13 @@ class OfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(StoreOfferRequest $request, $id)
     {
         $request->validate();
     
         $offer = Offer::create([
-            'restaurant_id' => $request->$id,
+            'restaurant_id' => Auth::user()->id, // we will always have to send the Auth id value, from the user session. Is this ok?
             'description' => $request->description,
             'name' => $request->name,
             'image' => $request->image,
@@ -114,7 +115,7 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
-        return view('edit-offer');
+        return view('restaurant/customMenu');
     }
 
     /**
@@ -124,6 +125,7 @@ class OfferController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(StoreOfferRequest $request, $id)
     {
         $request->validate();
@@ -132,7 +134,6 @@ class OfferController extends Controller
 
         $offer->name = $request->name;
         $offer->price = $request->price;
-        $offer->restaurant_id = $request->restaurant_id;
         $offer->description = $request->description;
         $offer->image = $request->image;
         $offer->quantity = $request->quantity;
