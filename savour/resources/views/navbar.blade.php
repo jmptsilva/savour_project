@@ -77,12 +77,14 @@
         <ul class="">
             <li class="active"><a href="{{ route('welcome') }}"
                     class="block text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold">Home</a></li>
-            <li><a href="#services"
-                    class="block text-sm px-2 py-4 hover:bg-[#d49a3d] transition duration-300">Services</a></li>
-            <li><a href="" class="block text-sm px-2 py-4 hover:bg-[#d49a3d] transition duration-300">About</a>
+            <li><a href="{{ route('menu') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Menu</a></li>
+            <li><a href="{{ route('contact') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Contact</a>
             </li>
-            <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-[#d49a3d] transition duration-300">Contact
-                    Us</a></li>
+            <li><a href="{{ route('about') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">About
+                </a></li>
         </ul>
     </div>
     {{-- shopping cart --}}
@@ -94,9 +96,36 @@
                     <div class="py-2 inline-block sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="_cartItemsList min-w-full">
+                                <thead class="border-b">
+                                    <tr>
+                                        <th scope="col"
+                                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Item
+                                        </th>
+                                        <th scope="col"
+                                            class="hidden md:inline-block text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Restaurant
+                                        </th>
+                                        <th scope="col"
+                                            class="hidden md:inline-block text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Pick-Up time
+                                        </th>
+                                        <th scope="col"
+                                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Quantity
+                                        </th>
+                                        <th scope="col"
+                                            class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Price
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="_itemWrap">
 
                                 </tbody>
                             </table>
+                            <div id="label"></div>
                             <div class="flex justify-end items-center gap-4 m-4">
                                 <div class="cart-total">
                                     <strong class="cart-total-title">Total</strong>
@@ -131,211 +160,149 @@
             cartList.classList.toggle("hidden");
         });
     });
-    
+
     // change the underline
-    
+
     const welcome = document.querySelector("._welcome");
     const _menu = document.querySelector("._menu");
     const contact = document.querySelector("._contact");
-    const about = document. querySelector("._about");
-        welcome.classList.add("_activePage");
+    const about = document.querySelector("._about");
+    welcome.classList.add("_activePage");
 
 
+    // shoping cart
+    const total = document.querySelector('.cart-total-price')
+    const cartIconNbs = document.querySelectorAll('._cartIconNb')
+    const cartWrap = document.querySelector("._itemWrap")
+    //cart array to save all items in the cart
+    let cart = JSON.parse(localStorage.getItem("CART")) || [];
+    
+    updateCart();
 
-
-    window.onload = function() {
-
-        // adding data to localstorage
-        const addToCartButtons = document.getElementsByClassName('_addBtn')
-        let items = []
-        for (let i = 0; i < addToCartButtons.length; i++) {
-            addToCartButtons[i].addEventListener('click', function(event) {
-                let btn = addToCartButtons[i]
-                if (typeof(Storage) !== 'undefined') {
-
-                    let shopItem = btn.parentElement.parentElement;
-
-                    let item = {
-                        id: i + 1, // should change to the offer id
-                        name: shopItem.getElementsByClassName('_foodName')[0].innerText,
-                        price: shopItem.getElementsByClassName('_price')[0].innerText,
-                        restaurant: shopItem.getElementsByClassName('_restaurant')[0].innerText,
-                        pickup: shopItem.getElementsByClassName('_pickup')[0].innerText,
-                        qty: 1,
-                    };
-                    if (JSON.parse(localStorage.getItem('items')) === null) {
-                        items.push(item);
-                        localStorage.setItem("items", JSON.stringify(items));
-                        window.location.reload();
-                    } else {
-                        const localItems = JSON.parse(localStorage.getItem('items'));
-                        localItems.map(data => {
-
-                            if (item.id == data.id) {
-                                item.qty = data.qty + 1;
-
-                            } else {
-                                items.push(data);
-                            }
-                        });
-                        items.push(item);
-                        localStorage.setItem('items', JSON.stringify(items));
-                        window.location.reload();
-                    }
-                } else {
-                    alert('local storage is not working on your browser');
+    // add to cart
+    function addToCart(id) {
+        fetch("{{ route('active_offers') }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
+            }).then(res => res.json())
+            .then(function(results) {
+                // Once AJAX call is done
+
+                //check if product already exist in cart
+                if(cart.some((item) => item.id === id)){
+                    changeNBofUnites("plus",id)
+                }else{
+
+                    const item = results.find((product) => product.id === id)
+                    cart.push(
+                        {...item,
+                        qtyInCart: 1}
+                    );
+                }
+                updateCart();
             })
-        }
-
-        //adding data to shopping cart
-        //this is to put the amount on the cart
-
-        const cartIconNbs = document.querySelectorAll('._cartIconNb');
-        cartIconNbs.forEach(nb => {
-
-            let qty = 0;
-            JSON.parse(localStorage.getItem('items')).map(data => {
-                qty = qty + data.qty;
-            });
-            nb.innerHTML = qty;
-        });
-
-
-
-        `              
-//                             `
-        //adding cartbox data in table
-        const cardBoxTable = document.querySelector('._cartItemsList');
-        let tableData = '';
-        tableData += `<thead class="border-b">
-                        <tr>
-
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Item
-                            </th>
-                            <th scope="col"
-                                class="hidden md:inline-block text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Restaurant
-                            </th>
-                            <th scope="col"
-                                class="hidden md:inline-block text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Pick-Up time
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Quantity
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                Price
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody class="_itemWrap">`
-
-
-        ;
-        if (JSON.parse(localStorage.getItem('items'))[0] === null) {
-            tableData += '<tr><td>No items found</td></tr>'
-        } else {
-            JSON.parse(localStorage.getItem('items')).map(data => {
-                tableData += `  <tr class="_cart-row">
-                     
-                        <td class="align-baseline _foodInCart text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">${data.name}
-                        </td>
-                        <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            ${data.restaurant}
-                        </td>
-                        <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            ${data.pickup}
-                        </td>
-                        <td class="align-baseline text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <input class="_cart-quantity-input w-[50px]" min="0" type="number" value="${data.qty}">
-                        </td>
-                        <td class="align-baseline _price text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            ${data.price}
-                        </td>
-                        <td class="align-baseline text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <button class="_removeBtn text-md underline"
-                                type="button" onclick=Delete(e);>REMOVE</button>
-                        </td>
-                        </tr>
-                    `;
-            });
-
-        }
-        cardBoxTable.innerHTML = tableData;
-        updateCartTotal()
-    }
-    // purchase click
-    document.querySelector('._purchaseBtn').addEventListener('click', function purchaseClicked(event) {
-
-        alert('Thank you for your purchase!')
-        let cartItems = document.getElementsByClassName('_itemWrap')[0]
-        while (cartItems.hasChildNodes()) {
-            cartItems.removeChild(cartItems.firstChild)
-        }
-        updateCartTotal()
-    })
-
-    //remove items
-
-    // let removeCartItemBtns = document.getElementsByClassName('_removeBtn')
-
-    // for (let i = 0; i < removeCartItemBtns.length; i++) {
-    //     let btn = removeCartItemBtns[i]
-    //     btn.addEventListener('click', function(event) {
-    //         let btnClicked = event.target;
-    //         btnClicked.parentElement.parentElement.remove();
-    //         updateCartTotal();
-    //     })
-
-    //}
-    //update cart total
-    // const cartIconNbs = document.querySelectorAll('._cartIconNb');
-    // cartIconNbs.forEach(nb => {
-
-    //     let qty = 0;
-    //     JSON.parse(localStorage.getItem('items')).map(data=>{
-    //         qty = qty+data.qty;	
-    //     });
-    //     nb.innerHTML = qty;
-    // });
-
-
-    function updateCartTotal() {
-        let cartItemContainer = document.getElementsByClassName('_cartItemsList')[0]
-        let cartRows = cartItemContainer.querySelectorAll('._cart-row')
-        let total = 0
-        for (let i = 0; i < cartRows.length; i++) {
-            let cartRow = cartRows[i]
-            let priceElement = cartRow.getElementsByClassName('_price')[0]
-            let quantityElement = cartRow.getElementsByClassName('_cart-quantity-input')[0]
-
-            let price = parseFloat(priceElement.innerText.replace('$', ''))
-            let quantity = quantityElement.value
-            total = total + (price * quantity);
-
-        }
-        total = Math.round(total * 100) / 100
-        document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
     }
 
-    //update and avoid minus quantity
+ 
+    //calculate total
+  
+    function rendertotal() {
+        let totalPrice=0 ,totalItems = 0;
 
-    let quantityInputs = document.getElementsByClassName('_cart-quantity-input')
-    console.log(quantityInputs)
-    for (let i = 0; i < quantityInputs.length; i++) {
-        let input = quantityInputs[i]
+        cart.forEach((item)=>{
+            totalPrice += item.price *item.qtyInCart;
+            totalItems += item.qtyInCart;
 
-        input.addEventListener('change', function quantityChanged(event) {
-            let input = event.target
-            if (isNaN(input.value) || input.value <= 0) {
-                input.value = 1
-            }
-            updateCartTotal();
         })
 
+        total.innerHTML =`$ ${totalPrice.toFixed(2)}`
+        cartIconNbs.forEach(nb => {
+            nb.innerHTML = totalItems;
+        });
 
     }
+
+    // render cart item
+    
+    function renderCartItems() {
+        cartWrap.innerHTML=""; // clear cart element
+        cart.forEach((data)=>{
+            cartWrap.innerHTML += `  <tr class="_cart-row _item-id-${data.id}">
+
+                         <td class="align-baseline _foodInCart text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">${data.name}
+                         </td>
+                         <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                             ${data.restaurant}
+                         </td>
+                         <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                             19:00 12/25 2022
+                         </td>
+                        <td class="align-baseline text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            
+                            
+                            <p class="_cart-quantity-input text-xl text-center px-2 w-[50px]"><span onclick="changeNBofUnites('minus',${data.id})" class="minus cursor-pointer text-2xl text-green-500">-</span> ${data.qtyInCart} <span onclick="changeNBofUnites('plus',${data.id})" class="plus cursor-pointer text-xl text-green-500">+</span> </p>
+            
+                            
+                         </td>
+                         <td class="align-baseline _price text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                             $${data.price}
+                         </td>
+                         <td class="align-baseline text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                             <button onclick="removeItemFromCart(${data.id})"class="_removeBtn text-md underline"
+                                 type="button" onclick=Delete(e);>REMOVE</button>
+                         </td>
+                         </tr>
+                     `;
+        })
+    }
+       //update cart
+
+       function updateCart() {
+        renderCartItems();
+        rendertotal();
+
+        //save cart to local storage
+
+        localStorage.setItem("CART",JSON.stringify(cart))
+    }
+
+
+    //remove item from cart
+
+    function removeItemFromCart(id) {
+        cart = cart.filter((item)=>item.id !== id);
+
+        updateCart();
+    }
+
+    //change number of units for an items
+    
+    function changeNBofUnites(action,id) {
+
+        cart = cart.map((item)=>{
+            
+            let qtyInCart = item.qtyInCart
+            if(item.id === id){
+                if(action === "minus" && qtyInCart >1){
+                    qtyInCart--;
+                }else if(action === "plus" && qtyInCart < item.quantity){
+                    qtyInCart++;
+                }
+            }
+            
+            return {
+                ...item,
+                qtyInCart,
+
+            };
+        })
+        updateCart();
+        
+    }
+
+    
+
+
 </script>

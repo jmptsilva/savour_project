@@ -30,8 +30,8 @@
             }).then(res => res.json())
             .then(function(result) {
                 // Once AJAX call is done
-                console.log(result);
-                let htmlResult;
+                
+                let htmlResult="";
                 result.forEach(r => {
                     htmlResult += `<div class="_restaurantCard w-[300px] md:w-[450px] my-3">
                         <a href="#"
