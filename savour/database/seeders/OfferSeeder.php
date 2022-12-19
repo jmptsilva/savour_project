@@ -24,6 +24,7 @@ class OfferSeeder extends Seeder
                 'quantity' => '5',
                 'price' => '12',
                 'is_active' => '1',
+                'restaurant_id' => '1',
             ],
             [
                 'name' => 'Tomyam Koong',
@@ -32,6 +33,7 @@ class OfferSeeder extends Seeder
                 'quantity' => '6',
                 'price' => '18',
                 'is_active' => '1',
+                'restaurant_id' => '4',
             ],
             [
                 'name' => 'Beef noodles',
@@ -40,6 +42,7 @@ class OfferSeeder extends Seeder
                 'quantity' => '14',
                 'price' => '23',
                 'is_active' => '1',
+                'restaurant_id' => '3',
             ],
         ]);
     }

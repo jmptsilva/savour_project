@@ -34,7 +34,7 @@
                 let htmlResult="";
                 result.forEach(r => {
                     htmlResult += `<div class="_restaurantCard w-[300px] md:w-[450px] my-3">
-                        <a href="#"
+                        <a onclick="getRestaurantDetail(item)" href="#"
                             class="flex items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-[#00391d] dark:hover:bg-green-800">
                             <img class="object-cover rounded py-2 pl-2 md:h-auto w-[150px] md:w-20 "
                                 src="https://i.ibb.co/C2nC113/Screenshot-2022-12-09-at-22-34-18.png" alt="">
@@ -61,14 +61,12 @@
         let directionService;
         let directionRenderer;
         let infoWindow;
+        let restaurantName;
 
-        // let restaurantCards = document.querySelectorAll('._restaurantCard')
-        // let restaurantNames = document.querySelector('._restaurantName').innerText
 
-        // restaurantCards.addListener('click',function () {
-        //     let name = document.querySelector('._restaurantName').innerText
-        //     console.log(e.name)
-        // })
+        function getRestaurantDetail() {
+            // try to retrive the name
+        }
 
 
         //     restaurantCards.forEach(e => {
