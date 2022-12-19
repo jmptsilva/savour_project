@@ -209,6 +209,12 @@
                 </div>
             </div>
         </div>
+        <script>
+             about.classList.add("_activePage");
+             contact.classList.remove("_activePage");
+            _menu.classList.remove("_activePage");
+            welcome.classList.remove("_activePage")
+        </script>
 </body>
 
 </html>

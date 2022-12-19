@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 
-<body>
     <div class="_wrap bg-[#dfdfdf]">
 
         <h2 class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
@@ -19,22 +10,9 @@
             </div>
             <div>
                 <input id="input" type="text">
-                <div class="_restaurantList grid-cols-3 overflow-scroll h-[500px] ">
+                <div id="_list" class="_restaurantList grid-cols-3 overflow-scroll h-[500px] ">
 
-                    <div class="_restaurantCard w-[300px] md:w-[450px] my-3">
-                        <a href="#"
-                            class="flex items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-[#00391d] dark:hover:bg-green-800">
-                            <img class="object-cover rounded py-2 pl-2 md:h-auto w-[150px] md:w-20 "
-                                src="https://i.ibb.co/C2nC113/Screenshot-2022-12-09-at-22-34-18.png" alt="">
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5
-                                    class="_restaurantName mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                    Burger King</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Address: Lorem ipsum dolor
-                                    sit amet.</p>
-                            </div>
-                        </a>
-                    </div>
+                    
 
 
 
@@ -43,8 +21,37 @@
 
         </div>
     </div>
-
     <script>
+        fetch("{{ route('all_restaurant') }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(result) {
+                // Once AJAX call is done
+                
+                let htmlResult="";
+                result.forEach(r => {
+                    htmlResult += `<div class="_restaurantCard w-[300px] md:w-[450px] my-3">
+                        <a href="#"
+                            class="flex items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-[#00391d] dark:hover:bg-green-800">
+                            <img class="object-cover rounded py-2 pl-2 md:h-auto w-[150px] md:w-20 "
+                                src="https://i.ibb.co/C2nC113/Screenshot-2022-12-09-at-22-34-18.png" alt="">
+                            <div class="flex flex-col justify-between p-4 leading-normal">
+                                <h5
+                                    class="_restaurantName mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                    ${r.name}</h5>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Address: ${r.address}</p>
+                            </div>
+                        </a>
+                    </div>`;
+                });
+                document.getElementById('_list').innerHTML = htmlResult;
+            });
+    </script>
+    <script>
+        
        
 
         let map;
@@ -55,8 +62,8 @@
         let directionRenderer;
         let infoWindow;
 
-        let restaurantCards = document.querySelectorAll('._restaurantCard')
-        let restaurantNames = document.querySelector('._restaurantName').innerText
+        // let restaurantCards = document.querySelectorAll('._restaurantCard')
+        // let restaurantNames = document.querySelector('._restaurantName').innerText
 
         // restaurantCards.addListener('click',function () {
         //     let name = document.querySelector('._restaurantName').innerText
@@ -180,6 +187,3 @@
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE12Yb5ARHXJPst9SOmcCNcVskz6jJJMY&libraries=places&callback=initMap">
     </script>
-</body>
-
-</html>
