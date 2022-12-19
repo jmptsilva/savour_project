@@ -19,6 +19,7 @@ class OfferSeeder extends Seeder
         DB::table('offers')->insert([
             [
                 'name' => 'Rojoada',
+                'restaurant_id' => '2',
                 'description' => 'Fried meat',
                 'image' => 'roj.jpg',
                 'quantity' => '5',
@@ -28,6 +29,7 @@ class OfferSeeder extends Seeder
             ],
             [
                 'name' => 'Tomyam Koong',
+                'restaurant_id' => '2',
                 'description' => 'Spicy Thai soup',
                 'image' => 'tk.jpg',
                 'quantity' => '6',
@@ -37,6 +39,7 @@ class OfferSeeder extends Seeder
             ],
             [
                 'name' => 'Beef noodles',
+                'restaurant_id' => '2',
                 'description' => 'Steamed beef, stir fried with noodle soup',
                 'image' => 'beefnood.jpg',
                 'quantity' => '14',

@@ -10,7 +10,7 @@
 <body>
 
     <!--HERO BG-->
-    <div class="bg-[url('/Users/ningshin/Desktop/savour_project/savour/public/assets/img/hero.jpg')] w-screen h-[844px] lg:m-w-screen lg:h-[790px] bg-cover bg-no-repeat opacity-80">
+    <div class="bg-[url('/Applications/MAMP/htdocs/Final-Project/savour_project/savour/public/assets/img/hero.jpg')] w-screen h-[844px] lg:m-w-screen lg:h-[790px] bg-cover bg-no-repeat opacity-80">
 
         <!--HERO TEXT & LOGO-->
 
@@ -22,8 +22,10 @@
                 <div class="text-black-500 font-extrabold leading-tight text-[25px] lg:text-[40px]">
                     SAVE OUR PLANET
                 </div>
-                <div class="text-black-500 text-sm mt-10">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi esse assumenda totam quis, optio ipsa magni veritatis perferendis minus iure suscipit voluptas quisquam quam qui harum, quod unde modi vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur optio, ullam iusto laborum quae ut dolore aliquid exercitationem eligendi assumenda molestiae eius sequi labore. Culpa, similique. Voluptatibus exercitationem fuga iure.
+                <div class="text-black font-semibold text-l mt-10">
+
+                    In Luxembourg alone, an average of 118 kg <br>of food waste per person ends up in the bin each year.
+                    <br> Creating food consumes a lot of energy and often results <br>in long transport routes.<br><br> Our goal is to offer restaurants the opportunity to sell meals through our website at a discounted price before they expire.
                 </div>
 
                 <!--Button & More info -->

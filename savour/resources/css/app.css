@@ -25,17 +25,45 @@
     ._loginButton {
         @apply py-2 px-4 text-sm font-medium text-white bg-[#B3A08E] border-white hover:bg-[#826343] hover:text-white focus:bg-[#826343] focus:ring-2 focus:ring-white  focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-white dark:focus:bg-[#826343];
     }
-
+    /*---------form --------*/
     ._formControl {
         @apply block w-full px-3 py-1.5 text-base font-normal
         text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300
         rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#826343] focus:ring-2 focus:ring-[#826343];
     }
+    /*---------about page --------*/
     ._socialButtons {
         @apply py-2 px-2 mr-1 mb-1 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700;
     }
     ._allergenCheckbox {
         @apply w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600;
+    }
+    /*---------chart restaurant --------*/
+    ._chartSummary {
+        @apply py-3 px-5 bg-gray-50;
+    }
+    ._chartBtn {
+        @apply bg-[#1d2816] dark:bg-[#1d2816] shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-[#3e5631] dark:border-gray-600 text-white font-medium;
+    }
+    ._flexCardChart {
+        @apply flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12;
+    }
+    ._buttonChangeChart {
+        @apply py-2 px-4 bg-gray-500 dark:bg-gray-800 rounded ease-in duration-150 text-xs text-white dark:text-white hover:bg-gray-200;
+    }
+    /*---------restaurant dashboard --------*/
+    ._dashProps {
+        @apply flex border-b py-2;
+    }
+    /*---------SidedBar  --------*/
+    ._linkSideBar {
+        @apply relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-[#00391d] pr-6;
+    }
+    ._flexSideBar {
+        @apply inline-flex justify-center items-center ml-4;
+    }
+    ._textSidebar {
+        @apply px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-[#00391d] bg-[#00391d]/50 rounded-full;
     }
     ._activePage{
         @apply border-b-4 border-[#d49a3d];

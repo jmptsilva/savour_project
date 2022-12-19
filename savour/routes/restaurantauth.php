@@ -68,19 +68,34 @@ Route::group(['middleware' => ['auth:restaurant'], 'prefix' => 'restaurant', 'as
 
     // These need to be filled with the proper controller
 
-    Route::get('/restaurant/chart', function () {
+    Route::get('chart', function () {
         return view('restaurant/chart');
-    })->name('restaurant.chart');
-    
-    Route::get('/restaurant/order', function () {
+    })->name('chart');
+
+    Route::get('restaurantprofile', function () {
+        return view('restaurant/restaurantProfile');
+    })->name('profile');
+
+    Route::get('order', function () {
         return view('restaurant/order');
-    })->name('restaurant.order');
-    
-    Route::get('/restaurant/custom', function () {
+    })->name('order');
+
+    Route::get('custom', function () {
         return view('restaurant/custom');
-    })->name('restaurant.custom');
-    
+    })->name('custom');
+
+    Route::get('/restaurant/custommenu', function () {
+        return view('restaurant/custommenu');
+    })->name('custommenu');
+
+    Route::get('addmenu', function () {
+        return view('restaurant/addmenu');
+    })->name('addmenu');
+
+
+
+
     /* Route::get('/restaurant/profile', function () {
         return view('profile/edit');
-    })->name('restaurant.profile'); */
+    })->name('profile'); */
 });

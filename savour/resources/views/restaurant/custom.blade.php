@@ -116,14 +116,20 @@
                             22 Dec 2022 13:40
                         </td>
                         <td class="py-4 px-6">
-                            <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="{{route('restaurant.custommenu')}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                 </tbody>
             </table>
         </div>
-
-
     </div>
+    <script>
+        fetch("{{ route('active_offers') }}", {
+            method: 'get',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        }).then(res => res.json()).then(function(results)) {};
+    </script>
 </body>
 
 </html>

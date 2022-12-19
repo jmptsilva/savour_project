@@ -21,7 +21,7 @@
                     <img class="rounded-lg shadow-xl" src="assets/img/carry-food.jpeg" alt="">
                 </div>
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pr-16">
-                    <p class="mb-2 text-sm font-semibold leading-none text-left text-indigo-600 uppercase">For User</p>
+                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#057840] uppercase">For User</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE DO</h3>
                     <p class="mt-5 text-lg text-gray-700 text md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit vel reprehenderit ipsam, iure provident minus officiis tempore ex error. Repellat blanditiis animi temporibus facilis qui natus magni pariatur ullam aliquid.</p>
                 </div>
@@ -31,7 +31,7 @@
                     <img class="rounded-lg shadow-xl" src="assets/img/foodwaste.jpeg" alt="">
                 </div>
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pl-16">
-                    <p class="mb-2 text-sm font-semibold leading-none text-left text-indigo-600 uppercase">For restaurant</p>
+                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For restaurant</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE OFFER</h3>
                     <p class="mt-5 text-lg text-gray-700 text md:text-left">Backed by data, these templates have been crafted for ultimate optimization. Now, converting your visitors into customers is easier than ever before.</p>
                 </div>
@@ -41,7 +41,7 @@
                     <img class="rounded-lg shadow-xl" src="/assets/img/food-recycling.png" alt="">
                 </div>
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pr-16">
-                    <p class="mb-2 text-sm font-semibold leading-none text-left text-indigo-600 uppercase">For our planet</p>
+                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For our planet</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WE DO CARE</h3>
                     <p class="mt-5 text-lg text-gray-700 text md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem delectus laboriosam, repudiandae ducimus magni nam quo sit eos quam voluptates, nisi voluptate saepe sapiente et vel tempora rem officiis veniam!</p>
                 </div>
