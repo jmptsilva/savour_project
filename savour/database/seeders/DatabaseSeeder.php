@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             AllergenicsSeeder::class,
             UserSeeder::class,
             RestaurantSeeder::class
+            OfferSeeder::class,
         ]);
     }
 }

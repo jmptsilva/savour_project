@@ -195,6 +195,7 @@
         openModals.forEach(open => {
             open.addEventListener('click', () => {
                 modal.showModal();
+                console.log('clicked')
             })
 
         })
