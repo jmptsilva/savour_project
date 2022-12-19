@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AllergenicsSeeder::class,
             UserSeeder::class,
-            RestaurantSeeder::class
-            OfferSeeder::class,
+            RestaurantSeeder::class,
+            OfferSeeder::class
         ]);
     }
 }

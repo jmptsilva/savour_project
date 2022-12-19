@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use Illuminate\Validation\Rules;
 use App\Http\Requests\StoreOfferRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class OfferController extends Controller
 {
