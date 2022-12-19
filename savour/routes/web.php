@@ -19,23 +19,30 @@ use Termwind\Components\Raw;
 */
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('welcome/welcome');
 })->name('welcome');
 
 Route::get('/menu', function () {
-    return view('menu');
+    return view('welcome/menu');
 })->name('menu');
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('welcome/contact');
 })->name('contact');
 
 Route::get('/about', function () {
-    return view('about');
+    return view('welcome/about');
 })->name('about');
 
+
+
+Route::get('/successCheckout', function () {
+    return view('/checkOutPopup');
+})->name('checkoutPopup');
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('auth/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

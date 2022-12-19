@@ -9,7 +9,7 @@
     <title>Savour - Save the food, save the planet</title>
 </head>
 <body>
-    @include('navbar')
+    @include('welcome/navbar')
 
 
         @yield('content')

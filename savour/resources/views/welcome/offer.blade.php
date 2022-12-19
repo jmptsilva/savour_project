@@ -149,7 +149,7 @@
                                 <span>19:00 12/12</span>
                             </p>
                             <div class="flex justify-between items-end">
-                                <a class="_detail mr-3 text-sm underline" href="#">View Detail</a>
+                                <a id="detail" class="_detail mr-3 text-sm underline" href="#">View Detail</a>
                                 <button type="button" onclick="addToCart(${offer.id})"
                                     class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
                             </div>
@@ -185,29 +185,30 @@
 </script>
 
 <script>
-    const modals = document.querySelectorAll('.modal');
-    const openModals = document.querySelectorAll('._detail');
-    const closeModals = document.querySelectorAll('._close');
+    const modal = document.getElementById('#modal');
+    const openModal = document.getElementById('#detail');
+    const closeModal = document.querySelector('._close');
 
-    modals.forEach(modal => {
+    
+
+    // modals.forEach(modal => {
+      
+    //     openModals.forEach(open => {
+        // openModal.addEventListener('click', () => {
+        //         modal.showModal();
+        //         console.log('clicked')
+        //     })
+
+       // })
+        // closeModals.forEach(close => {
+
+            // closeModal.addEventListener('click', () => {
+            //     modal.close();
+            // })
+    //     })
 
 
-        openModals.forEach(open => {
-            open.addEventListener('click', () => {
-                modal.showModal();
-                console.log('clicked')
-            })
-
-        })
-        closeModals.forEach(close => {
-
-            close.addEventListener('click', () => {
-                modal.close();
-            })
-        })
-
-
-    });
+    // });
 
 
 

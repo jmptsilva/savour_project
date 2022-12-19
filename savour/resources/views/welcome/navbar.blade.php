@@ -131,8 +131,20 @@
                                     <strong class="cart-total-title">Total</strong>
                                     <span class="cart-total-price">$0</span>
                                 </div>
+                                @if (Auth::check())
+                                <form action="{{ route('log.checkout') }}" method="GET">
+                                    @csrf
                                 <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
-                                    type="button">PURCHASE</button>
+                                    type="submit">PURCHASE</button>
+                                </form>
+                                @else
+                                <form action="{{ route('checkout') }}" method="GET">
+                                    
+                                <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
+                                    type="submit">PURCHASE</button>
+                                </form>
+
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -174,6 +186,7 @@
     const total = document.querySelector('.cart-total-price')
     const cartIconNbs = document.querySelectorAll('._cartIconNb')
     const cartWrap = document.querySelector("._itemWrap")
+
     //cart array to save all items in the cart
     let cart = JSON.parse(localStorage.getItem("CART")) || [];
     
@@ -208,8 +221,8 @@
  
     //calculate total
   
-    function rendertotal() {
-        let totalPrice=0 ,totalItems = 0;
+    function rendertotal(totalEl) {
+        let totalPrice=0 , totalItems = 0;
 
         cart.forEach((item)=>{
             totalPrice += item.price *item.qtyInCart;
@@ -217,7 +230,7 @@
 
         })
 
-        total.innerHTML =`$ ${totalPrice.toFixed(2)}`
+        totalEl.innerHTML =`$ ${totalPrice.toFixed(2)}`
         cartIconNbs.forEach(nb => {
             nb.innerHTML = totalItems;
         });
@@ -226,10 +239,10 @@
 
     // render cart item
     
-    function renderCartItems() {
-        cartWrap.innerHTML=""; // clear cart element
+    function renderCartItems(cartwrap) {
+        cartwrap.innerHTML=""; // clear cart element
         cart.forEach((data)=>{
-            cartWrap.innerHTML += `  <tr class="_cart-row _item-id-${data.id}">
+            cartwrap.innerHTML += `  <tr class="_cart-row _item-id-${data.id}">
 
                          <td class="align-baseline _foodInCart text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">${data.name}
                          </td>
@@ -260,8 +273,8 @@
        //update cart
 
        function updateCart() {
-        renderCartItems();
-        rendertotal();
+        renderCartItems(cartWrap);
+        rendertotal(total);
 
         //save cart to local storage
 

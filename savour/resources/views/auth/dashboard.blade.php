@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    @include('navbar')
+    @include('welcome/navbar')
 
     <div class="flex flex-row">
         <div class="flex flex-col items-center mt-10">

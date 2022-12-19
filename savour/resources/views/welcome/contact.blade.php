@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    @include('navbar')
+    @include('welcome/navbar')
     <section class="bg-[#161616]">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>

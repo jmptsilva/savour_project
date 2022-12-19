@@ -2,8 +2,8 @@
 
 @section('content')
  
-  @include('hero')
-  @include('mission')
-  @include('partner')
+  @include('welcome/hero')
+  @include('welcome/mission')
+  @include('welcome/partner')
 
 @endsection
