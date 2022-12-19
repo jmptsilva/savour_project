@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    @include('navbar')
+    @include('welcome/navbar')
     <div class="flex flex-col lg:flex lg:flex-row lg:ml-40 lg:mt-10">
 
         <!--VECTOR-->
