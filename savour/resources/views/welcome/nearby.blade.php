@@ -61,6 +61,8 @@
         let directionService;
         let directionRenderer;
         let infoWindow;
+
+
         let restaurantName;
 
 
@@ -162,6 +164,8 @@
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
                             directionRenderer.setDirections(response);
 
+                            
+
                             if (!infoWindow) {
                                 infoWindow = new google.maps.InfoWindow();
                             }
@@ -173,7 +177,10 @@
                                 `
 
                             );
-                            infoWindow.open(map, marker);
+                            setTimeout(() => {
+                                
+                                infoWindow.open({map, anchor:marker});
+                            }, 2000);
                         }
 
                     })
