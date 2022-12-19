@@ -1,8 +1,8 @@
 @extends('template')
 
 @section('content')
-    <div class="h-screen flex ">
-        <div class=" w-1/2 bg-black  hover:bg-black/90 ">
+    <div class="grid row-1 h-screen md:flex ">
+        <div class="w-screen md:w-1/2 bg-black  hover:bg-black/90 ">
             <!--PROCEED AS A GUEST-->
             <div class="flex flex-col items-center mt-20">
                 <h1 class="text-white font-bold text-4xl font-sans ">Proceed as a guest</h1>
@@ -109,11 +109,11 @@
         <!-----SIGN IN SECTION----->
 
 
-        <div class="w-1/2 bg-white">
+        <div class="w-screen md:w-1/2 bg-white ">
 
             <!--PROCEED WITH SIGN IN-->
-            <div class="flex  flex-col items-center mt-20">
-                <h1 class="text-black font-bold text-4xl font-sans ">Log In</h1>
+            <div class="flex flex-col items-center mt-20">
+                <h1 class="text-black font-bold text-4xl font-sans">Log In</h1>
                 <div class="flex flex-row items-baseline">
                     <p class="text-black mt-1">Welcome back to
 
@@ -122,36 +122,37 @@
                     </p>
                     </p>
                 </div>
+                <div class="justify-around items-center mt-20">
+                    <form action="{{route('check-out-login')}}" method="POST" class="w-[300px]">
+    
+                    @csrf
+                        <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                            </svg>
+                            <input class="pl-2 outline-none border-none" type="text" name="email" id="email"
+                                placeholder="Email Address" />
+                        </div>
+                        <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <input class="pl-2 outline-none border-none" type="password" name="password" id="password"
+                                placeholder="Password" />
+                        </div>
+                        <button type="submit"
+                            class="block w-full bg-[#d49a3d] mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
+                        <span class="text-sm ml-2 hover:text-[#d49a3d] cursor-pointer mb-20">Forgot Password ?</span>
+                    </form>
+                </div>
             </div>
 
-            <div class="justify-around items-center mt-20 ml-[210px]">
-                <form action="{{route('check-out-login')}}" method="POST" class="w-[300px]">
-
-                @csrf
-                    <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                        </svg>
-                        <input class="pl-2 outline-none border-none" type="text" name="email" id="email"
-                            placeholder="Email Address" />
-                    </div>
-                    <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <input class="pl-2 outline-none border-none" type="password" name="password" id="password"
-                            placeholder="Password" />
-                    </div>
-                    <button type="submit"
-                        class="block w-full bg-[#d49a3d] mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
-                    <span class="text-sm ml-2 hover:text-[#d49a3d] cursor-pointer">Forgot Password ?</span>
-                </form>
-            </div>
+            
         </div>
     </div>
 

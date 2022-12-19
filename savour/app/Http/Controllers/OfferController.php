@@ -9,6 +9,7 @@ use App\Models\Offer;
 use Illuminate\Validation\Rules;
 use App\Http\Requests\StoreOfferRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class OfferController extends Controller
@@ -30,7 +31,10 @@ class OfferController extends Controller
     // QUERY ALL ACTIVE OFFERS
     public function all_active()
     {
-        $offers = Offer::where('is_active', '=', '1')->get();
+        $offers = Offer::where('is_active', '=', '1')
+        ->join('restaurants','restaurants.id','=','offers.restaurant_id')
+        ->select('restaurants.address','restaurants.phone_number','offers.*', DB::raw('restaurants.name as rest_name'))
+        ->get();
 
         return $offers->tojson(JSON_PRETTY_PRINT);  //CHANGE RETURN VIEW CHOOSE WITH TEAM
     }

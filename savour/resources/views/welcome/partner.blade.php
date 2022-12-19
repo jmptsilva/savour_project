@@ -1,5 +1,5 @@
  <!-----------Partner session------------------>
- <section class="_partner w-full bg-[#17191C] flex flex-col items-center">
+ <section class="_partner w-full bg-[#17191C] flex flex-col items-center pb-14">
      <h3 class="text-4xl lg:text-6xl mt-6 p-3 py-10 text-white">OUR PARTNERS</h3>
      <div class="flex items-center justify-center w-[800px] py-8 sm:py-8 px-10">
          <button aria-label="slide backward" class="absolute z-30 left-[-10px] md:left-[60px] xl:left-[100px] ml-10 cursor-pointer" id="prev">

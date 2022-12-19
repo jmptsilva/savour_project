@@ -10,7 +10,7 @@
 <body>
 
     <!--HERO BG-->
-    <div class="bg-[url('/Applications/MAMP/htdocs/Final-Project/savour_project/savour/public/assets/img/hero.jpg')] w-screen h-[844px] lg:m-w-screen lg:h-[790px] bg-cover bg-no-repeat opacity-80">
+    <div class="bg-[url('/Applications/MAMP/htdocs/Final-Project/savour_project/savour/public/assets/img/hero.jpg')] w-screen h-[844px] lg:max-w-screen-xl lg:h-[790px] bg-cover bg-no-repeat opacity-80">
 
         <!--HERO TEXT & LOGO-->
 
