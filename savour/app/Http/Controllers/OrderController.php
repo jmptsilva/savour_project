@@ -140,10 +140,11 @@ class OrderController extends Controller
 
     public function user_orders_detail($id)
     {
-        $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
+        $orders = User::select('orders.id','orders.created_at', 'restaurants.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
             ->join('orders', 'orders.user_id', '=', 'users.id')
             ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
             ->where('orders.id', '=', $id)
             ->get();
         return  $orders->tojson(JSON_PRETTY_PRINT);
