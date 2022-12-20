@@ -24,7 +24,7 @@
 
         </div>
 
-        <div class="_mainlist flex flex-col md:flex-row items-center justify-center">
+        <div class="_mainlist flex flex-col md:flex-row items-start justify-center">
 
             <div class="_filter flex w-[250px] flex-col gap-4 ">
                 <h3

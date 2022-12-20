@@ -101,6 +101,12 @@
 
             </form>
 
+            <a href="{{route('restaurant.login')}}" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
+                Login as Restaurant?</a>
+
+            
+
+
             <!--Register Form -->
             <form action="{{route('register')}}" method="POST" class="hidden registerForm register">
                 @csrf
@@ -149,7 +155,7 @@
         </div>
     </div>
     </div>
-    @include('footer')
+    @include('welcome/footer')
     <script>
         const loginBtn = document.querySelector(".loginBtn")
         const registerBtn = document.querySelector(".registerBtn")

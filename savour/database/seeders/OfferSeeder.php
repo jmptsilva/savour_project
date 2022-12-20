@@ -127,7 +127,7 @@ class OfferSeeder extends Seeder
 
             [
 
-                'name' => 'Sweet and sour chicken',
+                'name' => 'Sweet chicken',
 
                 'restaurant_id' => '1',
 

@@ -37,7 +37,7 @@ class Offer extends Model
     //         get: fn () => $this->attributes['price'] . ' €',
     //     );
     // }
-
+    protected $table = 'offers';
     protected $fillable = [
         'restaurant_id',
         'description',
@@ -46,6 +46,8 @@ class Offer extends Model
         'quantity',
         'price',
         'is-active',
+        'created_at',
+        'updated_at',
     ];
 
     public function getPriceWithEuroAttribute()
