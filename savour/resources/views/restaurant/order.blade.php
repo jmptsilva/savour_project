@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
@@ -95,7 +96,18 @@
         </div>
         </label>
     </div>
-
+    <script>
+        fetch("{{ route('all_order_by_restaurant',['id'=>Auth::user()->id] ) }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(results) {
+                // Once AJAX call is done
+                console.log(results);
+            })
+    </script>
 </body>
 
 </html>

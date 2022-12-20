@@ -59,7 +59,7 @@
             <div class="flex flex-col">
                 <!-- Avatar -->
                 <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/1.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -90,7 +90,7 @@
             <div class="flex flex-col">
                 <!-- Avatar -->
                 <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634896941598-b6b500a502a7?fit=clamp&w=400&h=400&q=80">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/2.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -121,7 +121,7 @@
             <div class="flex flex-col">
                 <!-- Avatar -->
                 <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?fit=clamp&w=400&h=400&q=80">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/3.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -148,11 +148,11 @@
             </div>
         </div>
         <!-- Member #4 -->
-        <div class="w-full md:w-6/12 lg:w-6/12 mb-6 px-6 sm:px-6 lg:px-4">
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
                 <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1635003913011-95971abba560?fit=clamp&w=400&h=400&q=80">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/5.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -178,12 +178,41 @@
                 </div>
             </div>
         </div>
-        <!-- Member #5 -->
-        <div class="w-full md:w-6/12 lg:w-6/12 mb-6 px-6 sm:px-6 lg:px-4">
+        <!-- Member blank -->
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
                 <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="">
+                </a>
+                <!-- Details -->
+                <div class="text-center mt-6">
+                    <!-- Name -->
+                    <h1 class="text-gray-900 text-xl font-bold mb-1">
+
+                    </h1>
+
+                    <!-- Title -->
+                    <div class="text-gray-700 font-light mb-2">
+
+                    </div>
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                        <!-- Linkedin -->
+                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Member #5 -->
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
+            <div class="flex flex-col">
+                <!-- Avatar -->
+                <a href="#" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/4.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -211,8 +240,8 @@
         </div>
         @include('footer')
         <script>
-             about.classList.add("_activePage");
-             contact.classList.remove("_activePage");
+            about.classList.add("_activePage");
+            contact.classList.remove("_activePage");
             _menu.classList.remove("_activePage");
             welcome.classList.remove("_activePage")
         </script>
