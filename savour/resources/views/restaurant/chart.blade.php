@@ -69,7 +69,7 @@
 
                     <div class="shadow-lg rounded-lg overflow-hidden">
                         <div class="flex row">
-                            <div class="_chartSummary">FoodSave Total</div>
+                            <div class="_chartSummary">FoodSaved Total</div>
                             <div class="_chartSummary sumFoodSave">84</div>
                             <div class="_chartSummary">Plates</div>
                         </div>
