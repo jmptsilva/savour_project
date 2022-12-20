@@ -26,14 +26,14 @@ class ContactUsController extends Controller
             'message' => 'required'
         ]);
 
-        Mail::send('mail', array(
+        Mail::send('mail-content', array(
             'name' => $request->name,
             'email' => $request->email,
             'subject' => $request->subject,
-            'user_query' => $request->message,
+            'messages' => $request->message,
         ), function ($message) use ($request) {
             $message->from($request->email);
-            $message->to('', 'Admin')->subject($request->subject);
+            $message->to('dfzsilva@live.com.pt', 'Admin')->subject($request->subject);
         });
 
         return back()->with('success', 'We have received your message. We\'ll contact you as soon as possible.');
