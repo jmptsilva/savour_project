@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ValuesMissionCalc;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Termwind\Components\Raw;
 
@@ -18,9 +20,7 @@ use Termwind\Components\Raw;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome/welcome');
-})->name('welcome');
+Route::get('/welcome', [WelcomeController::class, 'create'])->name('welcome');
 
 Route::get('/menu', function () {
     return view('welcome/menu');
