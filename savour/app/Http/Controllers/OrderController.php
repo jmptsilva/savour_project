@@ -138,7 +138,7 @@ class OrderController extends Controller
         return  $orders->tojson(JSON_PRETTY_PRINT);
     }
 
-    public function user_orders($id)
+    public function user_orders_detail($id)
     {
         $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
             ->join('orders', 'orders.user_id', '=', 'users.id')
