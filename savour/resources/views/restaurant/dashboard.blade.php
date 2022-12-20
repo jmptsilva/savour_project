@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
@@ -13,40 +14,28 @@
     @include('/restaurant/sidebar')
     <script scr="http://unpkg.com/tailwindcss-jit-cdn"></script>
     <div class="ml-[300px]">
-        <div class="shadow-md w-auto mt-4">
+        <div class="shadow-md w-auto mt-4 flex flex-col">
             <!--Table Head -->
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="py-3 px-6">ORDER NUMBER</th>
-                        <th scope="col" class="py-3 px-6">CUSTOMER NAME</th>
-                        <th scope="col" class="py-3 px-6">TOTAL</th>
-                        <th scope="col" class="py-3 px-6">ORDER TIME</th>
-                        <th scope="col" class="py-3 px-6">ORDER DATE</th>
-                        <th scope="col" class="py-3 px-6">STATUS</th>
-                        <th scope="col" class="py-3 px-6">DETAILS</th>
+                        <th scope="col" class="py-3">ORDER NUMBER</th>
+                        <th scope="col" class="py-3">CUSTOMER NAME</th>
+                        <th scope="col" class="py-3">TOTAL</th>
+                        <th scope="col" class="py-3">ORDER TIME</th>
+                        <th scope="col" class="py-3">ORDER DATE</th>
+                        <th scope="col" class="py-3">STATUS</th>
+                        <th scope="col" class="py-3">DETAILS</th>
                     </tr>
                 </thead>
             </table>
             <!--Table Data 1 -->
-            <div class="overflow-hidden border-t mr-5">
+            <div class="overflow-hidden border-t mr-5 w-full">
                 <label>
                     <input class="absolute opacity-0 peer" type="checkbox" />
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                        <tbody>
-                            <tr class="bg-white border-b flex justify-around dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="py-2">Reference</td>
-                                <td class="py-2">Ning Hsin Lee</td>
-                                <td class="py-2 ml-11">40</td>
-                                <td class="py-2">15:30:24</td>
-                                <td class="py-2">12 Dec 2022</td>
-                                <td class="py-2">Closed</td>
-                                <td class="py-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer border-2 rounded">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                    </svg>
-                                </td>
-                            </tr>
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
+                        <tbody class="dataApi">
+
                         </tbody>
                     </table>
                     <div class="bg-gray-100 max-h-0 peer-checked:max-h-screen flex flex-row justify-around">
@@ -95,6 +84,36 @@
         </div>
         </label>
     </div>
+
+    <script>
+        fetch("{{ route('active',['id'=>Auth::user()->id] ) }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(results) {
+                console.log(results);
+                let value = "";
+
+                results.forEach(data => {
+                    value += `<tr class="bg-white border-b  dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="py-2">${data.id}</td>
+                                <td class="py-2">${data.first_name} ${data.last_name}</td>
+                                <td class="py-2">${data.total}</td>
+                                <td class="py-2">${data.created_at.substring(11,19)}</td>
+                                <td class="py-2">${data.created_at.substring(0,10)}</td>
+                                <td class="py-2">Active</td>
+                                <td class="py-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer border-2 rounded">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                    </svg>
+                                </td>
+                            </tr>`
+                });
+                document.querySelector(".dataApi").innerHTML = value;
+            })
+    </script>
 </body>
 
 </html>

@@ -60,7 +60,7 @@ c65 -35 113 -97 135 -170 10 -36 24 -60 40 -71 24 -15 29 -15 78 0 29 10 68
                         </g>
                     </svg>
                     <div class="flex flex-row ml-5 items-center">
-                        <div class="text-black text-[50px] font-normal">1250</div>
+                        <div class="text-black text-[50px] font-normal">{{ round($soldMeals * 0.4, 2)}}</div>
                         <div class="text-black ml-3 text-[25px]">KGS</div>
                     </div>
                     <div class="text-slate-300 text-[20px] font-normal ml-5">Food Save</div>
@@ -107,7 +107,7 @@ c28 15 65 38 81 52 45 38 92 134 99 204 6 56 5 62 -19 86 -56 56 -124 24 -138
                             </g>
                         </svg>
                         <div class="flex flex-row ml-5 lg:ml-3 items-center">
-                            <div class="text-black text-[50px] font-normal">200</div>
+                            <div class="text-black text-[50px] font-normal">{{ round($soldMeals * 0.4 * 0.065 * 1000, 2)}}</div>
                             <div class="text-black ml-3 text-[25px]">G</div>
                         </div>
                         <div class="text-slate-300 text-[20px] lg:text-[18px] font-normal ml-5">Less methane emission</div>
@@ -151,13 +151,26 @@ l-128 -6 0 164 c0 534 -149 1085 -565 2095 -156 378 -171 432 -162 599 16 292
                     </svg>
 
                     <div class="flex flex-row ml-5 items-center">
-                        <div class="text-black text-[50px] font-normal">950</div>
-                        <div class="text-black ml-3 text-[25px]"></div>
+                        <div class="text-black text-[50px] font-normal">{{ round($soldMeals * 600 / 860.4, 2)}}</div>
+                        <div class="text-black ml-3 text-[25px]">KWh</div>
                     </div>
                     <div class="text-slate-300 text-[20px] font-normal ml-5">Savour user</div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        fetch("{{ route('active_offers') }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(results) {
+                // Once AJAX call is done
+                console.log(results);
+            });
+    </script>
+</body>
 
 </html>

@@ -72,16 +72,17 @@
                 <div class="form-group mb-6">
                     <!--FORM Email -->
                     <input type="email" name="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email" required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!--FORM PASSWORD-->
                 <input type="password" name="password" class="form-control focus:z-4 _formControl" id="exampleInputPassword1" placeholder="Password" required>
-
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 <a href="{{route('password.request')}}" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
                     Forgot password?</a>
                 <div class="flex items-center mr-4 mb-4">
-                    <input checked type="checkbox" value="" class="w-4 h-4 text-[#826343] bg-gray-100 rounded border-gray-300 focus:ring-[#826343] dark:focus:ring-[#826343] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label class=" form-check-label inline-block text-white" for="exampleCheck1">Remember me</label>
+                    <input type="checkbox" value="" class="w-4 h-4 text-[#826343] bg-gray-100 rounded border-gray-300 focus:ring-[#826343] dark:focus:ring-[#826343] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label class="form-check-label inline-block text-white" for="exampleCheck1">Remember me</label>
                 </div>
                 <button type="submit" class="px-6 py-2.5 bg-[#826343] text-white
       font-medium
@@ -120,7 +121,7 @@
                 <div class="mt-3 form-group form-check mb-6">
                     <div class="flex items-center mr-4 mb-4">
                         <input checked type="checkbox" value="" class="w-4 h-4 text-[#826343] bg-gray-100 rounded border-gray-300 focus:ring-[#826343] dark:focus:ring-[#826343] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label class=" form-check-label inline-block text-white" for="exampleCheck1">I agree to the
+                        <label class="form-check-label inline-block text-white" for="exampleCheck1">I agree to the
                             <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>
                         </label>
                     </div>
@@ -149,7 +150,7 @@
         </div>
     </div>
     </div>
-    @include('footer')
+    @include('welcome/footer')
     <script>
         const loginBtn = document.querySelector(".loginBtn")
         const registerBtn = document.querySelector(".registerBtn")

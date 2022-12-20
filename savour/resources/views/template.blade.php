@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,16 @@
     @vite('resources/css/app.css')
     <title>Savour - Save the food, save the planet</title>
 </head>
+
 <body>
     @include('welcome/navbar')
 
 
-        @yield('content')
-   
+    @yield('content')
 
 
- @include('footer')
+
+    @include('welcome/footer')
 </body>
+
 </html>

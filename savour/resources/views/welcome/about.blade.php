@@ -14,7 +14,17 @@
         <div class="flex flex-col px-8 mx-auto space-y-12 max-w-7xl xl:px-12">
             <div class="relative">
                 <h2 class="w-full text-3xl font-bold text-center sm:text-4xl md:text-5xl"> WHO WE ARE</h2>
-                <p class="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio perferendis, incidunt iste rem quibusdam aliquid nemo omnis quisquam dignissimos rerum ullam itaque, officia earum magni enim similique alias consectetur quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam earum quisquam nulla, distinctio sint quia quo voluptates error, nisi, laborum saepe dicta id cumque nobis blanditiis debitis accusantium dolor eaque?</p>
+                <p class="w-full py-8 mx-auto -mt-2 text-lg text-center text-gray-700 intro sm:max-w-3xl">In Luxembourg alone, an average of 118 kg
+                    of food waste per person ends up in the bin each year.
+
+                    Creating food consumes a lot of energy and often
+                    results in long transport routes. <br><br>
+
+                    Our goal is to save energy by providing restaurants with the opportunity to offload meals <br> that are due to be spoiled
+
+
+
+                </p>
             </div>
             <div class="flex flex-col mb-8 animated fadeIn sm:flex-row">
                 <div class="flex items-center mb-8 sm:w-1/2 md:w-5/12 sm:order-last">
@@ -23,7 +33,10 @@
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pr-16">
                     <p class="mb-2 text-sm font-semibold leading-none text-left text-[#057840] uppercase">For User</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE DO</h3>
-                    <p class="mt-5 text-lg text-gray-700 text md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit vel reprehenderit ipsam, iure provident minus officiis tempore ex error. Repellat blanditiis animi temporibus facilis qui natus magni pariatur ullam aliquid.</p>
+                    <p class="mt-5 text-lg text-gray-700 text md:text-left">We offer our users the opportunity to enjoy meals that are approaching their expiration date at a discounted price. <br>
+                        The user can browse our restaurants and meals to see what is available each day. <br>The user can create an account, place their order, and make their payment through our website.</p>
+
+
                 </div>
             </div>
             <div class="flex flex-col mb-8 animated fadeIn sm:flex-row">
@@ -33,7 +46,7 @@
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pl-16">
                     <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For restaurant</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE OFFER</h3>
-                    <p class="mt-5 text-lg text-gray-700 text md:text-left">Backed by data, these templates have been crafted for ultimate optimization. Now, converting your visitors into customers is easier than ever before.</p>
+                    <p class="mt-5 text-lg text-gray-700 text md:text-left">We offer restaurants easy access to our site where they can upload the current meals they wish to sell at a discounted price.</p>
                 </div>
             </div>
             <div class="flex flex-col mb-8 animated fadeIn sm:flex-row">
@@ -43,7 +56,7 @@
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pr-16">
                     <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For our planet</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WE DO CARE</h3>
-                    <p class="mt-5 text-lg text-gray-700 text md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem delectus laboriosam, repudiandae ducimus magni nam quo sit eos quam voluptates, nisi voluptate saepe sapiente et vel tempora rem officiis veniam!</p>
+                    <p class="mt-5 text-lg text-gray-700 text md:text-left">We care about our planet. When we save food, we are also saving energy.<br> Lots of energy is consumed when creating food, not to mention all the gasoline being wasted making deliveries. Our goal is to make positive impact on the overall food waste statistics for Luxembourg. </p>
                 </div>
             </div>
 
@@ -58,8 +71,8 @@
         <div class="w-full md:w-6/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
-                <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80">
+                <a href="https://www.linkedin.com/in/afonsopalmamorais/" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/1.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -70,13 +83,13 @@
 
                     <!-- Title -->
                     <div class="text-gray-700 font-light mb-2">
-                        Founder & Specialist
+                        Back-End Developer <br> Conflict Manager
                     </div>
                     <!-- Social Icons -->
                     <div class="flex items-center justify-center opacity-50 hover:opacity-100
                                 transition-opacity duration-300">
                         <!-- Linkedin -->
-                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                        <a href="https://www.linkedin.com/in/afonsopalmamorais/" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
                             <svg class="w-6 h-6 text-blue-500 fill-current mx-auto mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                             </svg>
@@ -89,8 +102,8 @@
         <div class="w-full md:w-6/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
-                <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634896941598-b6b500a502a7?fit=clamp&w=400&h=400&q=80">
+                <a href="https://www.linkedin.com/in/ninghsinlee/" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/2.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -101,13 +114,13 @@
 
                     <!-- Title -->
                     <div class="text-gray-700 font-light mb-2">
-                        Founder & Specialist
+                        Front-End Developer <br> UX|UI designer
                     </div>
                     <!-- Social Icons -->
                     <div class="flex items-center justify-center opacity-50 hover:opacity-100
                                 transition-opacity duration-300">
                         <!-- Linkedin -->
-                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                        <a href="https://www.linkedin.com/in/ninghsinlee/" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
                             <svg class="w-6 h-6 text-blue-500 fill-current mx-auto mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                             </svg>
@@ -120,8 +133,8 @@
         <div class="w-full md:w-6/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
-                <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?fit=clamp&w=400&h=400&q=80">
+                <a href="https://www.linkedin.com/in/jmptsilva/" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/3.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -132,13 +145,13 @@
 
                     <!-- Title -->
                     <div class="text-gray-700 font-light mb-2">
-                        Founder & Specialist
+                        Back-End Developer <br> Git Master
                     </div>
                     <!-- Social Icons -->
                     <div class="flex items-center justify-center opacity-50 hover:opacity-100
                                 transition-opacity duration-300">
                         <!-- Linkedin -->
-                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                        <a href="https://www.linkedin.com/in/jmptsilva/" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
                             <svg class="w-6 h-6 text-blue-500 fill-current mx-auto mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                             </svg>
@@ -148,11 +161,11 @@
             </div>
         </div>
         <!-- Member #4 -->
-        <div class="w-full md:w-6/12 lg:w-6/12 mb-6 px-6 sm:px-6 lg:px-4">
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
-                <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1635003913011-95971abba560?fit=clamp&w=400&h=400&q=80">
+                <a href="http://www.linkedin.com/in/chayanee-sornprayoon" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/5.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -163,13 +176,13 @@
 
                     <!-- Title -->
                     <div class="text-gray-700 font-light mb-2">
-                        Founder & Specialist
+                        Front-End Developer <br> UX|UI designer
                     </div>
                     <!-- Social Icons -->
                     <div class="flex items-center justify-center opacity-50 hover:opacity-100
                                 transition-opacity duration-300">
                         <!-- Linkedin -->
-                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                        <a href="http://www.linkedin.com/in/chayanee-sornprayoon" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
                             <svg class="w-6 h-6 text-blue-500 fill-current mx-auto mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                             </svg>
@@ -178,12 +191,41 @@
                 </div>
             </div>
         </div>
-        <!-- Member #5 -->
-        <div class="w-full md:w-6/12 lg:w-6/12 mb-6 px-6 sm:px-6 lg:px-4">
+        <!-- Member blank -->
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
             <div class="flex flex-col">
                 <!-- Avatar -->
-                <a href="#" class="mx-auto">
-                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80">
+                <a href="https://www.linkedin.com/in/mark-whicher/" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="">
+                </a>
+                <!-- Details -->
+                <div class="text-center mt-6">
+                    <!-- Name -->
+                    <h1 class="text-gray-900 text-xl font-bold mb-1">
+
+                    </h1>
+
+                    <!-- Title -->
+                    <div class="text-gray-700 font-light mb-2">
+
+                    </div>
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center opacity-50 hover:opacity-100
+                                transition-opacity duration-300">
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/mark-whicher/" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Member #5 -->
+        <div class="w-full md:w-4/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
+            <div class="flex flex-col">
+                <!-- Avatar -->
+                <a href="https://www.linkedin.com/in/mark-whicher/" class="mx-auto">
+                    <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100" src="/assets/profile-img/4.png">
                 </a>
                 <!-- Details -->
                 <div class="text-center mt-6">
@@ -194,13 +236,13 @@
 
                     <!-- Title -->
                     <div class="text-gray-700 font-light mb-2">
-                        Founder & Specialist
+                        Front-End Developer <br> Content Creator | Tester
                     </div>
                     <!-- Social Icons -->
                     <div class="flex items-center justify-center opacity-50 hover:opacity-100
                                 transition-opacity duration-300">
                         <!-- Linkedin -->
-                        <a href="#" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
+                        <a href="https://www.linkedin.com/in/mark-whicher/" class="flex rounded-full hover:bg-indigo-50 h-10 w-10">
                             <svg class="w-6 h-6 text-blue-500 fill-current mx-auto mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                             </svg>
@@ -209,13 +251,15 @@
                 </div>
             </div>
         </div>
-        @include('footer')
-        <script>
-             about.classList.add("_activePage");
-             contact.classList.remove("_activePage");
-            _menu.classList.remove("_activePage");
-            welcome.classList.remove("_activePage")
-        </script>
+    </div>
+
+    @include('welcome/footer')
+    <script>
+        about.classList.add("_activePage");
+        contact.classList.remove("_activePage");
+        _menu.classList.remove("_activePage");
+        welcome.classList.remove("_activePage")
+    </script>
 </body>
 
 </html>

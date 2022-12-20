@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
 
 </head>
@@ -31,7 +32,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl">€11,257</p>
+                    <p class="text-2xl sumRevenue">€</p>
                     <p>Sales</p>
                 </div>
             </div>
@@ -68,7 +69,7 @@
 
                     <div class="shadow-lg rounded-lg overflow-hidden">
                         <div class="flex row">
-                            <div class="_chartSummary">FoodSave Total</div>
+                            <div class="_chartSummary">FoodSaved Total</div>
                             <div class="_chartSummary sumFoodSave">84</div>
                             <div class="_chartSummary">Plates</div>
                         </div>
@@ -84,6 +85,21 @@
                         <canvas class="p-10 chartLine" id="chartLine"></canvas>
                     </div>
                 </div>
+                <!-- SUM ALL REVENUE DATA -->
+                <script>
+                    fetch("{{route('order_history_by_restaurant',['id'=>Auth::user()->id] ) }}", {
+                            method: 'get',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        }).then(res => res.json())
+                        .then(function(results) {
+                            console.log(results[0])
+                            document.querySelector('.sumRevenue').innerHTML = results[0].Total;
+                        });
+                </script>
+
+
                 <!-- Required chart.js -->
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>

@@ -12,7 +12,7 @@
 <body>
     @include('welcome/navbar')
 
-    <div class="flex flex-row">
+    <div class="flex flex-col-reverse lg:flex lg:flex-row">
         <div class="flex flex-col items-center mt-10">
             <!----Profile Picture---->
 
@@ -59,7 +59,7 @@
 
                 <!----Record Section ---->
 
-                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 sm:12/12">
                     <h4 class="text-xl text-gray-900 font-bold">Record</h4>
                     <div class="px-6 py-6 gap-8 mt-4 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                         <div class="flex items-center justify-between">
@@ -109,7 +109,7 @@
 
         <!----Order History---->
         <div>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-10">
+            <table class="w-[290px] center text-sm text-left text-gray-500 dark:text-gray-400 mt-10 lg:w-full ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="py-3 px-6">
@@ -120,14 +120,14 @@
                             Restaurant Name
                         </th>
 
-                        <th scope="col" class="py-3 px-6">
+                        <th scope="col" class="py-3 px-6 hidden md:inline-flex">
                             ADDRESS
                         </th>
 
-                        <th scope="col" class="py-3 px-6">
+                        <th scope="col" class="py-3 px-6 ">
                             Order Date
                         </th>
-                        <th scope="col" class="py-3 px-6">
+                        <th scope="col" class="py-3 px-6 hidden md:inline-flex">
                             Order Time
                         </th>
                         <th scope="col" class="py-3 px-6">
@@ -146,14 +146,14 @@
                             <div ">BomBay</div>
                     </td>
     
-                    <td class=" py-3 px-6">
+                    <td class=" py-3 px-6 hidden md:inline-flex">
                                 <div> 123 Rue de Strassbourg Centre Ville</div>
                         </td>
 
-                        <td class="py-3 px-6">
+                        <td class="py-3 px-6 ">
                             <div>12 Dec 2030</div>
                         </td>
-                        <td class="py-3 px-6">
+                        <td class="py-3 px-6 hidden md:inline-flex">
                             <div>12:00</div>
                         </td>
                         <td class="py-3 px-6">
