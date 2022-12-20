@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="grid row-1 w-screen h-screen md:flex ">
-        <div class="w-1/2 bg-black  hover:bg-black/90 ">
+        <div class="w-screen md:w-1/2 bg-black  hover:bg-black/90 pb-20">
             <!--PAYMENT -->
             <div class="flex flex-col items-center mt-20">
                 <h1 class="text-white font-bold text-4xl font-sans ">Payment Details</h1>
@@ -115,10 +115,10 @@
         <!--SUMMARY-->
 
 
-        <div class="md:flex  w-1/2 bg-white  hover:bg-white/20 ">
+        <div class="md:flex  w-screen md:w-1/2 bg-white  hover:bg-white/20 ">
             <div class="flex flex-col items-center mt-20">
                 <h1 class="text-black font-bold text-4xl font-sans mb-3">Order Summary</h1>
-                <table class="_cartItemsList w-[700px]">
+                <table class="_cartItemsList w-[300px] md:w-[700px]">
                     <thead class=" border-[#d49a3d] ">
                         <tr>
 
@@ -144,7 +144,7 @@
 
                     </tbody>
                 </table>
-                <div class="cart-total flex gap-4 text-2xl justify-center pt-10">
+                <div class="cart-total flex gap-4 text-2xl justify-center pt-10 mb-20">
                     <strong class="cart-total-title">Total</strong>
                     <span class="totalPrice">$0</span>
                 </div>
