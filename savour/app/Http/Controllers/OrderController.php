@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+
     public function order_history_by_restaurant($id)
     {
         $orders = Order::select(DB::raw('SUM(ordered_offers.price * ordered_offers.quantity) as Total'))
@@ -90,6 +92,36 @@ class OrderController extends Controller
         ->where('offers.restaurant_id', '=', $id)
             ->whereDate('ordered_offers.created_at', '>', date('d.m.Y 17:00:00'))
             ->whereDate('ordered_offers.created_at', '<', date('d.m.Y 23:59:00'))
+            ->get();
+
+        /* dd($orders); */
+        return  $orders->tojson(JSON_PRETTY_PRINT);
+    }
+
+    public function active_order_by_restaurants($id)
+    {
+        $orders = User::select('users.first_name', 'users.last_name', 'ordered_offers.order_id', 'ordered_offers.price', 'ordered_offers.quantity', 'offers.restaurant_id', 'orders.created_at')
+            ->join('orders', 'orders.user_id', '=', 'users.id')
+            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->where('offers.restaurant_id', '=', $id)
+            ->get();
+
+        /* dd($orders); */
+        return  $orders->tojson(JSON_PRETTY_PRINT);
+    }
+
+    public function active_order_by_restaurant($id)
+    {
+        $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
+        
+       /*  ->(DB::raw('users.first_name, orders.id, users.last_name, ordered_offers.order_id, offers.restaurant_id, orders.created_at, users.email, SUM(ordered_offers.price * ordered_offers.quantity) as Total') ) */
+            ->join('orders', 'orders.user_id', '=', 'users.id')
+            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->where('offers.restaurant_id', '=', $id)
+            ->where('orders.is_closed', '=', 0)
+            ->groupBy('orders.id','users.first_name','users.last_name','orders.created_at', 'users.email')
             ->get();
 
         /* dd($orders); */

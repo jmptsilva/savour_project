@@ -102,3 +102,5 @@ Route::get('/api/restaurant/week-orders/restaurant_id={id}', [OrderController::c
 Route::get('/api/restaurant/orders_breakfast/restaurant_id={id}', [OrderController::class, 'order_history_breakfast']);
 Route::get('/api/restaurant/orders_lunch/restaurant_id={id}', [OrderController::class, 'order_history_lunch']);
 Route::get('/api/restaurant/orders_dinner/restaurant_id={id}', [OrderController::class, 'order_history_dinner']);
+
+Route::get('/api/restaurant/orders/active/restaurant_id={id}', [OrderController::class, 'active_order_by_restaurant'])->name('active');
