@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth:restaurant'], 'prefix' => 'restaurant', 'as
     Route::put('update', [RestaurantController::class, 'update']);
 
     Route::get('dashboard/offers/create', [OfferController::class, 'edit'])->name('offer-create');
+    Route::post('dashboard/offers/create', [OfferController::class, 'store']);
+
     Route::put('dashboard/offers', [OfferController::class, 'update']);
 
     Route::get('dashboard/offers/update', [OfferController::class, 'edit'])->name('offer-update');
