@@ -26,6 +26,7 @@
             <!-- Secondary Navbar items -->
 
             <div class="hidden md:flex items-center space-x-3 ">
+                
                 @if (Auth::check())
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -39,6 +40,11 @@
                         Login |
                         Register</a>
                 @endif
+                @if(Auth::check())
+                <div class="right-5">
+                    <a href="#"><img src="https://static01.nyt.com/images/2021/04/03/multimedia/03xp-april/merlin_185893383_8e41433f-4a32-4b1e-bf02-457290d0d534-superJumbo.jpg" class="w-10 h-10 bg-white rounded-full"></a>
+                </div>
+                @endif
 
                 <div class="_cartBtn relative cursor-pointer fill-white"><svg xmlns="http://www.w3.org/2000/svg"
                         height="42" width="42">
@@ -49,9 +55,11 @@
                         <span class="_cartIconNb absolute top-[-3px] right-[5px] text-white ">0</span>
                     </div>
                 </div>
+                
             </div>
             <!-- Mobile menu button -->
             <div class="md:hidden flex items-center">
+                
                 <div class="_cartBtn absolute right-12 cursor-pointer">
                     <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="30" width="30">
                         <path
@@ -61,7 +69,10 @@
                         <span class="_cartIconNb absolute top-[-4px] right-[3px] text-white ">0</span>
                     </div>
                 </div>
+              
             </div>
+            
+               
             <button class=" md:hidden outline-none mobile-menu-button">
                 <svg class="w-6 h-6 text-white hover:text-[#d49a3d] " x-show="!showMenu" fill="none"
                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -69,14 +80,19 @@
                     <path d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
+       
+             
         </div>
     </div>
     </div>
     <!-- mobile menu -->
     <div class="hidden mobile-menu">
         <ul class="">
+            
             <li class="active"><a href="{{ route('welcome') }}"
-                    class="block text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold">Home</a></li>
+                class="block text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold">Home</a></li>
+                <li class="active"><a href="{{ route('welcome') }}"
+                        class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] font-semibold">Profile</a></li>
             <li><a href="{{ route('menu') }}"
                     class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Menu</a></li>
             <li><a href="{{ route('contact') }}"
@@ -85,8 +101,8 @@
             <li><a href="{{ route('about') }}"
                     class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">About
                 </a></li>
+            </ul>
             @if (Auth::check())
-        </ul>
         <div>
         <form action="{{ route('logout') }}" method="POST" class="flex justify-end px-3 py-3 ">
             @csrf
@@ -98,8 +114,9 @@
             <input type="submit" value="Login | Register"
                     class="text-sm cursor-pointer px-2 py-4 text-white bg-[#d49a3d] font-semibold"></input>
         </form>
+        </div> 
         @endif
-    </div> 
+       
     </div>
     {{-- shopping cart --}}
 

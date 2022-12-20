@@ -148,7 +148,7 @@
                                 <p> phone number: ${offer.phone_number}</p>
                             </div>
                             <div class="flex justify-end ">
-                                <button type="submit" 
+                                <button type="submit" onclick="addToCart(${offer.id})"
                                 class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
                             </div>
                         </div>
@@ -169,7 +169,6 @@
                     open.addEventListener('click', (event) => {
                         //event.preventDefault();
                         modal.showModal();
-                        console.log('clicked')
                     })
 
                 })
