@@ -159,5 +159,18 @@ l-128 -6 0 164 c0 534 -149 1085 -565 2095 -156 378 -171 432 -162 599 16 292
             </div>
         </div>
     </div>
+    <script>
+        fetch("{{ route('active_offers') }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(results) {
+                // Once AJAX call is done
+                console.log(results);
+            });
+    </script>
+</body>
 
 </html>
