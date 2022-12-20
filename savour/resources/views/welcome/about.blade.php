@@ -238,6 +238,7 @@
                 </div>
             </div>
         </div>
+        @include('footer')
         <script>
             about.classList.add("_activePage");
             contact.classList.remove("_activePage");

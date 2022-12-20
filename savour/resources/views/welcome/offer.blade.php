@@ -16,7 +16,7 @@
                     </svg>
                 </button>
             </div>
-            <a href="#">
+            <a href="javascript: scrolltoId();">
                 <div class="w-[150px] px-5 py-2 bg-green-800 hover:bg-[#D49A3D] rounded-lg text-white cursor-pointer">
                     Nearby me</div>
             </a>
@@ -32,34 +32,11 @@
                     Filter</h3>
                 <hr>
                 <div class="_boxOfCategory hidden md:flex md:flex-col">
-                    <div class="md:pl-4">
-                        <p class="text-xl my-4">By Category</p>
-                        <div class="_categories flex flex-col">
-                            <div>
-                                <input type="checkbox" name="appetizer" id="appetizer">
-                                <label for="appetizer">Appetizer</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="meal" id="Meal">
-                                <label for="Meal">Meal</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="dessert" id="dessert">
-                                <label for="dessert">Dessert</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="soup" id="soup">
-                                <label for="soup">Soup</label>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="md:pl-4">
                         <p class="text-xl my-4">By Restaurant</p>
                         <div class="_categories flex flex-col">
-                            <div>
-                                <input type="checkbox" name="burger" id="burger">
-                                <label for="burger">Burger King</label>
-                            </div>
+                            
                             <div>
                                 <input type="checkbox" name="partigiano" id="partigiano">
                                 <label for="partigiano">Partigiano</label>
@@ -119,6 +96,7 @@
 
 
 <script>
+    
     fetch("{{ route('active_offers') }}", {
             method: 'get',
             headers: {
@@ -143,13 +121,13 @@
                                 <p class="_price text-red-500 text-2xl">$${offer.price}</p>
                             </div>
                             <p class="_restaurant text-gray-700 text-base mb-1">
-                                ${offer.restaurant_id}
+                                ${offer.rest_name}
                             </p>
                             <p class="_pickup text-gray-700 text-base mb-4">
                                 <span>19:00 12/12</span>
                             </p>
                             <div class="flex justify-between items-end">
-                                <a id="detail" class="_detail mr-3 text-sm underline" href="#">View Detail</a>
+                                <a class="_detail mr-3 text-sm underline" href="#">View Detail</a>
                                 <button type="button" onclick="addToCart(${offer.id})"
                                     class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
                             </div>
@@ -165,13 +143,12 @@
                             </div>
                             <div class="flex flex-col gap-3">
                                 <p> description: ${offer.description}</p>
-                                <p> restaurant: ${offer.restaurant_id}</p>
-                                <p> address</p>
-                                <p> phone number:</p>
+                                <p> restaurant: ${offer.rest_name}</p>
+                                <p> address: ${offer.address}</p>
+                                <p> phone number: ${offer.phone_number}</p>
                             </div>
                             <div class="flex justify-end ">
-                                
-                                <button type="button"
+                                <button type="submit" 
                                 class="_addBtn inline-block px-6 py-2.5 bg-green-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#D49A3D] hover:shadow-lgfocus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">Order</button>
                             </div>
                         </div>
@@ -180,37 +157,75 @@
             });
             document.getElementById('results').innerHTML = htmlResult;
 
-           
+            const modals = document.querySelectorAll('.modal');
+            const openModals = document.querySelectorAll('._detail');
+            const closeModals = document.querySelectorAll('._close');
+
+
+
+            modals.forEach(modal => {
+
+                openModals.forEach(open => {
+                    open.addEventListener('click', (event) => {
+                        //event.preventDefault();
+                        modal.showModal();
+                        console.log('clicked')
+                    })
+
+                })
+                closeModals.forEach(close => {
+
+                    close.addEventListener('click', (event) => {
+                        //event.preventDefault();
+                        modal.close();
+                    })
+                })
+
+
+            });
+
         });
+
+
+        /// filter fetch
+
+        fetch("{{ route('all_restaurant') }}", {
+            method: 'get',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        }).then(res => res.json())
+        .then(function(restaurants) {
+            let result = "";
+            console.log(restaurants)
+            restaurants.forEach(r=>{
+                result += `<div >
+                                <input class="restaurant_filter" type="checkbox" value="${r.id}" name="${r.name}" id="${r.id}">
+                                <label for="${r.name}">${r.name}</label>
+                            </div>`
+            });
+            document.querySelector('._categories').innerHTML = result;
+            
+            const filterClicked = new Set()
+
+            document.querySelectorAll('.restaurant_filter').forEach(filter=>{
+                filter.addEventListener('input',function () {
+                    filterClicked.add(filter.value)
+                    
+                    console.log(filterClicked)
+                })
+            })
+            console.log(typeof(filterClicked))
+            
+        })
 </script>
-
 <script>
-    const modal = document.getElementById('#modal');
-    const openModal = document.getElementById('#detail');
-    const closeModal = document.querySelector('._close');
+    //scroll to nearby when click
 
-    
-
-    // modals.forEach(modal => {
-      
-    //     openModals.forEach(open => {
-        // openModal.addEventListener('click', () => {
-        //         modal.showModal();
-        //         console.log('clicked')
-        //     })
-
-       // })
-        // closeModals.forEach(close => {
-
-            // closeModal.addEventListener('click', () => {
-            //     modal.close();
-            // })
-    //     })
-
-
-    // });
-
-
+    function scrolltoId() {
+        let access = document.getElementById("nearby");
+        access.scrollIntoView({behavior: 'smooth'});
+    }
 
     //toggle the filter
     const filterClick = document.querySelector("._filter");
@@ -221,13 +236,5 @@
         categoris.classList.toggle("hidden");
     });
 
-    // //toggle the cart list
-    // const cartBtns = document.querySelectorAll("._cartBtn");
-    // const cartList = document.querySelector(".cartBox");
 
-    // cartBtns.forEach(btn => {
-    //     btn.addEventListener("mouseenter", () => {
-    //         cartList.classList.toggle("hidden");
-    //     });
-    // });
 </script>

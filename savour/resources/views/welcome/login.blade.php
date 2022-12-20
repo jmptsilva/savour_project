@@ -10,7 +10,7 @@
 
 <body>
     @include('welcome/navbar')
-    <div class="flex flex-col lg:flex lg:flex-row lg:ml-40 lg:mt-10">
+    <div class="flex flex-col lg:flex lg:flex-row lg:ml-40 lg:mt-10 pb-16 mx-auto max-w-7xl">
 
         <!--VECTOR-->
         <img src="/assets/img/meal-prep.webp" alt="meal preparation" class="hidden lg:block lg:w-[600px] lg:h-[600px] ">
@@ -149,6 +149,7 @@
         </div>
     </div>
     </div>
+    @include('footer')
     <script>
         const loginBtn = document.querySelector(".loginBtn")
         const registerBtn = document.querySelector(".registerBtn")

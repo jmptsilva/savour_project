@@ -1,6 +1,6 @@
 <!-- Navbar goes here -->
 <nav class="bg-[#161616] shadow-lg sticky top-0 w-screen z-10">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between">
             <div class="flex space-x-7">
                 <div>
@@ -30,7 +30,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" value="Logout"
-                            class="py-2 px-2 font-medium text-white hover:text-[#d49a3d] transition duration-300">
+                            class="py-2 px-2 font-medium text-white hover:text-[#d49a3d] cursor-pointer transition duration-300">
                         </input>
                     </form>
                 @else
@@ -85,7 +85,21 @@
             <li><a href="{{ route('about') }}"
                     class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">About
                 </a></li>
+            @if (Auth::check())
         </ul>
+        <div>
+        <form action="{{ route('logout') }}" method="POST" class="flex justify-end px-3 py-3 ">
+            @csrf
+            <input type="submit" value="Logout" class="text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold cursor-pointer"></input>
+        </form>
+             @else
+        <form action="{{ route('login') }}" method="POST" class="flex justify-end px-3 py-3">
+            @csrf
+            <input type="submit" value="Login | Register"
+                    class="text-sm cursor-pointer px-2 py-4 text-white bg-[#d49a3d] font-semibold"></input>
+        </form>
+        @endif
+    </div> 
     </div>
     {{-- shopping cart --}}
 
@@ -132,18 +146,17 @@
                                     <span class="cart-total-price">$0</span>
                                 </div>
                                 @if (Auth::check())
-                                <form action="{{ route('log.checkout') }}" method="GET">
-                                    @csrf
-                                <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
-                                    type="submit">PURCHASE</button>
-                                </form>
+                                    <form action="{{ route('log.checkout') }}" method="GET">
+                                        @csrf
+                                        <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
+                                            type="submit">PURCHASE</button>
+                                    </form>
                                 @else
-                                <form action="{{ route('checkout') }}" method="GET">
-                                    
-                                <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
-                                    type="submit">PURCHASE</button>
-                                </form>
+                                    <form action="{{ route('checkout') }}" method="GET">
 
+                                        <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
+                                            type="submit">PURCHASE</button>
+                                    </form>
                                 @endif
                             </div>
                         </div>
@@ -168,7 +181,7 @@
     const cartList = document.querySelector(".cartBox");
 
     cartBtns.forEach(btn => {
-        btn.addEventListener("mouseenter", () => {
+        btn.addEventListener("click", () => {
             cartList.classList.toggle("hidden");
         });
     });
@@ -189,7 +202,7 @@
 
     //cart array to save all items in the cart
     let cart = JSON.parse(localStorage.getItem("CART")) || [];
-    
+
     updateCart();
 
     // add to cart
@@ -204,33 +217,34 @@
                 // Once AJAX call is done
 
                 //check if product already exist in cart
-                if(cart.some((item) => item.id === id)){
-                    changeNBofUnites("plus",id)
-                }else{
+                if (cart.some((item) => item.id === id)) {
+                    changeNBofUnites("plus", id)
+                } else {
 
                     const item = results.find((product) => product.id === id)
-                    cart.push(
-                        {...item,
-                        qtyInCart: 1}
-                    );
+                    cart.push({
+                        ...item,
+                        qtyInCart: 1
+                    });
                 }
                 updateCart();
             })
     }
 
- 
-    //calculate total
-  
-    function rendertotal(totalEl) {
-        let totalPrice=0 , totalItems = 0;
 
-        cart.forEach((item)=>{
-            totalPrice += item.price *item.qtyInCart;
+    //calculate total
+
+    function rendertotal(totalEl) {
+        let totalPrice = 0,
+            totalItems = 0;
+
+        cart.forEach((item) => {
+            totalPrice += item.price * item.qtyInCart;
             totalItems += item.qtyInCart;
 
         })
 
-        totalEl.innerHTML =`$ ${totalPrice.toFixed(2)}`
+        totalEl.innerHTML = `$ ${totalPrice.toFixed(2)}`
         cartIconNbs.forEach(nb => {
             nb.innerHTML = totalItems;
         });
@@ -238,10 +252,10 @@
     }
 
     // render cart item
-    
+
     function renderCartItems(cartwrap) {
-        cartwrap.innerHTML=""; // clear cart element
-        cart.forEach((data)=>{
+        cartwrap.innerHTML = ""; // clear cart element
+        cart.forEach((data) => {
             cartwrap.innerHTML += `  <tr class="_cart-row _item-id-${data.id}">
 
                          <td class="align-baseline _foodInCart text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">${data.name}
@@ -270,41 +284,41 @@
                      `;
         })
     }
-       //update cart
+    //update cart
 
-       function updateCart() {
+    function updateCart() {
         renderCartItems(cartWrap);
         rendertotal(total);
 
         //save cart to local storage
 
-        localStorage.setItem("CART",JSON.stringify(cart))
+        localStorage.setItem("CART", JSON.stringify(cart))
     }
 
 
     //remove item from cart
 
     function removeItemFromCart(id) {
-        cart = cart.filter((item)=>item.id !== id);
+        cart = cart.filter((item) => item.id !== id);
 
         updateCart();
     }
 
     //change number of units for an items
-    
-    function changeNBofUnites(action,id) {
 
-        cart = cart.map((item)=>{
-            
+    function changeNBofUnites(action, id) {
+
+        cart = cart.map((item) => {
+
             let qtyInCart = item.qtyInCart
-            if(item.id === id){
-                if(action === "minus" && qtyInCart >1){
+            if (item.id === id) {
+                if (action === "minus" && qtyInCart > 1) {
                     qtyInCart--;
-                }else if(action === "plus" && qtyInCart < item.quantity){
+                } else if (action === "plus" && qtyInCart < item.quantity) {
                     qtyInCart++;
                 }
             }
-            
+
             return {
                 ...item,
                 qtyInCart,
@@ -312,10 +326,6 @@
             };
         })
         updateCart();
-        
+
     }
-
-    
-
-
 </script>

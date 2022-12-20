@@ -1,15 +1,15 @@
 
 
-    <div class="_wrap bg-[#dfdfdf]">
+    <div id="nearby" class="_wrap bg-[#dfdfdf] pb-14">
 
-        <h2 class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
+        <h2  class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
 
         <div class="grid md:grid-cols-2 justify-center justify-items-center">
             <div id="map"
                 class="_googleMap w-[300px] md:w-[400px] lg:w-[600px] grid-cols-2 h-[300px] md:h-[400px] lg:h-screen rounded-xl">
             </div>
-            <div>
-                <input id="input" type="text">
+            <div class="pt-5 md:pt-0">
+                <input id="input" type="text" class="bg-white h-10 left-0 w-[300px] rounded-full text-sm focus:outline-none">
                 <div id="_list" class="_restaurantList grid-cols-3 overflow-scroll h-[500px] ">
 
                     
@@ -61,6 +61,8 @@
         let directionService;
         let directionRenderer;
         let infoWindow;
+
+
         let restaurantName;
 
 
@@ -162,6 +164,8 @@
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
                             directionRenderer.setDirections(response);
 
+                            
+
                             if (!infoWindow) {
                                 infoWindow = new google.maps.InfoWindow();
                             }
@@ -173,7 +177,9 @@
                                 `
 
                             );
-                            infoWindow.open(map, marker);
+                           
+                                infoWindow.open({map, anchor:marker});
+                           
                         }
 
                     })
