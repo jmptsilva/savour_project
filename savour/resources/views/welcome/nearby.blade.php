@@ -1,25 +1,17 @@
 
 
-    <div id="nearby" class="_wrap bg-[#dfdfdf] pb-14">
+    <div id="nearby" class="_wrap bg-[#dfdfdf] pb-14 flex flex-col justify-center items-center">
 
-        <h2  class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
+        <h2  class="text-5xl font-bold py-[50px] text-center">Find my way to the good</h2>
 
-        <div class="grid md:grid-cols-2 justify-center justify-items-center">
+
+            <input id="input" type="text" class="bg-white h-10 w-[300px] rounded-full text-sm focus:outline-none">
             <div id="map"
-                class="_googleMap w-[300px] md:w-[400px] lg:w-[600px] grid-cols-2 h-[300px] md:h-[400px] lg:h-screen rounded-xl">
+                class="_googleMap w-[300px] md:w-[400px] my-10 lg:max-w-6xl h-[300px] md:h-[400px] lg:h-screen rounded-xl">
             </div>
-            <div class="pt-5 md:pt-0">
-                <input id="input" type="text" class="bg-white h-10 left-0 w-[300px] rounded-full text-sm focus:outline-none">
-                <div id="_list" class="_restaurantList grid-cols-3 overflow-scroll h-[500px] ">
+            
 
-                    
-
-
-
-                </div>
-            </div>
-
-        </div>
+        
     </div>
     <script>
         fetch("{{ route('all_restaurant') }}", {

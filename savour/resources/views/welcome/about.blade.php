@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-
+    <title>Savour - Save the food, save the planet</title>
 </head>
 
 <body>
@@ -238,7 +238,7 @@
                 </div>
             </div>
         </div>
-        @include('footer')
+        @include('welcome/footer')
         <script>
             about.classList.add("_activePage");
             contact.classList.remove("_activePage");

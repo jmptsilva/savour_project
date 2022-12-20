@@ -42,7 +42,7 @@
                 @endif
                 @if(Auth::check())
                 <div class="right-5">
-                    <a href="#"><img src="https://static01.nyt.com/images/2021/04/03/multimedia/03xp-april/merlin_185893383_8e41433f-4a32-4b1e-bf02-457290d0d534-superJumbo.jpg" class="w-10 h-10 bg-white rounded-full"></a>
+                    <a href="{{route('dashboard')}}"><img src="https://static01.nyt.com/images/2021/04/03/multimedia/03xp-april/merlin_185893383_8e41433f-4a32-4b1e-bf02-457290d0d534-superJumbo.jpg" class="w-10 h-10 bg-white rounded-full"></a>
                 </div>
                 @endif
 
@@ -216,6 +216,8 @@
     const total = document.querySelector('.cart-total-price')
     const cartIconNbs = document.querySelectorAll('._cartIconNb')
     const cartWrap = document.querySelector("._itemWrap")
+
+    
 
     //cart array to save all items in the cart
     let cart = JSON.parse(localStorage.getItem("CART")) || [];

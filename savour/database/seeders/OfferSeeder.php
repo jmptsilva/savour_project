@@ -17,45 +17,17 @@ class OfferSeeder extends Seeder
     public function run()
     {
         DB::table('offers')->insert([
-            [
-                'name' => 'Rojoada',
-                'restaurant_id' => '2',
-                'description' => 'Fried meat',
-                'image' => 'roj.jpg',
-                'quantity' => '5',
-                'price' => '12',
-                'is_active' => '1',
-
-            ],
-            [
-                'name' => 'Tomyam Koong',
-                'restaurant_id' => '2',
-                'description' => 'Spicy Thai soup',
-                'image' => 'tk.jpg',
-                'quantity' => '6',
-                'price' => '18',
-                'is_active' => '1',
-
-            ],
-            [
-                'name' => 'Beef noodles',
-                'restaurant_id' => '2',
-                'description' => 'Steamed beef, stir fried with noodle soup',
-                'image' => 'beefnood.jpg',
-                'quantity' => '14',
-                'price' => '23',
-                'is_active' => '1',
-
-            ],
+            
+           
             [
 
-                'name' => 'ShepherdsPie',
+                'name' => 'Pie',
 
                 'restaurant_id' => '4',
 
                 'description' => 'minced lamb with potatoes and Worcestershire sauce',
 
-                'image' => ' Shepherds-Pie.jpg',
+                'image' => 'Shepherds-Pie.jpg',
 
                 'quantity' => '14',
 
@@ -67,13 +39,13 @@ class OfferSeeder extends Seeder
 
             [
 
-                'name' => 'Chilli con carne',
+                'name' => 'con carne',
 
                 'restaurant_id' => '3',
 
                 'description' => 'lean minced beef, 2 medium onions, 3 garlic cloves, hot chilli powder ',
 
-                'image' => ' chilli.jpg',
+                'image' => 'chilli.jpg',
 
                 'quantity' => '10',
 
@@ -91,7 +63,7 @@ class OfferSeeder extends Seeder
 
                 'description' => 'Beef, Onion, Garlic, Chilli powder, Oregano ',
 
-                'image' => ' tacos.jpg',
+                'image' => 'tacos.jpg',
 
                 'quantity' => '30',
 
@@ -115,7 +87,7 @@ class OfferSeeder extends Seeder
 
                 'description' => 'Pasta of your choice, Red wine, Beef mince, cherry tomatoes, onions, garlic, tomato sauce ',
 
-                'image' => ' bolognese.jpg',
+                'image' => 'bolognese.jpg',
 
                 'quantity' => '15',
 
@@ -127,13 +99,13 @@ class OfferSeeder extends Seeder
 
             [
 
-                'name' => 'Sweet chicken',
+                'name' => 'Chicken',
 
                 'restaurant_id' => '1',
 
                 'description' => ' Sweet and Sour Chicken with crispy chicken, pineapple and bell peppers ',
 
-                'image' => ' Sweet-and-Sour-Chicken.jpg',
+                'image' => 'Sweet-and-Sour-Chicken.jpg',
 
                 'quantity' => '12',
 
@@ -145,17 +117,35 @@ class OfferSeeder extends Seeder
 
             [
 
-                'name' => 'tomahawk steak',
+                'name' => 'Steak',
 
                 'restaurant_id' => '5',
 
-                'description' => ' tomahawk rib-eye steak, salt',
+                'description' => 'tomahawk rib-eye steak, salt',
 
-                'image' => ' tomahawk-rib-eye-steak.jpg',
+                'image' => 'tomahawk-rib-eye-steak.jpg',
 
                 'quantity' => '12',
 
                 'price' => '60.50',
+
+                'is_active' => '1',
+
+
+            ],
+            [
+
+                'name' => 'Fried Rice',
+
+                'restaurant_id' => '2',
+
+                'description' => 'Fried rice in the wok with different flavers',
+
+                'image' => 'fried-rice.jpg',
+
+                'quantity' => '5',
+
+                'price' => '10',
 
                 'is_active' => '1',
 
@@ -180,9 +170,9 @@ class OfferSeeder extends Seeder
 
                 'restaurant_id' => '2',
 
-                'description' => ' Pasta of your choice, bacon, onions, cream, parmesan,',
+                'description' => 'Pasta of your choice, bacon, onions, cream, parmesan,',
 
-                'image' => ' Carbonara.jpg',
+                'image' => 'Carbonara.jpg',
 
                 'quantity' => '19',
 
