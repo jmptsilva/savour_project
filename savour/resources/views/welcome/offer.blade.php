@@ -17,16 +17,16 @@
                 </button>
             </div>
             <a href="javascript: scrolltoId();">
-                <div class="w-[150px] px-5 py-2 bg-green-800 hover:bg-[#D49A3D] rounded-lg text-white cursor-pointer">
+                <div class="w-[150px] px-5 py-2 bg-green-800 hover:bg-[#D49A3D] rounded-lg text-center text-white cursor-pointer">
                     Find My Way</div>
             </a>
 
 
         </div>
 
-        <div class="_mainlist flex flex-col md:flex-row items-start justify-center">
+        <div class="_mainlist flex flex-col md:flex-row items-center justify-center">
 
-            <div class="_filter flex w-[250px] flex-col gap-4 ">
+            <div class="_filter flex w-[250px] flex-col gap-4 self-start">
                 <h3
                     class="text-2xl py-3 md:py-0 md:pl-4 cursor-pointer md:cursor-default hover:scale-105 hover:text-green-800 md:hover:text-black md:hover:scale-100 ">
                     Filter</h3>
@@ -56,7 +56,7 @@
             </div>
 
             {{-- cards --}}
-            <div id="results" class="_cards grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+            <div id="results" class="_cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
 
 
@@ -66,32 +66,7 @@
     </div>
 </div>
 
-{{-- shopping cart
 
-<div class="cartBox hidden fixed overflow-hidden mx-5 bg-gray-200 shadow-2xl top-[86px] right-0 rounded p-5">
-    <div class="cart ">
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                        <table class="_cartItemsList min-w-full">
-                          
-                        </tbody>
-                        </table>
-                        <div class="flex justify-end items-center gap-4 m-4">
-                            <div class="cart-total">
-                                <strong class="cart-total-title">Total</strong>
-                                <span class="cart-total-price">$0</span>
-                            </div>
-                            <button class="_purchaseBtn px-4 py-2 bg-green-400 rounded mr-4"
-                                type="button">PURCHASE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
 
 
@@ -108,10 +83,10 @@
             console.log(results);
             let htmlResult = "";
             results.forEach(offer => {
-                htmlResult += `<div class="_productCard flex scale-100 transition-all max-w-[320px] hover:scale-105">
+                htmlResult += `<div class="_productCard flex scale-100 transition-all hover:scale-105">
                     <div class="flex flex-col items-center rounded-lg shadow-lg bg-white m-4">
                         <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img class="rounded-t-lg w-40 h-40 lg:w-48 lg:h-48 pt-1"
+                            <img class="rounded-t-lg w-[200px] h-40 lg:w-48 lg:h-48 pt-1"
                                 src="assets/foods/${offer.image}" alt="" />
                             {{-- should add heart for save? --}}
                         </a>

@@ -35,7 +35,7 @@
             </form>
         </div>
     </section>
-    @include('footer')
+    @include('welcome/footer')
     <script>
         about.classList.remove("_activePage");
         contact.classList.add("_activePage");
