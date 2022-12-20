@@ -35,7 +35,7 @@ class OrderController extends Controller
 
     public function order_history_today($id)
     {
-        $orders = Order::select(DB::raw('SUM(price * quantity) as Total'))
+        $orders = Order::select(DB::raw('SUM(ordered_offers.price * ordered_offers.quantity) as Total'))
         ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
         ->where('offers.restaurant_id', '=', $id)
             ->whereDate('created_at', '=', date('d.m.Y'))
