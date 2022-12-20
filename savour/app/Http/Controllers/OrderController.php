@@ -98,14 +98,17 @@ class OrderController extends Controller
         return  $orders->tojson(JSON_PRETTY_PRINT);
     }
 
-    public function active_order_by_restaurants($id)
+    public function user_active_orders($id)
     {
-        $orders = User::select('users.first_name', 'users.last_name', 'ordered_offers.order_id', 'ordered_offers.price', 'ordered_offers.quantity', 'offers.restaurant_id', 'orders.created_at')
-            ->join('orders', 'orders.user_id', '=', 'users.id')
-            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
-            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
-            ->where('offers.restaurant_id', '=', $id)
-            ->get();
+        $orders = User::select('orders.id','orders.created_at', 'restaurants.name', 'restaurants.address', 'restaurants.postal_code', 'restaurants.city', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
+        ->join('orders', 'orders.user_id', '=', 'users.id')
+        ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+        ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+        ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
+        ->where('offers.restaurant_id', '=', $id)
+        ->where('orders.is_closed', '=', 0)
+        ->groupBy('orders.id', 'restaurants.name', 'restaurants.address','orders.created_at', 'users.email', 'restaurants.postal_code', 'restaurants.city')
+        ->get();
 
         /* dd($orders); */
         return  $orders->tojson(JSON_PRETTY_PRINT);
@@ -125,6 +128,17 @@ class OrderController extends Controller
     }
 
     public function active_order_detail($id)
+    {
+        $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
+            ->join('orders', 'orders.user_id', '=', 'users.id')
+            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->where('orders.id', '=', $id)
+            ->get();
+        return  $orders->tojson(JSON_PRETTY_PRINT);
+    }
+
+    public function user_orders($id)
     {
         $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
             ->join('orders', 'orders.user_id', '=', 'users.id')
