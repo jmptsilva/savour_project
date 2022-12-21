@@ -169,6 +169,21 @@
             </form>
         </section>
     </div>
+    <script>
+        fetch("{{ route('all_from_restaurant',['id'=>Auth::user()->id] ) }}", {
+                method: 'get',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            }).then(res => res.json())
+            .then(function(results) {
+                console.log(results)
+                let data = "";
+                results.forEach(result => {
+                    data += ``
+                })
+            })
+    </script>
 </body>
 
 </html>
