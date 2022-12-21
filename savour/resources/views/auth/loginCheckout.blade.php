@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('content')
+<div>
     <div class="grid row-1 w-screen h-screen md:flex ">
         <div class="w-screen md:w-1/2 bg-black  hover:bg-black/90 pb-20">
             <!--PAYMENT -->
@@ -150,6 +151,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <script>
             let wrap = document.querySelector('.wrap')
             let totalPrice = document.querySelector('.totalPrice')
