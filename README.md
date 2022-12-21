@@ -1,2 +1,2 @@
-# savour_project
+# savour project
 Final project for Coding Jobs
