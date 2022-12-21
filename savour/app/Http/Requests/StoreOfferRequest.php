@@ -24,23 +24,24 @@ class StoreOfferRequest extends FormRequest
     public function rules()
     {
         return [
-            'restaurant_id' => ['required', 'numeric', 'max:9'],
-            'description' => ['required', 'string', 'email', 'max:255', 'unique:restaurants'],
+            'restaurant_id' => ['required', 'numeric'],
+            'description' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:50'],
             'image' => ['string', 'max:255'],
-            'quantity' => ['required', 'numeric', 'max:2'],
-            'price' => ['required', 'numeric', 'max:10'],
+            'quantity' => ['required', 'numeric', 'min:1'],
+            'price' => ['required', 'numeric'],
             'is_active' => ['boolean'],
-            
+
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Name is mandatory !',
-            'price.numeric' => 'Price must be numeric between 2 and 100e',
-            'price.between' => 'Price must be numeric between 2 and 100e'
+            'name.required' => 'Name is required.',
+            'description.required' => 'Description is mandatory.',
+            'restaurant_id.required' => 'Restaurant ID is mandatory.',
+            'price.numeric' => 'Price must be a number.',
         ];
     }
 }

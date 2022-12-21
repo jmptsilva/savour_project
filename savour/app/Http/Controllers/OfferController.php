@@ -32,9 +32,9 @@ class OfferController extends Controller
     public function all_active()
     {
         $offers = Offer::where('is_active', '=', '1')
-        ->join('restaurants','restaurants.id','=','offers.restaurant_id')
-        ->select('restaurants.address','restaurants.phone_number','offers.*', DB::raw('restaurants.name as rest_name'))
-        ->get();
+            ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
+            ->select('restaurants.address', 'restaurants.phone_number', 'offers.*', DB::raw('restaurants.name as rest_name'))
+            ->get();
 
         return $offers->tojson(JSON_PRETTY_PRINT);  //CHANGE RETURN VIEW CHOOSE WITH TEAM
     }
@@ -42,7 +42,7 @@ class OfferController extends Controller
     // QUERY ALL ACTIVE OFFERS FROM RESTAURANT ID
     public function all_active_from_restaurant($id)
     {
-        $offers = Offer::where([['is_active','=','1'],['restaurant_id','=', $id]])->get();
+        $offers = Offer::where([['is_active', '=', '1'], ['restaurant_id', '=', $id]])->get();
 
         return $offers->tojson(JSON_PRETTY_PRINT);  //CHANGE RETURN VIEW CHOOSE WITH TEAM
     }
@@ -50,7 +50,7 @@ class OfferController extends Controller
     // QUERY ALL INACTIVE OFFERS FROM RESTAURANT ID
     public function all_inactive_from_restaurant($id)
     {
-        $offers = Offer::where([['is_active', '=', '0'],['restaurant_id', '=', $id]])->get();
+        $offers = Offer::where([['is_active', '=', '0'], ['restaurant_id', '=', $id]])->get();
 
         return $offers->tojson(JSON_PRETTY_PRINT);  //CHANGE RETURN VIEW CHOOSE WITH TEAM
     }
@@ -59,7 +59,7 @@ class OfferController extends Controller
     public function offer_name($name)
     {
         $offers = Offer::where('name', 'like', "%$name%")->get();
-           
+
         return $offers->tojson(JSON_PRETTY_PRINT);  //CHANGE RETURN VIEW CHOOSE WITH TEAM IT CAN ALSO  BE RETURN AS AN JSON LIKE IN THE EXEMPLE return $offers->tojson(JSON_PRETTY_PRINT);
     }
 
@@ -86,27 +86,30 @@ class OfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    public function store(StoreOfferRequest $request)
+
+    public function store(Request $request)
     {
+
+        // dd($request);
+
         // $request->validate();
 
         // DB::table('offers')->insert([
         //     ['resturant_id' => '2', 'description' => $request->description, 'name' => $request->name,
         //     'quantity' => $request->quantity, 'price' => $request->price ]]);
-     
+
         $offer = Offer::create([
-            'restaurant_id' => '2', // Auth::user()->id, // we will always have to send the Auth id value, from the user session. Is this ok?
+            'restaurant_id' => Auth::user()->id,
             'description' => $request->description,
             'name' => $request->name,
             'image' => $request->image,
             'quantity' => $request->quantity,
             'price' => $request->price,
-            'is_active' => $request->is_active,
+            'is_active' => '1',
         ]);
 
         if ($offer) {
-            return redirect('')->with('message', 'Successfully added a new offer!');
+            return back()->with('message', 'Successfully added a new offer!');
         } else {
             return back()->with('error', 'There was a problem when trying to insert in the database');
         }
@@ -120,7 +123,7 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-       // 
+        // 
     }
 
     /**
@@ -177,7 +180,4 @@ class OfferController extends Controller
         else
             return redirect('/offers')->with('error', 'Problem deleted the offer');
     }
-
-
-    
 }

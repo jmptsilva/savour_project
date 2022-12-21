@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('restaurant_id');
             $table->string('description');
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable()->default('null');
             $table->bigInteger('quantity');
             $table->double('price');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default('1');
             $table->timestamps();
 
             $table->foreign('restaurant_id')->references('id')->on('restaurants');

@@ -37,7 +37,9 @@ class Offer extends Model
     //         get: fn () => $this->attributes['price'] . ' €',
     //     );
     // }
+
     protected $table = 'offers';
+
     protected $fillable = [
         'restaurant_id',
         'description',
@@ -49,24 +51,4 @@ class Offer extends Model
         'created_at',
         'updated_at',
     ];
-
-    public function getPriceWithEuroAttribute()
-    {
-        return $this->attributes['price'] . ' €';
-    }
-
-    public function getCreatedAtAttribute($value)
-    {
-        return date('d M Y', strtotime($value));
-    }
-
-    public function getNameAttribute($value)
-    {
-        return strtoupper($value);
-    }
-
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = strtolower($value);
-    }
 }
