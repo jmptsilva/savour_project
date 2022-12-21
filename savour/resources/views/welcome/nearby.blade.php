@@ -125,7 +125,7 @@
                                 <h3>${selectedRestaurant.name}</h3><br>
                                 <div>Address:<br>${selectedRestaurant.address}</div><br>
                                 
-                                <div>How long takes to go by foot:<br>${response.routes[0].legs[0].duration.text}</div>
+                                <div>Walking:<br>${response.routes[0].legs[0].duration.text}</div>
                                 `
 
                             );
