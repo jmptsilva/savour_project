@@ -17,7 +17,8 @@
                 </button>
             </div>
             <a href="javascript: scrolltoId();">
-                <div class="w-[150px] px-5 py-2 bg-green-800 hover:bg-[#D49A3D] rounded-lg text-center text-white cursor-pointer">
+                <div
+                    class="w-[150px] px-5 py-2 bg-green-800 hover:bg-[#D49A3D] rounded-lg text-center text-white cursor-pointer">
                     Find My Way</div>
             </a>
 
@@ -32,11 +33,11 @@
                     Filter</h3>
                 <hr>
                 <div class="_boxOfCategory hidden md:flex md:flex-col">
-                    
+
                     <div class="md:pl-4">
                         <p class="text-xl my-4">By Restaurant</p>
                         <div class="_categories flex flex-col">
-                            
+
                             <div>
                                 <input type="checkbox" name="partigiano" id="partigiano">
                                 <label for="partigiano">Partigiano</label>
@@ -71,7 +72,6 @@
 
 
 <script>
-    
     fetch("{{ route('active_offers') }}", {
             method: 'get',
             headers: {
@@ -86,9 +86,9 @@
                 htmlResult += `<div class="_productCard flex scale-100 transition-all hover:scale-105">
                     <div class="flex flex-col items-center rounded-lg shadow-lg bg-white m-4">
                         <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img class="rounded-t-lg w-[200px] h-40 lg:w-48 lg:h-48 pt-1"
+                            <img class="rounded-t-lg bg-cover bg-no-repeat bg-center w-[200px] h-[150px]  pt-1 bg-cover"
                                 src="assets/foods/${offer.image}" alt="" />
-                            {{-- should add heart for save? --}}
+                            
                         </a>
                         <div class="p-6">
                             <div class="flex justify-between items-baseline">
@@ -110,17 +110,17 @@
                     </div>
                     <dialog class="modal relative w-[350px] m-auto" id="modal">
                         <p class="_close absolute right-5 font-bold hover:text-red-500 cursor-pointer">X</p>
-                        <img src="assets/foods/${offer.image}" alt="pic" class="w-[250px] h-[200px]">
+                        <img src="assets/foods/${offer.image}" alt="pic" class="w-[250px] h-[200px] bg-cover">
                         <div class="flex flex-col gap-3">
                             <div class="flex justify-between items-center pt-1">
                                 <h4 class="text-xl font-bold">${offer.name}</h4>
                                 <p class="text-2xl text-red-500" >$50</p>
                             </div>
                             <div class="flex flex-col gap-3">
-                                <p> description: ${offer.description}</p>
-                                <p> restaurant: ${offer.rest_name}</p>
-                                <p> address: ${offer.address}</p>
-                                <p> phone number: ${offer.phone_number}</p>
+                                <p> Description: ${offer.description}</p>
+                                <p> Restaurant: ${offer.rest_name}</p>
+                                <p> Address: ${offer.address}</p>
+                                <p> Phone number: ${offer.phone_number}</p>
                             </div>
                             <div class="flex justify-end ">
                                 <button type="submit" onclick="addToCart(${offer.id})"
@@ -138,32 +138,30 @@
 
 
 
-            modals.forEach(modal => {
-
-                openModals.forEach(open => {
-                    open.addEventListener('click', (event) => {
-                        //event.preventDefault();
-                        modal.showModal();
-                    })
-
-                })
-                closeModals.forEach(close => {
-
-                    close.addEventListener('click', (event) => {
-                        //event.preventDefault();
-                        modal.close();
-                    })
+            openModals.forEach((open, index) => {
+                open.addEventListener('click', (event) => {
+                    //event.preventDefault();
+                    modals[index].showModal();
                 })
 
+            })
+            closeModals.forEach((close, index) => {
 
-            });
+                close.addEventListener('click', (event) => {
+                    //event.preventDefault();
+                    modals[index].close();
+                })
+            })
+
 
         });
 
 
-        /// filter fetch
 
-        fetch("{{ route('all_restaurant') }}", {
+
+    /// filter fetch
+
+    fetch("{{ route('all_restaurant') }}", {
             method: 'get',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -172,25 +170,25 @@
         .then(function(restaurants) {
             let result = "";
             console.log(restaurants)
-            restaurants.forEach(r=>{
+            restaurants.forEach(r => {
                 result += `<div >
                                 <input class="restaurant_filter" type="checkbox" value="${r.id}" name="${r.name}" id="${r.id}">
                                 <label for="${r.name}">${r.name}</label>
                             </div>`
             });
             document.querySelector('._categories').innerHTML = result;
-            
+
             const filterClicked = new Set()
 
-            document.querySelectorAll('.restaurant_filter').forEach(filter=>{
-                filter.addEventListener('input',function () {
+            document.querySelectorAll('.restaurant_filter').forEach(filter => {
+                filter.addEventListener('input', function() {
                     filterClicked.add(filter.value)
-                    
+
                     console.log(filterClicked)
                 })
             })
-            console.log(typeof(filterClicked))
-            
+
+
         })
 </script>
 <script>
@@ -198,7 +196,9 @@
 
     function scrolltoId() {
         let access = document.getElementById("nearby");
-        access.scrollIntoView({behavior: 'smooth'});
+        access.scrollIntoView({
+            behavior: 'smooth'
+        });
     }
 
     //toggle the filter
@@ -209,6 +209,4 @@
     filterClick.addEventListener("click", () => {
         categoris.classList.toggle("hidden");
     });
-
-
 </script>
