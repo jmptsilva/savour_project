@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ValuesMissionCalc;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,8 @@ Route::get('/menu', function () {
     return view('welcome/menu');
 })->name('menu');
 
-Route::get('/contact', function () {
-    return view('welcome/contact');
-})->name('contact');
+Route::get('/contact', [ContactUsController::class, 'create'])->name('contact');
+Route::post('/contact', [ContactUsController::class, 'sendForm'])->name('send_form');
 
 Route::get('/about', function () {
     return view('welcome/about');
