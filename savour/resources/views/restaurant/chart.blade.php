@@ -44,7 +44,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-2xl">200 Plates</p>
-                    <p>Food Save</p>
+                    <p>FoodSaved</p>
                 </div>
             </div>
         </div>
