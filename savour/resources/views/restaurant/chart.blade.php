@@ -21,7 +21,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl">557</p>
+                    <p class="text-2xl sumOrders"></p>
                     <p>Orders</p>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl">200 Plates</p>
+                    <p class="text-2xl sumFoodSave"> </p>
                     <p>FoodSaved</p>
                 </div>
             </div>
@@ -66,24 +66,25 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="shadow-lg rounded-lg overflow-hidden">
                         <div class="flex row">
-                            <div class="_chartSummary">FoodSaved Total</div>
-                            <div class="_chartSummary sumFoodSave">84</div>
-                            <div class="_chartSummary">Plates</div>
-                        </div>
-                        <canvas class="p-10 chartLineFood" id="chartLineFood"></canvas>
-                    </div>
-                    <br>
-                    <div class="shadow-lg rounded-lg overflow-hidden">
-                        <div class="flex row">
-                            <div class="_chartSummary">Revenue Total</div>
-                            <div class="_chartSummary sumRevenue">500</div>
-                            <div class="_chartSummary">€</div>
+                            <div class="_chartSummary">Revenue Chart</div>
+                            <div class="_chartSummary"></div>
+                            <div class="_chartSummary"></div>
                         </div>
                         <canvas class="p-10 chartLine" id="chartLine"></canvas>
                     </div>
+
+                    <div class="shadow-lg rounded-lg overflow-hidden">
+                        <div class="flex row">
+                            <div class="_chartSummary">FoodSaved Chart</div>
+                            <div class="_chartSummary"></div>
+                            <div class="_chartSummary"></div>
+                        </div>
+                        <canvas class="p-10 chartLineFood" id="chartLineFood"></canvas>
+                    </div>
+
+
                 </div>
                 <!-- SUM ALL REVENUE DATA -->
                 <script>
@@ -99,16 +100,56 @@
                         });
                 </script>
 
+                <!-- SUM ALL PLATE DATA -->
+                <script>
+                    fetch("{{route('all_order_by_restaurant',['id'=>Auth::user()->id] ) }}", {
+                            method: 'get',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        }).then(res => res.json())
+                        .then(function(results) {
+                            // console.log(results)
+                            let sumPlates = 0;
+                            results.forEach(value => {
+                                sumPlates += value.quantity
+                            });
+                            // console.log(sumPlates)
+                            document.querySelector('.sumFoodSave').innerHTML = sumPlates + " " + 'Plates';
+                        });
+                </script>
 
+                <!-- SUM ALL ORDER DATA -->
+                <script>
+                    fetch("{{route('all_order_by_restaurant',['id'=>Auth::user()->id] ) }}", {
+                            method: 'get',
+                            headers: {
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        }).then(res => res.json())
+                        .then(function(results) {
+                            console.log(results)
+                            let countOrder = 0;
+                            for (let i = 0; i < results.length; i++) {
+                                countOrder++;
+                            }
+                            console.log(countOrder)
+                            document.querySelector('.sumOrders').innerHTML = countOrder;
+
+                        });
+                </script>
+
+
+
+                <!-- Chart Start here-->
                 <!-- Required chart.js -->
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>
                     const dailyBtn = document.querySelector(".dailyBtn")
                     const weeklyBtn = document.querySelector(".weeklyBtn")
                     const monthlyBtn = document.querySelector(".monthlyBtn")
-                    /** ------ Do after call ajax ------  */
-                    const sumRevenue = document.querySelector(".sumRevenue")
-                    const sumFoodSave = document.querySelector(".sumFoodSave")
+
+
 
                     /** ------ Revenue Chart Default ------  */
 
@@ -184,21 +225,45 @@
                         chart.update();
                     }
 
-
+                    /** ------ CLICKED DAILYBTN ------  */
                     dailyBtn.addEventListener("click", () => {
                         addColor(dailyBtn);
                         removeColor(weeklyBtn);
                         removeColor(monthlyBtn);
 
+                        removeData(revenueChart);
+                        removeData(foodChart);
+                        // BREAKFAST ORDER
+                        Promise.all([fetch("{{route('order_breakfast',['id'=>Auth::user()->id] ) }}", {
+                                method: 'get',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                }
+                            }), fetch("{{route('order_lunch',['id'=>Auth::user()->id] ) }}", {
+                                method: 'get',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                }
+                            }), fetch("{{route('order_dinner',['id'=>Auth::user()->id] ) }}", {
+                                method: 'get',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                }
+                            })]).then(responses => Promise.all([responses[0].json(), responses[1].json(), responses[2].json()]))
+                            .then(function(datas) {
+                                console.log(datas);
+                                const information =
+                                    datas.map(data => {
+                                        return data[0].Total;
+                                    });
+                                addData(revenueChart, ["Morning Service", "Afternoon Service", "Evening Service"], information)
+                            });
 
-                        removeData(revenueChart)
-                        removeData(foodChart)
-                        addData(revenueChart, ["Morning Service", "Afternoon Service", "Evening Service"], [10, 20, 60])
                         addData(foodChart, ["Morning Service", "Afternoon Service", "Evening Service"], [20, 20, 60])
 
                     })
 
-
+                    /** ------ CLICKED WEEKLYBTN ------  */
                     weeklyBtn.addEventListener("click", () => {
                         addColor(weeklyBtn);
                         removeColor(dailyBtn);
@@ -206,22 +271,40 @@
 
                         removeData(revenueChart)
                         removeData(foodChart)
-                        addData(revenueChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], [10, 50, 60, 100, 400, 20, 200])
-                        addData(foodChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], [10, 50, 60, 100, 500, 20, 200])
-                    });
+                        fetch("{{route('order_week',['id'=>Auth::user()->id] ) }}", {
+                                method: 'get',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                }
+                            }).then(res => res.json())
+                            .then(function(datas) {
 
+                                const information =
+                                    console.log(datas.map(data => {
+                                        return data[0].Total;
+                                    }));
+
+                                addData(revenueChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], information);
+                            });
+
+
+                        addData(foodChart, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], [10, 50, 60, 100, 500, 20, 200]);
+                    });
+                    /** ------ CLICKED MONTHLYBTN ------  */
                     monthlyBtn.addEventListener("click", () => {
                         addColor(monthlyBtn);
                         removeColor(dailyBtn);
                         removeColor(weeklyBtn);
 
-
                         removeData(revenueChart)
                         removeData(foodChart)
+
+
                         addData(revenueChart, ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], [10, 20, 200, 100, 400, 20, 150, 80, 20, 40, 32, 12])
                         addData(foodChart, ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], [10, 20, 200, 100, 400, 20, 150, 80, 20, 40, 32, 12])
                     });
                 </script>
+
             </div>
         </div>
     </div>

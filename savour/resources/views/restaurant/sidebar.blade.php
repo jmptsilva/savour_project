@@ -29,7 +29,7 @@
                             </svg>
                         </span>
                         <span class="ml-2 text-sm tracking-wide truncate">Orders</span>
-                        <span class="_textSidebar ">2</span>
+
                     </a>
                 </li>
                 <li>

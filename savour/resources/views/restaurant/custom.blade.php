@@ -81,44 +81,8 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="p-4 w-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-                            <svg class="w-10 h-10 rounded-full" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
+                <tbody class="rowData">
 
-                            <div class="pl-3 ">
-                                <div class="text-base font-semibold">Pizza Hawaii</div>
-                                <div class="font-normal text-gray-500 w-3">with tomato sauce ...</div>
-                            </div>
-                        </th>
-
-                        <td class="py-4 px-6">
-                            15
-                        </td>
-
-                        <td class="py-4 px-6">
-                            3
-                        </td>
-                        <td class="py-4 px-6">
-                            <label class="inline-flex relative items-center mr-5 cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer" checked>
-                                <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                            </label>
-                        </td>
-                        <td class="py-4 px-6">
-                            22 Dec 2022 13:40
-                        </td>
-                        <td class="py-4 px-6">
-                            <a href="{{route('restaurant.custommenu')}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
                 </tbody>
             </table>
         </div>
@@ -132,9 +96,51 @@
                 }
             }).then(res => res.json())
             .then(function(results) {
-                // Once AJAX call is done
-                console.log(results);
-            })
+                console.log(results)
+                let data = "";
+                results.forEach(result => {
+                    data += `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="p-4 w-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
+                            <img class="w-10 h-10 rounded-full" src="${result.image}" />
+                        
+
+                            <div class="pl-3 ">
+                                <div class="text-base font-semibold">${result.name}</div>
+                                <div class="font-normal text-gray-500 w-3">${result.description.substring(0, 29)}...</div>
+                            </div>
+                        </th>
+
+                        <td class="py-4 px-6">
+                            ${result.price}
+                        </td>
+
+                        <td class="py-4 px-6">
+                            ${result.quantity}
+                        </td>
+                        <td class="py-4 px-6">
+                            <label class="inline-flex relative items-center mr-5 cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer status${result.is_active}" checked>
+                                <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                            </label>
+                        </td>
+                        <td class="py-4 px-6">
+                            ${result.updated_at}
+                        </td>
+                        <td class="py-4 px-6">
+                            <a href="{{route('restaurant.custommenu')}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        </td>
+                        </tr>`
+
+
+                });
+                document.querySelector(".rowData").innerHTML = data;
+            });
     </script>
 </body>
 
