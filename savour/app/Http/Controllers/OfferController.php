@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use Illuminate\Validation\Rules;
-use App\Http\Requests\StoreOfferRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -145,7 +144,7 @@ class OfferController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(StoreOfferRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate();
 
