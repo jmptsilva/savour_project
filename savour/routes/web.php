@@ -102,10 +102,10 @@ Route::get('/api/restaurant/orders/restaurant_id={id}', [OrderController::class,
 Route::get('/api/restaurant/all_orders/restaurant_id={id}', [OrderController::class, 'all_order_by_restaurant'])->name('all_order_by_restaurant');
 Route::get('/api/restaurant/orders_today/day={day}&restaurant_id={id}', [OrderController::class, 'order_history_day']);
 Route::get('/api/restaurant/orders_today/restaurant_id={id}', [OrderController::class, 'order_history_today'])->name('order_history_today');
-Route::get('/api/restaurant/week-orders/restaurant_id={id}', [OrderController::class, 'order_history_weekdays']);
-Route::get('/api/restaurant/orders_breakfast/restaurant_id={id}', [OrderController::class, 'order_history_breakfast']);
-Route::get('/api/restaurant/orders_lunch/restaurant_id={id}', [OrderController::class, 'order_history_lunch']);
-Route::get('/api/restaurant/orders_dinner/restaurant_id={id}', [OrderController::class, 'order_history_dinner']);
+Route::get('/api/restaurant/week-orders/restaurant_id={id}', [OrderController::class, 'order_history_weekdays'])->name('order_week');
+Route::get('/api/restaurant/orders_breakfast/restaurant_id={id}', [OrderController::class, 'order_history_breakfast'])->name('order_breakfast');
+Route::get('/api/restaurant/orders_lunch/restaurant_id={id}', [OrderController::class, 'order_history_lunch'])->name('order_lunch');
+Route::get('/api/restaurant/orders_dinner/restaurant_id={id}', [OrderController::class, 'order_history_dinner'])->name('order_dinner');
 
 Route::get('/api/restaurant/orders/active/restaurant_id={id}', [OrderController::class, 'active_order_by_restaurant'])->name('active');
 Route::get('/api/restaurant/orders/detail/order_id={id}', [OrderController::class, 'active_order_detail'])->name('detail');
