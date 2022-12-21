@@ -24,8 +24,8 @@
                 </div>
                 <div class="text-black font-semibold text-l mt-10">
 
-                    In Luxembourg alone, an average of 118 kg <br>of food waste per person ends up in the bin each year.
-                    <br> Creating food consumes a lot of energy and often results <br>in long transport routes.<br><br> Our goal is to offer restaurants the opportunity to sell meals through our website at a discounted price before they expire.
+                    In Luxembourg alone, an average of 118 kg of food waste per person ends up in the bin each year.
+                    <br> Creating food consumes a lot of energy and often results in long transport routes.<br><br> Our goal is to offer restaurants the opportunity to sell meals through our website at a discounted price before they expire.
                 </div>
 
                 <!--Button & More info -->
