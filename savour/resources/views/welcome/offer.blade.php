@@ -114,7 +114,7 @@
                         <div class="flex flex-col gap-3">
                             <div class="flex justify-between items-center pt-1">
                                 <h4 class="text-xl font-bold">${offer.name}</h4>
-                                <p class="text-2xl text-red-500" >$50</p>
+                                <p class="text-2xl text-red-500" >$ ${offer.price}</p>
                             </div>
                             <div class="flex flex-col gap-3">
                                 <p> Description: ${offer.description}</p>

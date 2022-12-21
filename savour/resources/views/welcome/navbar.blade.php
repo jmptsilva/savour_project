@@ -87,45 +87,9 @@
         </div>
     </div>
     </div>
-    <!-- mobile menu -->
-    <div class="hidden mobile-menu">
-        <ul class="">
-
-            <li class="active"><a href="{{ route('welcome') }}"
-                    class="block text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold">Home</a></li>
-                    @if(Auth::check())
-            <li class="active"><a href="{{ route('dashboard') }}"
-                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] font-semibold">Profile</a></li>
-                    @endif
-            <li><a href="{{ route('menu') }}"
-                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Menu</a></li>
-            <li><a href="{{ route('contact') }}"
-                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Contact</a>
-            </li>
-            <li><a href="{{ route('about') }}"
-                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">About
-                </a></li>
-        </ul>
-        @if (Auth::check())
-            <div>
-                <form action="{{ route('logout') }}" method="POST" class="flex justify-end px-3 py-3 ">
-                    @csrf
-                    <input type="submit" value="Logout"
-                        class="text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold cursor-pointer"></input>
-                </form>
-            @else
-                <form action="{{ route('login') }}" method="GET" class="flex justify-end px-3 py-3">
-                    @csrf
-                    <input type="submit" value="Login | Register"
-                        class="text-sm cursor-pointer px-2 py-4 text-white bg-[#d49a3d] font-semibold"></input>
-                </form>
-            </div>
-        @endif
-
-    </div>
     {{-- shopping cart --}}
 
-    <div class="cartBox hidden fixed overflow-hidden mx-5 bg-gray-200 shadow-2xl top-[86px] right-0 rounded p-5">
+    <div class="cartBox hidden fixed mx-5 bg-gray-200 shadow-2xl top-[86px] right-0 rounded p-5 z-10">
         <div class="cart ">
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -187,6 +151,44 @@
             </div>
         </div>
     </div>
+    
+    <!-- mobile menu -->
+    <div class="hidden mobile-menu">
+        <ul class="">
+
+            <li class="active"><a href="{{ route('welcome') }}"
+                    class="block text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold">Home</a></li>
+                    @if(Auth::check())
+            <li class="active"><a href="{{ route('dashboard') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] font-semibold">Profile</a></li>
+                    @endif
+            <li><a href="{{ route('menu') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Menu</a></li>
+            <li><a href="{{ route('contact') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">Contact</a>
+            </li>
+            <li><a href="{{ route('about') }}"
+                    class="block text-sm px-2 py-4 text-white hover:bg-[#d49a3d] transition duration-300">About
+                </a></li>
+        </ul>
+        @if (Auth::check())
+            <div>
+                <form action="{{ route('logout') }}" method="POST" class="flex justify-end px-3 py-3 ">
+                    @csrf
+                    <input type="submit" value="Logout"
+                        class="text-sm px-2 py-4 text-white bg-[#d49a3d] font-semibold cursor-pointer"></input>
+                </form>
+            @else
+                <form action="{{ route('login') }}" method="GET" class="flex justify-end px-3 py-3">
+                    @csrf
+                    <input type="submit" value="Login | Register"
+                        class="text-sm cursor-pointer px-2 py-4 text-white bg-[#d49a3d] font-semibold"></input>
+                </form>
+            </div>
+        @endif
+
+    </div>
+    
 
 </nav>
 <script>
@@ -202,8 +204,8 @@
     const cartBtns = document.querySelectorAll("._cartBtn");
     const cartList = document.querySelector(".cartBox");
 
-    cartBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
+    cartBtns.forEach(cartBtn => {
+        cartBtn.addEventListener("click", () => {
             cartList.classList.toggle("hidden");
         });
     });
