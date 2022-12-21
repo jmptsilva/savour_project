@@ -55,7 +55,7 @@ class OrderController extends Controller
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
             ->where('offers.restaurant_id', '=', $id)
 
-            ->whereDate('created_at', '=', date('d.m.Y'))
+            ->whereDate('ordered_offers.created_at', '=', date('d.m.Y'))
             ->get();
 
         /* dd($orders); */
