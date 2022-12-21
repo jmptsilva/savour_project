@@ -108,7 +108,7 @@ c28 15 65 38 81 52 45 38 92 134 99 204 6 56 5 62 -19 86 -56 56 -124 24 -138
                         </svg>
                         <div class="flex flex-row ml-5 lg:ml-3 items-center">
                             <div class="text-black text-[50px] font-normal">{{ round($soldMeals * 0.4 * 0.065 * 1000, 2)}}</div>
-                            <div class="text-black ml-3 text-[25px]">G</div>
+                            <div class="text-black ml-3 text-[25px]">g</div>
                         </div>
                         <div class="text-slate-500 text-[20px] lg:text-[18px] font-normal ml-5">Reduced methane emissions</div>
                     </div>
