@@ -31,7 +31,7 @@
                     <img class="rounded-lg shadow-xl" src="assets/img/carry-food.jpeg" alt="">
                 </div>
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pr-16">
-                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#057840] uppercase">For User</p>
+                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#057840] uppercase">For Users</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE DO</h3>
                     <p class="mt-5 text-lg text-gray-700 text md:text-left">We offer our users the opportunity to enjoy meals that are approaching their expiration date at a discounted price. <br>
                         The user can browse our restaurants and meals to see what is available each day. <br>The user can create an account, place their order, and make their payment through our website.</p>
@@ -44,7 +44,7 @@
                     <img class="rounded-lg shadow-xl" src="assets/img/foodwaste.jpeg" alt="">
                 </div>
                 <div class="flex flex-col justify-center mt-5 mb-8 md:mt-0 sm:w-1/2 md:w-7/12 sm:pl-16">
-                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For restaurant</p>
+                    <p class="mb-2 text-sm font-semibold leading-none text-left text-[#00391d] uppercase">For restaurants</p>
                     <h3 class="mt-2 text-2xl sm:text-left md:text-4xl">WHAT WE OFFER</h3>
                     <p class="mt-5 text-lg text-gray-700 text md:text-left">We offer restaurants easy access to our site where they can upload the current meals they wish to sell at a discounted price.</p>
                 </div>
