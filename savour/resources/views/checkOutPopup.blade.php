@@ -15,10 +15,10 @@ use App\Providers\RouteServiceProvider;
                 <div
                     class="w-96 md:w-auto relative flex flex-col justify-center items-center bg-[#161616] py-16 px-4 md:px-24 xl:py-24 xl:px-36">
                     <div role="banner">
-                        <span
+                        <p
                             class="box-decoration-clone bg-gradient-to-r from-green-600 to-yellow-500 text-white px-2 text-[20px]">
-                            You save 3 dishes today
-                        </span>
+                            You save <span class="try _cartIconNb">2</span> dishes
+                        </p>
 
                     </div>
                     <div class="mt-4">
@@ -43,4 +43,10 @@ use App\Providers\RouteServiceProvider;
             </div>
         </div>
     </div>
+    <script>
+        // const try = document.querySelector('.try');
+        // console.log(try)
+        console.log(cartIconNbs) // only gave 2
+        localStorage.clear();
+    </script>
 @endsection

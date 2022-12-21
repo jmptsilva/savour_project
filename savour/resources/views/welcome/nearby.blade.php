@@ -1,58 +1,22 @@
 
 
-    <div id="nearby" class="_wrap bg-[#dfdfdf] pb-14">
+    <div id="nearby" class="_wrap bg-[#dfdfdf] pb-14 flex flex-col justify-center items-center">
 
-        <h2  class="text-5xl font-bold py-[50px] text-center">Nearby Me</h2>
+        <h2  class="text-5xl font-bold py-[50px] text-center">Find my way</h2>
 
-        <div class="grid md:grid-cols-2 justify-center justify-items-center">
+
+            <input id="input" type="text" class="bg-white h-10 w-[300px] rounded-full text-sm focus:outline-none">
             <div id="map"
-                class="_googleMap w-[300px] md:w-[400px] lg:w-[600px] grid-cols-2 h-[300px] md:h-[400px] lg:h-screen rounded-xl">
+                class="_googleMap w-[300px] md:w-[400px] my-10 lg:w-[80%] h-[300px] md:h-[400px] lg:h-screen rounded-xl">
             </div>
-            <div class="pt-5 md:pt-0">
-                <input id="input" type="text" class="bg-white h-10 left-0 w-[300px] rounded-full text-sm focus:outline-none">
-                <div id="_list" class="_restaurantList grid-cols-3 overflow-scroll h-[500px] ">
+            
 
-                    
-
-
-
-                </div>
-            </div>
-
-        </div>
+        
     </div>
     <script>
-        fetch("{{ route('all_restaurant') }}", {
-                method: 'get',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-            }).then(res => res.json())
-            .then(function(result) {
-                // Once AJAX call is done
-                
-                let htmlResult="";
-                result.forEach(r => {
-                    htmlResult += `<div class="_restaurantCard w-[300px] md:w-[450px] my-3">
-                        <a onclick="getRestaurantDetail(item)" href="#"
-                            class="flex items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-[#00391d] dark:hover:bg-green-800">
-                            <img class="object-cover rounded py-2 pl-2 md:h-auto w-[150px] md:w-20 "
-                                src="https://i.ibb.co/C2nC113/Screenshot-2022-12-09-at-22-34-18.png" alt="">
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5
-                                    class="_restaurantName mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                    ${r.name}</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Address: ${r.address}</p>
-                            </div>
-                        </a>
-                    </div>`;
-                });
-                document.getElementById('_list').innerHTML = htmlResult;
-            });
-    </script>
-    <script>
         
-       
+        
+       //// google map
 
         let map;
         let currentPosition;
@@ -63,22 +27,8 @@
         let infoWindow;
 
 
-        let restaurantName;
 
-
-        function getRestaurantDetail() {
-            // try to retrive the name
-        }
-
-
-        //     restaurantCards.forEach(e => {
-
-
-        //         let name = document.querySelector('._restaurantName').innerText
-        //         console.log(e.name)
-        //     });
-        //    console.log(restaurantNames)
-
+     
         // put and set the first location
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -102,8 +52,6 @@
                 const autocomplete = new google.maps.places.Autocomplete(
 
 
-
-                    // why i cant get the restaurant name!!!!!!! with query selector!!!!
                     document.getElementById('input'), {
                         types: ['restaurant'],
                         bounds: {
@@ -123,8 +71,10 @@
 
                     selectedRestaurant = {
                         // the details you wand from the restaurant
+                        location: place.geometry.location,
                         name: place.name,
                         address: place.formatted_address,
+                        phoneNumber: place.formatted_phone_number,
                         rating: place.rating,
                         placeId: place.place_id
                     };
@@ -172,8 +122,10 @@
 
                             infoWindow.setContent(
                                 `
-                                <h3>${selectedRestaurant.name}</h3>
-                                <div>How long takes to go :${response.routes[0].legs[0].duration.text}</div>
+                                <h3>${selectedRestaurant.name}</h3><br>
+                                <div>Address:<br>${selectedRestaurant.address}</div><br>
+                                
+                                <div>How long takes to go by foot:<br>${response.routes[0].legs[0].duration.text}</div>
                                 `
 
                             );

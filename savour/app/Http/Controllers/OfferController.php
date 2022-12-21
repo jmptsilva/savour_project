@@ -77,7 +77,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        return view('new-offer');
+        return view('restaurant/addMenu');
     }
 
     /**
@@ -87,12 +87,16 @@ class OfferController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function store(StoreOfferRequest $request, $id)
+    public function store(StoreOfferRequest $request)
     {
-        $request->validate();
-    
+        // $request->validate();
+
+        // DB::table('offers')->insert([
+        //     ['resturant_id' => '2', 'description' => $request->description, 'name' => $request->name,
+        //     'quantity' => $request->quantity, 'price' => $request->price ]]);
+     
         $offer = Offer::create([
-            'restaurant_id' => Auth::user()->id, // we will always have to send the Auth id value, from the user session. Is this ok?
+            'restaurant_id' => '2', // Auth::user()->id, // we will always have to send the Auth id value, from the user session. Is this ok?
             'description' => $request->description,
             'name' => $request->name,
             'image' => $request->image,
@@ -100,6 +104,12 @@ class OfferController extends Controller
             'price' => $request->price,
             'is_active' => $request->is_active,
         ]);
+
+        if ($offer) {
+            return redirect('')->with('message', 'Successfully added a new offer!');
+        } else {
+            return back()->with('error', 'There was a problem when trying to insert in the database');
+        }
     }
 
     /**

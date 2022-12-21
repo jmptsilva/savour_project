@@ -13,7 +13,7 @@ class StoreOfferRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,13 +24,13 @@ class StoreOfferRequest extends FormRequest
     public function rules()
     {
         return [
-            'restaurant_id' => ['required', 'integer', 'max:9'],
+            'restaurant_id' => ['required', 'numeric', 'max:9'],
             'description' => ['required', 'string', 'email', 'max:255', 'unique:restaurants'],
             'name' => ['required', 'string', 'max:50'],
-            'image' => ['required', 'string', 'max:255'],
-            'quantity' => ['required', 'integer', 'max:2'],
-            'price' => ['required', 'double', 'max:10'],
-            'is-active' => ['required', 'tinyint'],
+            'image' => ['string', 'max:255'],
+            'quantity' => ['required', 'numeric', 'max:2'],
+            'price' => ['required', 'numeric', 'max:10'],
+            'is_active' => ['boolean'],
             
         ];
     }
@@ -39,7 +39,6 @@ class StoreOfferRequest extends FormRequest
     {
         return [
             'name.required' => 'Name is mandatory !',
-            'restaurant_id.required' => 'Restaurant id is mandatory.',
             'price.numeric' => 'Price must be numeric between 2 and 100e',
             'price.between' => 'Price must be numeric between 2 and 100e'
         ];

@@ -9,35 +9,37 @@
 </head>
 
 <body>
+   
     @include('restaurant/sidebar')
     <div class="ml-[220px]">
         <section class="max-w-4xl p-6 mx-auto bg-slate-300 rounded-md shadow-md dark:bg-gray-800 mt-20">
-            <h1 class="text-xl font-bold text-black capitalize dark:text-black">Add item</h1>
-            <form>
+            <h1 class="text-xl font-bold text-white capitalize ">Add Menu</h1>
+            <form action="{{route('restaurant.insert_offer')}}" method="POST">
+                @csrf
                 <div class="flex flex-row">
                     <div class="flex flex-col">
 
                         <!--Edit Name-->
                         <div>
                             <label class="text-black dark:text-gray-200" for="name">Name</label>
-                            <input id=" name" type="text" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                            <input id="name" type="text" name="name" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                         </div>
                         <!--Edit Description-->
                         <div>
                             <label class="text-black dark:text-gray-200" for="passwordConfirmation">Description</label>
-                            <textarea id="textarea" type="textarea" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                            <textarea id="textarea" type="text" name="description" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
                         </div>
 
                         <!--Edit Quantity-->
                         <div>
                             <label class="text-black dark:text-gray-200" for="quantity">Quantity</label>
-                            <input type="number" id="Quantity" min="0" class="mt-2 w-24 h-10 border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800 dark:text-black sm:text-sm" />
+                            <input type="number" id="Quantity" min="0" name="quantity" class="mt-2 w-24 h-10 border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800 dark:text-black sm:text-sm" />
                         </div>
 
                         <!--Edit Price-->
                         <div>
                             <label class=" text-black dark:text-gray-200" for="price">Price</label>
-                            <input id="price" type="price" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                            <input id="price" type="price" name="price" class="block w-[300px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                         </div>
 
                         <!--Edit Allergen-->
@@ -148,9 +150,9 @@
                         </div>
                         <!--Edit Status-->
                         <div>
-                            <div class=" text-black dark:text-gray-200">Status</div>
+                            <div class=" text-black dark:text-gray-200">Available?</div>
                             <label class="inline-flex relative items-center mr-5 cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer" checked>
+                                <input type="checkbox" name="is_active" value="" class="sr-only peer" checked>
                                 <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
                             </label>
                         </div>
@@ -159,11 +161,11 @@
                 </div>
                 <div class="flex flex-row justify-end">
                     <div class="flex justify-end mt-6">
-                        <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-[#00391d] rounded-md hover:bg-[#00391e95] focus:outline-none focus:bg-gray-600">Add</button>
+                        <button type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-[#00391d] rounded-md hover:bg-[#00391e95] focus:outline-none focus:bg-gray-600">Add</button>
                     </div>
-                    <div class="flex justify-end mt-6">
+                    {{-- <div class="flex justify-end mt-6">
                         <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-slate-600 rounded-md hover:bg-slate-500 focus:outline-none focus:bg-gray-600">Cancel</button>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </section>

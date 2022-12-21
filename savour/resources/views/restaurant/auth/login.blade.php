@@ -12,7 +12,7 @@
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                <h2 class="text-4xl font-bold text-center">RESTAURANTS LOGIN PAGE</h2><br>
+                <h2 class="text-4xl font-bold text-center">Restaurant Login</h2><br>
                 <form method="POST" action="{{route('restaurant.login')}}">
                     @csrf
 

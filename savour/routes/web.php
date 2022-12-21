@@ -34,8 +34,6 @@ Route::get('/about', function () {
     return view('welcome/about');
 })->name('about');
 
-
-
 Route::get('/successCheckout', function () {
     return view('/checkOutPopup');
 })->name('checkoutPopup');

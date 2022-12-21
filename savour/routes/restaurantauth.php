@@ -7,6 +7,8 @@ use App\Http\Controllers\Restaurantauth\EmailVerificationPromptController;
 use App\Http\Controllers\Restaurantauth\NewPasswordController;
 use App\Http\Controllers\Restaurantauth\PasswordController;
 use App\Http\Controllers\Restaurantauth\PasswordResetLinkController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\Restaurantauth\RegisteredUserController;
 use App\Http\Controllers\Restaurantauth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +38,7 @@ Route::middleware('guest:restaurant')->prefix('restaurant')->as('restaurant.')->
         ->name('password.store');
 });
 
-Route::group(['middleware' => ['auth:restaurant'], 'prefix' => 'restaurant', 'as' => 'restaurant.'], function () {
+Route::middleware('auth:restaurant')->prefix('restaurant')->as('restaurant.')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
 
@@ -56,10 +58,11 @@ Route::group(['middleware' => ['auth:restaurant'], 'prefix' => 'restaurant', 'as
     Route::get('update', [RestaurantController::class, 'edit'])->name('update');
     Route::put('update', [RestaurantController::class, 'update']);
 
-    Route::get('dashboard/offers/create', [OfferController::class, 'edit'])->name('offer-create');
-    Route::post('dashboard/offers/create', [OfferController::class, 'store']);
 
-    Route::put('dashboard/offers', [OfferController::class, 'update']);
+    Route::get('dashboard/offers/create', [OfferController::class, 'create'])
+        ->name('offer_create');
+    Route::post('dashboard/offers/create', [OfferController::class, 'store'])
+        ->name('insert_offer');
 
     Route::get('dashboard/offers/update', [OfferController::class, 'edit'])->name('offer-update');
     Route::put('dashboard/offers/update', [OfferController::class, 'update']);
@@ -90,13 +93,14 @@ Route::group(['middleware' => ['auth:restaurant'], 'prefix' => 'restaurant', 'as
         return view('restaurant/custommenu');
     })->name('custommenu');
 
-    Route::get('addmenu', function () {
-        return view('restaurant/addmenu');
-    })->name('addmenu');
+    // Route::get('addmenu', function () {
+    //     return view('restaurant/addmenu');
+    // })->name('addmenu');
 
-
-
-
+    // Route::post('addmenu', [OfferController::class, 'store']);
+    
+    
+    
     /* Route::get('/restaurant/profile', function () {
         return view('profile/edit');
     })->name('profile'); */

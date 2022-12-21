@@ -1,8 +1,8 @@
  <!-----------Partner session------------------>
  <section class="_partner w-full bg-[#17191C] flex flex-col items-center pb-14">
      <h3 class="text-4xl lg:text-6xl mt-6 p-3 py-10 text-white">OUR PARTNERS</h3>
-     <div class="flex items-center justify-center w-[800px] py-8 sm:py-8 px-10">
-         <button aria-label="slide backward" class="absolute z-30 left-[-10px] md:left-[60px] xl:left-[100px] ml-10 cursor-pointer" id="prev">
+     <div class="flex relative items-center justify-center w-[800px] py-8 sm:py-8 px-10">
+         <button aria-label="slide backward" class="absolute z-30 left-[202px] md:left-[28px] lg:left-[-146px] ml-10 cursor-pointer" id="prev">
              <svg class="fill-white hover:fill-orange-400" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
                  <path d="m24 31.3 2.1-2.1-3.7-3.7h9.1v-3h-9.1l3.7-3.7-2.1-2.1-7.3 7.3ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z" />
              </svg>
@@ -44,7 +44,7 @@
                  </div>
              </div>
          </div>
-         <button aria-label="slide forward" class="absolute z-30 mr-10 right-[-10px] md:right-[60px] xl:right-[100px]" id="next">
+         <button aria-label="slide forward" class="absolute z-30 mr-10 right-[202px] md:right-[28px] lg:right-[-146px]" id="next">
              <svg class="_nextBtn fill-white hover:fill-orange-400" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
                  <path d="m24 31.3 7.3-7.3-7.3-7.3-2.1 2.1 3.7 3.7h-9.1v3h9.1l-3.7 3.7ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z" />
              </svg>
