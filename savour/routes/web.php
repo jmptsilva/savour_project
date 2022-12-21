@@ -21,6 +21,11 @@ use Termwind\Components\Raw;
 |
 */
 
+
+Route::get('/', function () {
+    return redirect(route('welcome'));
+});
+
 Route::get('/welcome', [WelcomeController::class, 'create'])->name('welcome');
 
 Route::get('/menu', function () {
