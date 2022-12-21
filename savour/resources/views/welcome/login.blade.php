@@ -72,11 +72,12 @@
                 <div class="form-group mb-6">
                     <!--FORM Email -->
                     <input type="email" name="email" class="form-control _formControl" aria-describedby="emailHelp" placeholder="Email" required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!--FORM PASSWORD-->
                 <input type="password" name="password" class="form-control focus:z-4 _formControl" id="exampleInputPassword1" placeholder="Password" required>
-
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 <a href="{{route('password.request')}}" class="text-gray-300 hover:text-[#826343] focus:text-[#826343] transition duration-200 ease-in-out ">
                     Forgot password?</a>
                 <div class="flex items-center mr-4 mb-4">

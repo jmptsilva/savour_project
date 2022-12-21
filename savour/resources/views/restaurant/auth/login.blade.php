@@ -1,4 +1,6 @@
+
         @include('welcome/navbar')
+
         <x-restaurant-guest-layout>
             <x-auth-card>
                 <x-slot name="logo">

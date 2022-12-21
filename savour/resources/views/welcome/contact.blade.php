@@ -39,9 +39,9 @@
     <script>
         about.classList.remove("_activePage");
         contact.classList.add("_activePage");
-         _menu.classList.remove("_activePage");
+        _menu.classList.remove("_activePage");
         welcome.classList.remove("_activePage")
     </script>
-    </body>
+</body>
 
 </html>

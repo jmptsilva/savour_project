@@ -177,4 +177,7 @@ class OfferController extends Controller
         else
             return redirect('/offers')->with('error', 'Problem deleted the offer');
     }
+
+
+    
 }
