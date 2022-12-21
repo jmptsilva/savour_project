@@ -24,10 +24,10 @@ class OrderController extends Controller
     public function all_order_by_restaurant($id)
     {
         $orders = Order::select('users.first_name', 'users.last_name', 'users.email', 'offers.name', 'ordered_offers.price', 'ordered_offers.quantity')
-            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+            ->join('orders', 'ordered_offers.order_id', '=', 'orders.id')
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
-            ->join('restaurants', 'restaurants.id', '=', 'ordered_offers.restaurant_id')
-            ->join('users', 'user.id', '=', 'orders.user_id')
+            ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
+            ->join('users', 'users.id', '=', 'orders.user_id')
             ->where('offers.restaurant_id', '=', $id)
             ->get();
 
@@ -50,10 +50,10 @@ class OrderController extends Controller
 
     public function order_history_today($id)
     {
- be_routes_and_controller_orders
+
         $orders = Order::select(DB::raw('SUM(ordered_offers.price * ordered_offers.quantity) as Total'))
-        ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
-        ->where('offers.restaurant_id', '=', $id)
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->where('offers.restaurant_id', '=', $id)
 
             ->whereDate('created_at', '=', date('d.m.Y'))
             ->get();
@@ -117,15 +117,15 @@ class OrderController extends Controller
 
     public function user_active_orders($id)
     {
-        $orders = User::select('orders.id','orders.created_at', 'restaurants.name', 'restaurants.address', 'restaurants.postal_code', 'restaurants.city', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
-        ->join('orders', 'orders.user_id', '=', 'users.id')
-        ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
-        ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
-        ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
-        ->where('offers.restaurant_id', '=', $id)
-        ->where('orders.is_closed', '=', 0)
-        ->groupBy('orders.id', 'restaurants.name', 'restaurants.address','orders.created_at', 'users.email', 'restaurants.postal_code', 'restaurants.city')
-        ->get();
+        $orders = User::select('orders.id', 'orders.created_at', 'restaurants.name', 'restaurants.address', 'restaurants.postal_code', 'restaurants.city', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
+            ->join('orders', 'orders.user_id', '=', 'users.id')
+            ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
+            ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
+            ->join('restaurants', 'restaurants.id', '=', 'offers.restaurant_id')
+            ->where('offers.restaurant_id', '=', $id)
+            ->where('orders.is_closed', '=', 0)
+            ->groupBy('orders.id', 'restaurants.name', 'restaurants.address', 'orders.created_at', 'users.email', 'restaurants.postal_code', 'restaurants.city')
+            ->get();
 
         /* dd($orders); */
         return  $orders->tojson(JSON_PRETTY_PRINT);
@@ -133,20 +133,20 @@ class OrderController extends Controller
 
     public function active_order_by_restaurant($id)
     {
-        $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
+        $orders = User::select('orders.id', 'orders.created_at', 'users.email', 'users.first_name', 'users.last_name', DB::raw('sum(ordered_offers.price * ordered_offers.quantity) as total'))
             ->join('orders', 'orders.user_id', '=', 'users.id')
             ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
             ->where('offers.restaurant_id', '=', $id)
             ->where('orders.is_closed', '=', 0)
-            ->groupBy('orders.id','users.first_name','users.last_name','orders.created_at', 'users.email')
+            ->groupBy('orders.id', 'users.first_name', 'users.last_name', 'orders.created_at', 'users.email')
             ->get();
         return  $orders->tojson(JSON_PRETTY_PRINT);
     }
 
     public function active_order_detail($id)
     {
-        $orders = User::select('orders.id','orders.created_at', 'users.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
+        $orders = User::select('orders.id', 'orders.created_at', 'users.email', 'users.first_name', 'users.last_name', 'ordered_offers.price', 'ordered_offers.quantity', 'offers.name')
             ->join('orders', 'orders.user_id', '=', 'users.id')
             ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
@@ -157,7 +157,7 @@ class OrderController extends Controller
 
     public function user_orders_detail($id)
     {
-        $orders = User::select('orders.id','orders.created_at', 'restaurants.email', 'users.first_name','users.last_name','ordered_offers.price','ordered_offers.quantity','offers.name')
+        $orders = User::select('orders.id', 'orders.created_at', 'restaurants.email', 'users.first_name', 'users.last_name', 'ordered_offers.price', 'ordered_offers.quantity', 'offers.name')
             ->join('orders', 'orders.user_id', '=', 'users.id')
             ->join('ordered_offers', 'ordered_offers.order_id', '=', 'orders.id')
             ->join('offers', 'offers.id', '=', 'ordered_offers.offer_id')
@@ -166,5 +166,4 @@ class OrderController extends Controller
             ->get();
         return  $orders->tojson(JSON_PRETTY_PRINT);
     }
-
 }
