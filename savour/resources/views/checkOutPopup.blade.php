@@ -17,21 +17,21 @@ use App\Providers\RouteServiceProvider;
                     <div role="banner">
                         <p
                             class="box-decoration-clone bg-gradient-to-r from-green-600 to-yellow-500 text-white px-2 text-[20px]">
-                            You save <span class="_cartIconNb">2</span> dishes
+                            You saved <span class="_cartIconNb">2</span> dishes
                         </p>
 
                     </div>
                     <div class="mt-4">
                         <h1 role="main"
-                            class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center text-gray-800">
+                            class="text-3xl text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center ">
                             Order reference is #34567</h1>
-                        <p class="text-3xl dark:text-white  font-semibold leading-7 lg:leading-9 text-center text-gray-800">
+                        <p class="text-3xl text-white  font-semibold leading-7 lg:leading-9 text-center ">
                             Your order will be ready at 13:00</p>
                     </div>
                     <div class="mt">
-                        <p class="mt-6 sm:w-80 text-base dark:text-white leading-7 text-center text-gray-800">We wish you
+                        <p class="mt-6 sm:w-80 text-base text-white leading-7 text-center">We wish you
                             savour the plate</p>
-                        <p class=" sm:w-80 text-base dark:text-white leading-7 text-center text-gray-800">Thank you for save
+                        <p class=" sm:w-80 text-base text-white leading-7 text-center">Thank you for save
                             our planet</p>
                     </div>
                     <form action="{{ route(RouteServiceProvider::HOMEPAGE) }}" method="GET">
