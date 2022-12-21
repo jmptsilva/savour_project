@@ -214,7 +214,6 @@
 
     // shoping cart
     const total = document.querySelector('.cart-total-price')
-    const cartIconNbs = document.querySelectorAll('._cartIconNb')
     const cartWrap = document.querySelector("._itemWrap")
 
     
@@ -254,6 +253,8 @@
     //calculate total
 
     function rendertotal(totalEl) {
+        const cartIconNbs = document.querySelectorAll('._cartIconNb')
+
         let totalPrice = 0,
             totalItems = 0;
 
@@ -280,7 +281,7 @@
                          <td class="align-baseline _foodInCart text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">${data.name}
                          </td>
                          <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                             ${data.restaurant}
+                             ${data.rest_name}
                          </td>
                          <td class="align-baseline hidden md:inline-block text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                              19:00 12/25 2022

@@ -17,7 +17,7 @@ use App\Providers\RouteServiceProvider;
                     <div role="banner">
                         <p
                             class="box-decoration-clone bg-gradient-to-r from-green-600 to-yellow-500 text-white px-2 text-[20px]">
-                            You save <span class="try _cartIconNb">2</span> dishes
+                            You save <span class="_cartIconNb">2</span> dishes
                         </p>
 
                     </div>
@@ -26,7 +26,7 @@ use App\Providers\RouteServiceProvider;
                             class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center text-gray-800">
                             Order reference is #34567</h1>
                         <p class="text-3xl dark:text-white  font-semibold leading-7 lg:leading-9 text-center text-gray-800">
-                            Your order will be ready in 13:00</p>
+                            Your order will be ready at 13:00</p>
                     </div>
                     <div class="mt">
                         <p class="mt-6 sm:w-80 text-base dark:text-white leading-7 text-center text-gray-800">We wish you
@@ -44,9 +44,10 @@ use App\Providers\RouteServiceProvider;
         </div>
     </div>
     <script>
-        // const try = document.querySelector('.try');
-        // console.log(try)
-        console.log(cartIconNbs) // only gave 2
+        //const try = document.querySelector('.try');
+        //console.log(try)
+        rendertotal(total);
+   
         localStorage.clear();
     </script>
 @endsection
