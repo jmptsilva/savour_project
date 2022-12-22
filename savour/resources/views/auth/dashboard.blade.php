@@ -63,7 +63,7 @@
                     <h4 class="text-xl text-gray-900 font-bold">Record</h4>
                     <div class="px-6 py-6 gap-8 mt-4 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                         <div class="flex items-center justify-between">
-                            <span class="font-bold text-lg text-[#00391d]">Total Food Save</span>
+                            <span class="font-bold text-lg text-[#00391d]">Total Food Saved</span>
                         </div>
                         <div class="flex items-center justify-between mt-6">
                             <div>
@@ -98,7 +98,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <span class="text-[50px] font-bold">30</span>
+                                <span class="text-[50px] font-bold">1</span>
                                 <span class="text-xl  font-bold">Plates</span>
                             </div>
                         </div>
