@@ -107,9 +107,7 @@
                             </div>
                         </td>
                         <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-                            <img class="w-10 h-10 rounded-full" src="${result.image}" />
-                        
-
+                            <img class="w-10 h-10 rounded-full" src="{{asset('assets/foods/${result.image}')}}" />
                             <div class="pl-3 ">
                                 <div class="text-base font-semibold">${result.name}</div>
                                 <div class="font-normal text-gray-500 w-3">${result.description.substring(0, 29)}...</div>
