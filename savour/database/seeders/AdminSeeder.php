@@ -18,12 +18,11 @@ class AdminSeeder extends Seeder
     {
         DB::table('admins')->insert([
             [
-                'username' => 'JayJai',
+                'first_name' => 'Admin',
+                'last_name' => 'Adminer',
                 'password' => 'Qw12345678',
-                'email' => 'j@gmail.com',
+                'email' => 'admin@gmail.com',
             ],
-
-
         ]);
     }
 }
